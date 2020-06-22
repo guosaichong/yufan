@@ -3,16 +3,18 @@
     padding: 0;
 }
 table{
-    margin: 20px auto;
+    margin: 5px auto;
+    text-align: center;
+    border-collapse : collapse;
+    width: 80%;
 }
 table,th,tbody,tr,td{
-    border: 1px solid black;
-    padding: 2px 3px;
+    border: 1px solid #ccc;
 }
 .header{
     margin: 0 auto;
-    width: 1200px;
-    height: 100px;
+    width: 960px;
+    height: 80px;
     line-height: 20px;
 }
 .header .left{
@@ -22,11 +24,11 @@ table,th,tbody,tr,td{
     float: left;
     width: 258px;
     height: 65px;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 .left span{
     float: left;
-    margin-top: 60px;
+    margin-top: 55px;
     margin-left: 10px;
     color: rgb(30, 80, 174);
     font-size: 22px;
@@ -34,12 +36,14 @@ table,th,tbody,tr,td{
 }
 .header .right{
     float: right;
-    margin-top: 40px;
+    margin-top: 25px;
+    margin-left: 30px;
 }
 .right span{
     font-size: 20px;
     font-weight: 700;
-    margin-top: 10px;
+    margin: 10px;
+    line-height: initial;
 }
 
 .navigator{
