@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../static/common.css">
+    <script src="../static/common.js"></script>
+    <title></title>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="left">
+            <img src="../static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png" alt="禹帆物流">
+            <span>专业第三方物流供应商</span>
+        </div>
+        <div class="right">
+            <span style="text-align: right;">天津市宁河区一汽大众华北基地</span><br>
+
+            <span>服务热线：022-69329006 69329008</span>
+        </div>
+    </div>
+    <div class="navigator">
+
+    </div>
+    <div class="table">
+        <table>
+            <th>序号</th>
+            <th>车牌号</th>
+            <th>供应商名称</th>
+            <th>联系人</th>
+            <th>联系电话</th>
+            <th>卸货联系人</th>
+            <th>卸货位</th>
+            <th>预约时间</th>
+            <th>卸货时间</th>
+            <th>提交时间</th>
+
+            {%for r in ret%}
+            <tr>
+                <td></td>
+                <td>{{r.car}}</td>
+                <td>{{r.supplier}}</td>
+                <td>{{r.name}}</td>
+                <td>{{r.tel}}</td>
+                <td>{{r.unloading}}</td>
+                <td>{{r.position}}</td>
+                <td>{{r.app_time}}</td>
+                <td>{{r.dis_time}}</td>
+                <td>{{r.sub_time}}</td>
+
+            </tr>
+            {%endfor%}
+
+
+        </table>
+
+
+    </div>
+
+</body>
