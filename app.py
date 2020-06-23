@@ -16,6 +16,7 @@ Session = sessionmaker(bind=engine)
 def index():
     session=Session()
     ret = session.query(Run).filter(Run.appointment_date == func.date_format(func.now(), '%Y-%m-%d')).order_by("unloading_time").all()
+    # print(Run.appointment_date == func.date_format(func.now(), '%Y-%m-%d'))
     # print(ret)
     return render_template("index.html", ret=ret,riqi=riqi)
 
