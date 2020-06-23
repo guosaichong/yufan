@@ -13,7 +13,7 @@ def get_date():
         data1 = html.xpath('//*[@id="info_all"]/h3/text()')
         data2 = html.xpath('//*[@id="info_nong"]/text()')
         data=(data1[0].split(" ")[1],data1[0].split(" ")[2],data1[0].split(" ")[3],data2[0])
-        print(data)
+        # print(data)
         # riqi_str = data1[0] + '\n' + data2[0]
         # print(riqi_str)
     except:

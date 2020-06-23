@@ -1,7 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Text, DateTime, UniqueConstraint, Index, Time, Date
 import datetime
-from config import engine,session
+# from config import engine,session
 
 Base = declarative_base()
 
@@ -12,12 +12,12 @@ class Run(Base):
     # 字段
 
     id = Column(Integer, primary_key=True, nullable=False)
-    car_number = Column(String(10), nullable=False, index=True)
+    car_number = Column(String(7), nullable=False, index=True)
     supplier = Column(String(20), nullable=False)
     contacts = Column(String(4), nullable=False)
     phone = Column(String(11), nullable=False)
     unloading_contacts = Column(String(4), nullable=False)
-    unloading_site = Column(Integer, nullable=False)
+    unloading_site = Column(String(11), nullable=False)
     appointment_date = Column(Date, nullable=False)
     unloading_time = Column(Time, nullable=False)
     create_time = Column(DateTime, default=datetime.datetime.now, nullable=False)
