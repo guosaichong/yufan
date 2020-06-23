@@ -16,10 +16,17 @@
             <img src="../static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png" alt="禹帆物流">
             <span>专业第三方物流供应商</span>
         </div>
+        
         <div class="right">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天津市宁河区一汽大众华北基地</span><br>
+            <span>天津市宁河区一汽大众华北基地</span><br>
 
             <span style="font-weight: 400;">服务热线：022-69329006 69329008</span>
+        </div>
+        <div class="riqi">
+            <span>{{riqi[0]}}</span>
+            <span>{{riqi[1]}}</span>
+            <span>{{riqi[2]}}</span><br>
+            <span>【鼠年】{{riqi[3]}}</span>
         </div>
     </div>
     <div class="navigator">
@@ -41,15 +48,15 @@
             {%for r in ret%}
             <tr>
                 <td></td>
-                <td>{{r.car}}</td>
+                <td>{{r.car_number}}</td>
                 <td>{{r.supplier}}</td>
-                <td>{{r.name}}</td>
-                <td>{{r.tel}}</td>
-                <td>{{r.unloading}}</td>
-                <td>{{r.position}}</td>
-                <td>{{r.app_time}}</td>
-                <td>{{r.dis_time}}</td>
-                <td>{{r.sub_time}}</td>
+                <td>{{r.contacts}}</td>
+                <td>{{r.phone}}</td>
+                <td>{{r.unloading_contacts}}</td>
+                <td>{{r.unloading_site}}</td>
+                <td>{{r.appointment_date}}</td>
+                <td>{{r.unloading_time}}</td>
+                <td>{{r.create_time}}</td>
 
             </tr>
             {%endfor%}
