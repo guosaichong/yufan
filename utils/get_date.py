@@ -12,7 +12,8 @@ def get_date():
         html = etree.HTML(response.text)
         data1 = html.xpath('//*[@id="info_all"]/h3/text()')
         data2 = html.xpath('//*[@id="info_nong"]/text()')
-        data=(data1[0].split(" ")[1],data1[0].split(" ")[2],data1[0].split(" ")[3],data2[0])
+        data3 = html.xpath('//*[@id="info_nong"]/b/text()')
+        data=(data1[0].split(" ")[1],data1[0].split(" ")[2],data1[0].split(" ")[3],data2[0],data3[0])
         # print(data)
         # riqi_str = data1[0] + '\n' + data2[0]
         # print(riqi_str)

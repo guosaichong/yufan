@@ -10,10 +10,11 @@ app = Flask(__name__)
 app.secret_key = "tianjin"
 
 
-riqi=get_date.get_date()
+
 Session = sessionmaker(bind=engine)
 @app.route('/')
 def index():
+    riqi=get_date.get_date()
     session=Session()
     ret = session.query(Run).filter(Run.appointment_date == func.date_format(func.now(), '%Y-%m-%d')).order_by("unloading_time").all()
     # print(Run.appointment_date == func.date_format(func.now(), '%Y-%m-%d'))
