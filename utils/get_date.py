@@ -10,6 +10,10 @@ def get_date():
         riqi_url = 'http://tools.2345.com/rili.htm'
         response = requests.get(riqi_url, headers=headers)
         html = etree.HTML(response.text)
+        riqi_url1 = 'https://www.2345.com/?kgsc21'
+        response1 = requests.get(riqi_url1, headers=headers)
+        html1 = etree.HTML(response1.text)
+        # print(html1)
         data1 = html.xpath('//*[@id="info_all"]/h3/text()')
         data2 = html.xpath('//*[@id="info_nong"]/text()')
         data3 = html.xpath('//*[@id="info_nong"]/b/text()')
