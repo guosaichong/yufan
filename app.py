@@ -5,6 +5,8 @@ from datetime import datetime
 from sqlalchemy import and_, func
 from utils import get_date
 from sqlalchemy.orm import sessionmaker
+import time
+import json
 
 app = Flask(__name__)
 app.secret_key = "tianjin"
@@ -15,12 +17,22 @@ Session = sessionmaker(bind=engine)
 
 @app.route('/')
 def index():
-    riqi = get_date.get_date()
+    with open("utils/date.json", 'r') as load_f:
+        load_dict = json.load(load_f)
+    print(load_dict["1"])
+    today = time.strftime("%m月%d日", time.localtime())
+    if today[:1] == "0":
+        today = today[1:]
+    print(today)
+    if today != load_dict["1"]:
+        riqi = get_date.get_date()
+    else:
+        riqi = load_dict
     session = Session()
     ret = session.query(Run).filter(Run.appointment_date == func.date_format(
         func.now(), '%Y-%m-%d')).order_by("unloading_time").all()
-    # print(Run.appointment_date == func.date_format(func.now(), '%Y-%m-%d'))
-    
+    session.close()
+
     return render_template("index.html", ret=ret, riqi=riqi)
 
 
