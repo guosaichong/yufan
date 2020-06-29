@@ -13,6 +13,7 @@ class Run(Base):
 
     id = Column(Integer, primary_key=True, nullable=False)
     car_number = Column(String(7), nullable=False, index=True)
+    car_model = Column(String(10))
     supplier = Column(String(20), nullable=False)
     contacts = Column(String(4), nullable=False)
     phone = Column(String(11), nullable=False)
