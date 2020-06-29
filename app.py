@@ -1,6 +1,6 @@
 from flask import Flask, render_template, get_flashed_messages, flash, request
 from config import engine
-from modle import Run
+from model import Run
 from datetime import datetime
 from sqlalchemy import and_, func
 from utils import get_date
