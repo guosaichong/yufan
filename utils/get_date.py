@@ -26,7 +26,7 @@ def get_date():
         data["5"]=data3[0]
         print(data)
         # print(type(data))
-        with open("date.json","w") as f:
+        with open("utils/date.json","w") as f:
             json.dump(data,f)
     except:
         data={}
