@@ -10,5 +10,5 @@ window.onload = function () {
     };
     setInterval(function () {
         window.location.reload()
-    }, 600000)
+    }, 1800000)
 }

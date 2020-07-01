@@ -20,9 +20,8 @@ def index():
     with open("utils/date.json", 'r') as load_f:
         load_dict = json.load(load_f)
     print(load_dict["1"])
-    today = time.strftime("%m月%d日", time.localtime())
-    if today[:1] == "0":
-        today = today[1:]
+    today = datetime.now().timetuple()
+    today=str(today.tm_mon) +"月"+ str(today.tm_mday)+"日"
     print(today)
     if today != load_dict["1"]:
         riqi = get_date.get_date()
