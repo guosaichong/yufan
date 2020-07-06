@@ -32,7 +32,7 @@ def index():
         func.now(), '%Y-%m-%d')).order_by("unloading_time").all()
     session.close()
 
-    return render_template("index.html", ret=ret, riqi=riqi)
+    return render_template("index.html", ret=ret, riqi=riqi,today=today)
 
 
 if __name__ == "__main__":
