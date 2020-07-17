@@ -78,11 +78,11 @@ def register():
     elif request.method == "POST":
         username = request.form.get('username')
         password = request.form.get("password")
-        repet_password=request.form.get("repet_password")
+        repeat_password=request.form.get("repeat_password")
         dbsession=DBSession()
         user =dbsession.query(User).filter_by(username=username).first()
         if not user:
-            if password != repet_password:
+            if password != repeat_password:
                 flash("密码不一样")
                 return redirect(url_for('login'))
             new_user = User(username=username)

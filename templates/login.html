@@ -103,12 +103,13 @@
         <div id="register">注册</div>
     </div>
     <div>
-        <form action="/login" method="POST" id="loginForm">
+        <form name="loginForm" action="/login" method="POST" id="loginForm">
             <div class="container">
                 <label for="username"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
                 <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required autocomplete="new-password">
+                <input type="password" placeholder="Enter Password" name="password" required
+                    autocomplete="new-password">
                 {%for message in get_flashed_messages()%}
                 <span style="color: red">{{message}}</span>
                 {%endfor%}
@@ -118,13 +119,16 @@
         <form action="/register" method="POST" id="registerForm" style="display: none;">
             <div class="container">
                 <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
-
+                <input id="username" type="text" placeholder="Enter Username" name="username" required
+                    autocomplete="off">
+                <div class="tip" style="display: none;">6～18个字符，可使用字母、数字、下划线，需要以字母开头</div>
                 <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required autocomplete="new-password">
+                <input id="password" type="password" placeholder="Enter Password" name="password" required
+                    autocomplete="new-password">
 
-                <label for="repet_password"><b>Repet Password</b></label>
-                <input type="password" placeholder="Enter Password Again" name="repet_password" required autocomplete="new-password">
+                <label for="repeat_password"><b>Repet Password</b></label>
+                <input id="repeat_password" type="password" placeholder="Enter Password Again" name="repeat_password"
+                    required autocomplete="new-password">
                 {%for message in get_flashed_messages()%}
                 <span style="color: red">{{message}}</span>
                 {%endfor%}
@@ -138,12 +142,39 @@
 </div>
 <script>
     $(document).ready(function () {
-        $("input").focus(function () {
-            $(".container span").css("display","none");
-            $("input").css("background-color", "#FFFFCC");
+        $("#username").focus(function () {
+            $(".container span").css("display", "none");
+            $("#username").css("background-color", "#FFFFCC");
+            $(".tip").css("display", "block")
         });
-        $("input").blur(function () {
-            $("input").css("background-color", "#D6D6FF");
+        $("#username").blur(function () {
+            $("#username").css("background-color", "#fff");
+            $(".tip").css("display", "none");
+        });
+        $("#password").focus(function () {
+            $(".container span").css("display", "none");
+            $("#password").css("background-color", "#FFFFCC");
+
+        });
+        $("#password").blur(function () {
+            $("#password").css("background-color", "#fff");
+
+        });
+        $("#repeat_password").focus(function () {
+            $(".container span").css("display", "none");
+            $("#repeat_password").css("background-color", "#FFFFCC");
+
+        });
+        $("#repeat_password").blur(function () {
+            $("#repeat_password").css("background-color", "#fff");
+
+        });
+        $("#username").bind('keyup blur', function () {
+            var reg = /[\\\t]/g;
+            var val = $(this).val();
+            if (reg.test(val)) {
+                $(this).val($(this).val().replace(reg, ''));
+            }
         });
     });
     function toggleChecked() {
@@ -160,13 +191,13 @@
     document.getElementById("login").onclick = function () {
         document.getElementById("login").classList.add("checked");
         document.getElementById("register").classList.remove("checked");
-        $(".container span").css("display","none");
+        $(".container span").css("display", "none");
         toggleChecked()
     }
     document.getElementById("register").onclick = function () {
         document.getElementById("login").classList.remove("checked");
         document.getElementById("register").classList.add("checked");
-        $(".container span").css("display","none");
+        $(".container span").css("display", "none");
         toggleChecked()
     }
 
