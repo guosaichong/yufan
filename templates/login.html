@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block title %}仓储管理系统{% endblock %}
+{% block head %}
+<style>
+    .title {
+        margin: auto;
+        position: absolute;
+        top: 180px;
+        left: 0;
+        right: 0;
+        width: 350px;
+        text-align: center;
+        color: black;
+    }
+
+    .title h1 {
+        display: inline;
+    }
+
+    .title span {
+        display: inline;
+        font-size: 10px;
+        background-color: rgb(156, 156, 6);
+        color: white;
+        padding: 0 3px;
+        border-radius: 4px;
+    }
+
+    .form {
+        margin: auto;
+        position: absolute;
+        top: 250px;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+        width: 350px;
+        padding: 0 20px 0 20px;
+        border-radius: 3px;
+        opacity: 0.8;
+    }
+
+    .choose-action div {
+        text-align: left;
+        cursor: pointer;
+        margin-right: 20px;
+        position: relative;
+        line-height: 50px;
+        display: inline;
+    }
+
+    .choose-action div.checked {
+        font-weight: bold;
+        color: #1a1a1a;
+        font-size: 16px;
+        line-height: 60px;
+    }
+
+    .choose-action div.checked::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 3px;
+        background-color: rgb(30, 80, 174);
+        display: block;
+        left: 0;
+    }
+
+    .container {
+        padding-top: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 5px 0px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: rgb(30, 80, 174);
+        color: white;
+        font-size: 14px;
+        padding: 10px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="title">
+    <h1>仓储管理系统</h1>
+    <span>Powered by GSC</span>
+</div>
+<div id="id01" class="form">
+    <div class="choose-action">
+        <div id="login" class="checked">登录</div>
+        <div id="register">注册</div>
+    </div>
+    <div>
+        <form action="/login" method="POST" id="loginForm">
+            <div class="container">
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required autocomplete="new-password">
+                {%for message in get_flashed_messages()%}
+                <span style="color: red">{{message}}</span>
+                {%endfor%}
+                <button type="submit">登录</button>
+            </div>
+        </form>
+        <form action="/register" method="POST" id="registerForm" style="display: none;">
+            <div class="container">
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
+
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required autocomplete="new-password">
+
+                <label for="repet_password"><b>Repet Password</b></label>
+                <input type="password" placeholder="Enter Password Again" name="repet_password" required autocomplete="new-password">
+                {%for message in get_flashed_messages()%}
+                <span style="color: red">{{message}}</span>
+                {%endfor%}
+
+                <button type="submit">注册</button>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        $("input").focus(function () {
+            $(".container span").css("display","none");
+            $("input").css("background-color", "#FFFFCC");
+        });
+        $("input").blur(function () {
+            $("input").css("background-color", "#D6D6FF");
+        });
+    });
+    function toggleChecked() {
+        var loginChecked = document.getElementById("login")
+        var registerChecked = document.getElementById("register")
+        if (loginChecked.classList.contains("checked")) {
+            document.getElementById("loginForm").style.removeProperty("display")
+            document.getElementById("registerForm").style.display = "none"
+        } else {
+            document.getElementById("loginForm").style.display = "none"
+            document.getElementById("registerForm").style.removeProperty("display")
+        }
+    }
+    document.getElementById("login").onclick = function () {
+        document.getElementById("login").classList.add("checked");
+        document.getElementById("register").classList.remove("checked");
+        $(".container span").css("display","none");
+        toggleChecked()
+    }
+    document.getElementById("register").onclick = function () {
+        document.getElementById("login").classList.remove("checked");
+        document.getElementById("register").classList.add("checked");
+        $(".container span").css("display","none");
+        toggleChecked()
+    }
+
+</script>
+
+{% endblock %}

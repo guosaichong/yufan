@@ -2,11 +2,16 @@
     margin: 0;
     padding: 0;
 }
+.user{
+    position: absolute;
+    top:35px;
+    right: 10px;
+}
 .scroll-box {
 	width:320px;
 	height:25px;
 	/* border:2px solid #000; */
-	margin-top: 45px;
+	margin-top: 52px;
     overflow:hidden;
     box-sizing: border-box;
     float: right;
@@ -21,10 +26,11 @@
 	height:25px;
 	box-sizing:border-box;
 	line-height:25px;
-	text-align:center;
+	text-align:right;
 }
 
 .header{
+    position: relative;
     margin: 0 auto;
     width: 1200px;
     height: 100px;
@@ -46,12 +52,6 @@
     font-size: 22px;
     font-weight: 700;
 }
-.header .riqi{
-    float: right;
-    margin-top: 34px;
-    margin-right: 10px;
-    line-height: normal;
-}
 .header .address{
     float: left;
     margin-top: 25px;
@@ -59,25 +59,31 @@
     font-size: 20px;
     /* border: 1px solid red; */
 }
-.address p{
+.address{
     font-weight: 700;
 }
 .navigator{
     height: 50px;
     background-color: rgb(30, 80, 174);
 }
+.main{
+    position: relative;
+    width: 1200px;
+    margin: 5px auto;
+    box-sizing: border-box;
+}
 .tablename{
     height: 50px;
-    margin: 5px auto;
+    
     font-size: 22px;
     line-height: 50px;
     text-align: center;
 }
 table{
-    margin: 5px auto 0;
+    margin: 5px auto;
     text-align: center;
     border-collapse : collapse;
-    width: 80%;
+    width: 100%;
 }
 table,th,tr,td{
     border: 1px solid #ccc;
