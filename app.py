@@ -8,6 +8,34 @@ from sqlalchemy.orm import sessionmaker
 import time
 import json
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+import os
+import logging
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+logs_floder = os.path.join(basedir, "logs")
+if not os.path.exists(logs_floder):
+    os.mkdir(logs_floder)
+# 第一步，创建一个logger
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)  # Log等级总开关
+# 第二步，创建一个handler，用于写入日志文件
+rq = time.strftime('%Y%m%d%H%M', time.localtime(time.time()))
+log_path = logs_floder + '/'
+logfile = log_path + rq + '.log'
+fh = logging.FileHandler(logfile, mode='w')
+fh.setLevel(logging.DEBUG)  # 输出到file的log等级的开关
+# 第三步，定义handler的输出格式
+formatter = logging.Formatter("%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s")
+fh.setFormatter(formatter)
+# 第四步，将logger添加到handler里面
+logger.addHandler(fh)
+# 日志
+logger.debug('this is a logger debug message')
+logger.info('this is a logger info message')
+logger.warning('this is a logger warning message')
+logger.error('this is a logger error message')
+logger.critical('this is a logger critical message')
+
 app = Flask(__name__)
 app.secret_key = "tianjin"
 
@@ -39,7 +67,7 @@ def index():
     # print(load_dict["1"])
     today = datetime.now().timetuple()
     today=str(today.tm_mon) +"月"+ str(today.tm_mday)+"日"
-    print(today)
+    # print(today)
     # if today != load_dict["1"]:
     #     riqi = get_date.get_date()
     # else:

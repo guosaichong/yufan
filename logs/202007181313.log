@@ -1,0 +1,18 @@
+2020-07-18 13:13:51,184 - app.py[line:34] - INFO: this is a logger info message
+2020-07-18 13:13:51,184 - app.py[line:35] - WARNING: this is a logger warning message
+2020-07-18 13:13:51,184 - app.py[line:36] - ERROR: this is a logger error message
+2020-07-18 13:13:51,184 - app.py[line:37] - CRITICAL: this is a logger critical message
+2020-07-18 13:13:51,248 - _internal.py[line:113] - WARNING:  * Debugger is active!
+2020-07-18 13:13:51,258 - _internal.py[line:113] - INFO:  * Debugger PIN: 270-647-624
+2020-07-18 13:13:51,288 - _internal.py[line:113] - INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-18 13:14:19,262 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:14:19] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-18 13:14:41,451 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:14:41] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2020-07-18 13:14:41,474 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:14:41] "[37mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+2020-07-18 13:14:41,474 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:14:41] "[37mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+2020-07-18 13:14:41,475 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:14:41] "[37mGET /register?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+2020-07-18 13:14:41,531 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:14:41] "[37mGET /register?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+2020-07-18 13:14:41,721 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:14:41] "[37mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+2020-07-18 13:14:41,772 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:14:41] "[37mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+2020-07-18 13:15:29,447 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:15:29] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-18 13:16:43,103 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:16:43] "[37mPOST /login HTTP/1.1[0m" 200 -
+2020-07-18 13:16:43,130 - _internal.py[line:113] - INFO: 127.0.0.1 - - [18/Jul/2020 13:16:43] "[37mGET /static/wms_index.css HTTP/1.1[0m" 200 -
