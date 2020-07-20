@@ -2,6 +2,18 @@
 {% block title %}仓储管理系统{% endblock %}
 {% block head %}
 <link rel="stylesheet" href="../static/wms_index.css">
+<script>
+    $(document).ready(function(){
+        $(".info li:first").click(function(){
+            $("#maincontent div").css("display","none");
+            $(".goods").show();
+        });
+        $(".info li:eq(1)").click(function(){
+            $("#maincontent div").css("display","none");
+            $(".warehouse").show();
+        });
+    })
+</script>
 {% endblock %}
 {% block content %}
 <div class="main">
@@ -9,7 +21,7 @@
 
         <div id="course">
             <h3>基础数据</h3>
-            <ul>
+            <ul class="info">
                 <li><a href="#" title="商品分类">商品分类</a></li>
                 <li><a href="#" title="仓库信息">仓库信息</a></li>
                 <li><a href="#" title="合作伙伴">合作伙伴</a></li>
@@ -60,6 +72,12 @@
 
     </div>
     <div id="maincontent">
+        <div class="goods" style="display: block;">
+            <p>商品分类</p>
+        </div>
+        <div class="warehouse" style="display: none;">
+            <p>仓库信息</p>
+        </div>
 
 
 

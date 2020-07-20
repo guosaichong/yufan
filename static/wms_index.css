@@ -1,18 +1,39 @@
 div#navsecond {
     float: left;
     padding: 0;
-    border: 1px solid red;
+    border-left: 1px solid rgb(200, 189, 136);
+    border-right: 1px solid rgb(200, 189, 136);
     width: 180px;
     box-sizing: border-box;
+    
+}
+#course h3{
+    padding: 5px;
+    background-color: rgb(200, 189, 136);
+    text-align: center;
 }
 div#navsecond ul{
     list-style: none;
 }
+div#navsecond ul li{
+    padding: 3px 10px;
+}
+div#navsecond ul li:hover{
+    background-color: rgba(200, 189, 136,.4);
+}
+div#navsecond a:link, div#navsecond a:visited {
+    text-decoration: none;
+    color: black;
+}
+
 div#maincontent {
     position: absolute;
+
     left: 180px;
     padding-left: 5px;
     border: 1px solid red;
     width: 1020px;
+    height: 782px;
     box-sizing: border-box;
+
 }
