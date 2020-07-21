@@ -48,6 +48,9 @@ login_manager.login_view = '/'
 login_manager.login_message_category = 'info'
 login_manager.login_message = 'Access denied.'
 
+today = datetime.now().timetuple()
+today=str(today.tm_mon) +"月"+ str(today.tm_mday)+"日"
+# print(today)
 
 @login_manager.user_loader
 def get_user(user_id):
@@ -65,9 +68,7 @@ def index():
     # with open("utils/date.json", 'r') as load_f:
     #     load_dict = json.load(load_f)
     # print(load_dict["1"])
-    today = datetime.now().timetuple()
-    today=str(today.tm_mon) +"月"+ str(today.tm_mday)+"日"
-    # print(today)
+    
     # if today != load_dict["1"]:
     #     riqi = get_date.get_date()
     # else:
@@ -97,7 +98,14 @@ def login():
             return redirect("/login")
         login_user(user)
 
-        return render_template("wms_index.html")
+        return redirect(url_for('wms_index'))
+
+@app.route('/wms_index',methods=['GET', 'POST'])
+def wms_index():
+    dbsession=DBSession()
+    supplier_amount =dbsession.query(func.count(Supplier.id)).scalar()
+    dbsession.close()
+    return render_template("wms_index.html",today=today,supplier_amount=supplier_amount)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
