@@ -105,10 +105,10 @@
     <div>
         <form name="loginForm" action="/login" method="POST" id="loginForm">
             <div class="container">
-                <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
-                <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required
+                <label for="uname"><b>Username</b></label>
+                <input id="uname" type="text" placeholder="Enter Username" name="username" required autocomplete="off">
+                <label for="pwd"><b>Password</b></label>
+                <input id="pwd" type="password" placeholder="Enter Password" name="password" required
                     autocomplete="new-password">
                 {%for message in get_flashed_messages()%}
                 <span style="color: red">{{message}}</span>
@@ -142,32 +142,57 @@
 </div>
 <script>
     $(document).ready(function () {
+        $("#uname").focus(function(){
+            $(".container span").css("display", "none");
+            $("#uname").css("background-color", "#FFFFCC");
+            $("#uname").attr('placeholder','');
+
+        });
+        $("#uname").blur(function(){
+            
+            $("#uname").css("background-color", "#FFF");
+            $("#uname").attr('placeholder','Enter Username');
+
+        });
+        $("#pwd").focus(function(){
+            $(".container span").css("display", "none");
+            $("#pwd").css("background-color", "#FFFFCC");
+            $("#pwd").attr('placeholder','');
+        });
+        $("#pwd").blur(function(){
+            
+            $("#pwd").css("background-color", "#FFF");
+            $("#pwd").attr('placeholder','Enter Password');
+        });
         $("#username").focus(function () {
             $(".container span").css("display", "none");
             $("#username").css("background-color", "#FFFFCC");
+            $("#username").attr("placeholder","");
             $(".tip").css("display", "block")
         });
         $("#username").blur(function () {
             $("#username").css("background-color", "#fff");
+            $("#username").attr("placeholder","Enter Username");
             $(".tip").css("display", "none");
         });
         $("#password").focus(function () {
             $(".container span").css("display", "none");
             $("#password").css("background-color", "#FFFFCC");
+            $("#password").attr("placeholder","");
 
         });
         $("#password").blur(function () {
             $("#password").css("background-color", "#fff");
-
+            $("#password").attr("placeholder","Enter Password");
         });
         $("#repeat_password").focus(function () {
             $(".container span").css("display", "none");
             $("#repeat_password").css("background-color", "#FFFFCC");
-
+            $("#repeat_password").attr("placeholder","");
         });
         $("#repeat_password").blur(function () {
             $("#repeat_password").css("background-color", "#fff");
-
+            $("#repeat_password").attr("placeholder","Enter Password");
         });
         $("#username").bind('keyup blur', function () {
             var reg = /[\\\t]/g;

@@ -101,32 +101,35 @@ def login():
         return redirect(url_for('wms_index'))
 
 @app.route('/wms_index',methods=['GET', 'POST'])
+@login_required
 def wms_index():
     
     return render_template("view_base.html")
 
 @app.route('/supplier',methods=['GET', 'POST'])
+@login_required
 def supplier():
     return render_template("supplier.html")
 
 @app.route('/add_supplier',methods=['GET', 'POST'])
+@login_required
 def add_supplier():
     if request.method == "GET":
         return render_template('add_supplier.html')
     elif request.method == "POST":
-        supplier_name=request.form.get('supplier_name')
-        supplier_number=request.form.get('supplier_number')
-        print(supplier_number,supplier_name)
+        input_supplier_name=request.form.get('supplier_name')
+        input_supplier_number=request.form.get('supplier_number')
+        # print(input_supplier_number,input_supplier_name)
         dbsession=DBSession()
-        supplier_number =dbsession.query(Supplier).filter_by(supplier_number=supplier_number).first()
-        supplier_name =dbsession.query(Supplier).filter_by(supplier_name=supplier_name).first()
+        supplier_number =dbsession.query(Supplier).filter_by(supplier_number=input_supplier_number).first()
+        supplier_name =dbsession.query(Supplier).filter_by(supplier_name=input_supplier_name).first()
         if supplier_number:
             flash('此供应商号已存在')
             return redirect('/add_supplier')
         if supplier_name:
             flash('此供应商名称已存在')
             return redirect('/add_supplier')
-        new_supplier=Supplier(supplier_number=supplier_number,supplier_name=supplier_name)
+        new_supplier=Supplier(supplier_number=input_supplier_number,supplier_name=input_supplier_name)
         dbsession.add(new_supplier)
         dbsession.commit()
         dbsession.close()
@@ -134,6 +137,7 @@ def add_supplier():
         time.sleep(1)
         return render_template("supplier.html")
 @app.route('/supplier_info',methods=['GET', 'POST'])
+@login_required
 def supplier_info():
     dbsession=DBSession()
     supplier_amount =dbsession.query(func.count(Supplier.id)).scalar()
