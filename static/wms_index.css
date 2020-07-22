@@ -2,7 +2,7 @@ div#navsecond {
     float: left;
     padding: 0;
     border-left: 1px solid rgb(200, 189, 136);
-    border-right: 1px solid rgb(200, 189, 136);
+    border-right: 1px solid #c8bd88;
     border-bottom: 1px solid rgb(200, 189, 136);
     width: 180px;
     box-sizing: border-box;
@@ -10,7 +10,7 @@ div#navsecond {
 }
 #course h3{
     padding: 5px;
-    background-color: rgb(200, 189, 136);
+    background-color: #c8bd88;
     text-align: center;
 }
 div#navsecond ul{
@@ -31,10 +31,33 @@ div#maincontent {
     position: absolute;
 
     left: 180px;
-    padding-left: 5px;
+    margin-left: 5px;
     border: 1px solid red;
     width: 1020px;
     height: 782px;
     box-sizing: border-box;
 
+}
+.supplier_management .show-cards{
+    height: 600px;
+    margin: 100px 50px 0;
+    /* border: 1px solid red; */
+}
+.show-cards div{
+    /* width: 200px; */
+    float: left;
+    margin: 71px;
+    cursor: pointer;
+    transition: all .3 ease-in-out;
+    /* border: 1px solid red; */
+}
+.show-cards div a{
+    text-decoration: none;
+}
+.show-cards div img{
+    width: 160px;
+    height: 160px;
+}
+.show-cards div p{
+    text-align: center;
 }

@@ -1,0 +1,14 @@
+2020-07-22 16:38:20,092 - app.py[line:35] - WARNING: this is a logger warning message
+2020-07-22 16:38:20,092 - app.py[line:36] - ERROR: this is a logger error message
+2020-07-22 16:38:20,093 - app.py[line:37] - CRITICAL: this is a logger critical message
+2020-07-22 16:38:20,103 - _internal.py[line:113] - WARNING:  * Debugger is active!
+2020-07-22 16:38:20,107 - _internal.py[line:113] - INFO:  * Debugger PIN: 144-154-270
+2020-07-22 16:38:20,118 - _internal.py[line:113] - INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-22 16:38:25,326 - _internal.py[line:113] - INFO: 127.0.0.1 - - [22/Jul/2020 16:38:25] "[32mGET /logout HTTP/1.1[0m" 302 -
+2020-07-22 16:38:25,337 - _internal.py[line:113] - INFO: 127.0.0.1 - - [22/Jul/2020 16:38:25] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-22 16:38:32,328 - _internal.py[line:113] - INFO: 127.0.0.1 - - [22/Jul/2020 16:38:32] "[32mPOST /login HTTP/1.1[0m" 302 -
+2020-07-22 16:38:32,730 - _internal.py[line:113] - INFO: 127.0.0.1 - - [22/Jul/2020 16:38:32] "[37mGET /wms_index HTTP/1.1[0m" 200 -
+2020-07-22 16:38:34,594 - _internal.py[line:113] - INFO: 127.0.0.1 - - [22/Jul/2020 16:38:34] "[37mGET /supplier_info HTTP/1.1[0m" 200 -
+2020-07-22 16:38:36,046 - _internal.py[line:113] - INFO: 127.0.0.1 - - [22/Jul/2020 16:38:36] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-22 16:38:37,379 - _internal.py[line:113] - INFO: 127.0.0.1 - - [22/Jul/2020 16:38:37] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-22 16:38:43,403 - _internal.py[line:113] - INFO: 127.0.0.1 - - [22/Jul/2020 16:38:43] "[33mPOST /add_supplier.html HTTP/1.1[0m" 404 -

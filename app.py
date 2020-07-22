@@ -17,7 +17,7 @@ if not os.path.exists(logs_floder):
     os.mkdir(logs_floder)
 # 第一步，创建一个logger
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)  # Log等级总开关
+logger.setLevel(logging.WARNING)  # Log等级总开关
 # 第二步，创建一个handler，用于写入日志文件
 rq = time.strftime('%Y%m%d%H%M', time.localtime(time.time()))
 log_path = logs_floder + '/'
@@ -102,10 +102,43 @@ def login():
 
 @app.route('/wms_index',methods=['GET', 'POST'])
 def wms_index():
+    
+    return render_template("view_base.html")
+
+@app.route('/supplier',methods=['GET', 'POST'])
+def supplier():
+    return render_template("supplier.html")
+
+@app.route('/add_supplier',methods=['GET', 'POST'])
+def add_supplier():
+    if request.method == "GET":
+        return render_template('add_supplier.html')
+    elif request.method == "POST":
+        supplier_name=request.form.get('supplier_name')
+        supplier_number=request.form.get('supplier_number')
+        print(supplier_number,supplier_name)
+        dbsession=DBSession()
+        supplier_number =dbsession.query(Supplier).filter_by(supplier_number=supplier_number).first()
+        supplier_name =dbsession.query(Supplier).filter_by(supplier_name=supplier_name).first()
+        if supplier_number:
+            flash('此供应商号已存在')
+            return redirect('/add_supplier')
+        if supplier_name:
+            flash('此供应商名称已存在')
+            return redirect('/add_supplier')
+        new_supplier=Supplier(supplier_number=supplier_number,supplier_name=supplier_name)
+        dbsession.add(new_supplier)
+        dbsession.commit()
+        dbsession.close()
+        flash("添加成功")
+        time.sleep(1)
+        return render_template("supplier.html")
+@app.route('/supplier_info',methods=['GET', 'POST'])
+def supplier_info():
     dbsession=DBSession()
     supplier_amount =dbsession.query(func.count(Supplier.id)).scalar()
     dbsession.close()
-    return render_template("wms_index.html",today=today,supplier_amount=supplier_amount)
+    return render_template("supplier_info.html",today=today,supplier_amount=supplier_amount)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

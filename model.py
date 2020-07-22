@@ -8,13 +8,8 @@ from config import engine
 Base = declarative_base()
 
 
-class BaseModel(object):
-    create_time = Column(DateTime, default=datetime.datetime.now)
-    update_time = Column(
-        DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
 
-
-class Run(Base, BaseModel):
+class Run(Base):
     # 表名
     __tablename__ = "test"
     # 字段
@@ -29,20 +24,25 @@ class Run(Base, BaseModel):
     unloading_site = Column(String(11), nullable=False)
     appointment_date = Column(Date, nullable=False)
     unloading_time = Column(Time, nullable=False)
+    create_time = Column(DateTime, default=datetime.datetime.now)
+    update_time = Column(
+        DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
 
 
 user_to_role = Table("user_to_role",Base.metadata, Column('user_id', Integer, ForeignKey('user.id'), primary_key=True),
                      Column('role_id', Integer, ForeignKey('role.rid'), primary_key=True))
 
 
-class User(UserMixin, Base, BaseModel):
+class User(UserMixin, Base):
     __tablename__ = "user"
 
     # 字段
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     username = Column(String(18), nullable=False, unique=True, index=True)
     password_hash = Column(String(128), nullable=False)
-
+    create_time = Column(DateTime, default=datetime.datetime.now)
+    update_time = Column(
+        DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
     role = relationship('Role', secondary=user_to_role, backref='user')
 
     def hash_password(self, password):
@@ -55,23 +55,29 @@ class User(UserMixin, Base, BaseModel):
         return '<User %r>' % self.username
 
 
-class Role(Base, BaseModel):
+class Role(Base):
     __tablename__ = "role"
 
     rid = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     rname = Column(String(18), nullable=False, unique=True, index=True)
+    create_time = Column(DateTime, default=datetime.datetime.now)
+    update_time = Column(
+        DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
 
+        
 supplier_to_machinepart=Table("supplier_to_machinepart",Base.metadata, Column('supplier_id', Integer, ForeignKey('supplier.id'), primary_key=True),
                      Column('machinepart_id', Integer, ForeignKey('machinepart.id'), primary_key=True))
 
-class Supplier(BaseModel,Base):
+class Supplier(Base):
     __tablename__="supplier"
     id = Column(Integer, primary_key=True, autoincrement=True)
     supplier_number=Column(String(20),nullable=False, index=True)
     supplier_name=Column(String(30),nullable=False)
     machinepart=relationship("Machinepart",secondary=supplier_to_machinepart, backref='supplier')
-
-class Machinepart(BaseModel,Base):
+    create_time = Column(DateTime, default=datetime.datetime.now)
+    update_time = Column(
+        DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
+class Machinepart(Base):
     __tablename__="machinepart"
     id = Column(Integer, primary_key=True, autoincrement=True)
     part_number=Column(String(20),nullable=False, index=True)
@@ -79,5 +85,7 @@ class Machinepart(BaseModel,Base):
     part_state=Column(Enum('合格','不合格'),default='合格')
     amount=Column(Integer,default=0)
     quantifier=Column(String(2),nullable=False)
-
+    create_time = Column(DateTime, default=datetime.datetime.now)
+    update_time = Column(
+        DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
 Base.metadata.create_all(engine)
