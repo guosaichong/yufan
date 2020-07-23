@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/common.css">
-    
+
     <script src="../static/jquery-3.3.1.min.js"></script>
     <script src="../static/common.js"></script>
     <title>{% block title %}{% endblock %}</title>
-    {% block head %}{% endblock %} 
+    {% block head %}{% endblock %}
 </head>
 
 <body>
@@ -24,13 +24,18 @@
 
             <span>服务热线：022-69329006 69329008</span>
         </div>
-        <p class="user">welcome&nbsp;{{current_user.username}}&nbsp;&nbsp;<a href="{{url_for('logout')}}">退出</a></p>
+        <p class="user">welcome&nbsp;
+            {%if current_user.username%}
+            {{current_user.username}}&nbsp;&nbsp;<a href="{{url_for('logout')}}">退出</a></p>
+        {%else%}
+        &nbsp;&nbsp;<a href="{{url_for('login')}}">请登录</a></p>
+        {%endif%}
         <div class="scroll-box">
-            
+
             <ul>
                 <li><span id="nowDateTimeSpan"></span></li>
                 <li><span id="nowDateTimeSpan"></span></li>
-                
+
             </ul>
         </div>
     </div>

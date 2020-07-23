@@ -57,11 +57,18 @@
     margin-top: 25px;
     margin-left: 20px;
     font-size: 20px;
+    font-weight: 700;
+    text-shadow: 2px 1px 2px #666666;
     /* border: 1px solid red; */
 }
-.address{
-    font-weight: 700;
+.user a{
+    text-decoration: none;
+    /* color: rgb(200, 189, 136); */
 }
+.user a:link {color: black}		/* 未访问的链接 */
+.user a:visited {color: black}	/* 已访问的链接 */
+.user a:hover {color: #0000FF}	/* 鼠标移动到链接上 */
+.user a:active {color: #0000FF}
 .navigator{
     height: 50px;
     background-color: rgb(30, 80, 174);

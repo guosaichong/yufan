@@ -1,0 +1,253 @@
+2020-07-23 21:51:00,517 - app.py[line:35] - WARNING: this is a logger warning message
+2020-07-23 21:51:00,517 - app.py[line:36] - ERROR: this is a logger error message
+2020-07-23 21:51:00,518 - app.py[line:37] - CRITICAL: this is a logger critical message
+2020-07-23 21:51:00,559 - _internal.py[line:113] - WARNING:  * Debugger is active!
+2020-07-23 21:51:00,572 - _internal.py[line:113] - INFO:  * Debugger PIN: 551-215-741
+2020-07-23 21:51:00,612 - _internal.py[line:113] - INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 21:51:06,203 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:51:06] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 21:51:06,232 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:51:06] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 21:51:06,233 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:51:06] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 21:51:06,237 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:51:06] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 21:51:06,238 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:51:06] "[37mGET /static/index.js HTTP/1.1[0m" 200 -
+2020-07-23 21:51:06,257 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:51:06] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 21:51:06,378 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:51:06] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 21:53:38,484 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:53:38] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 21:53:38,514 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:53:38] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 21:53:38,517 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:53:38] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 21:53:38,527 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:53:38] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 21:53:38,535 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:53:38] "[37mGET /static/index.js HTTP/1.1[0m" 200 -
+2020-07-23 21:53:38,544 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:53:38] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 21:53:38,586 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:53:38] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 21:54:18,443 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:18] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 21:54:18,472 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:18] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 21:54:18,478 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:18] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 21:54:18,488 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:18] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 21:54:18,490 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:18] "[37mGET /static/index.js HTTP/1.1[0m" 200 -
+2020-07-23 21:54:18,500 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:18] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 21:54:18,538 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:18] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 21:54:44,533 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:44] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 21:54:44,558 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:44] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 21:54:44,563 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:44] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 21:54:44,564 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:44] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 21:54:44,566 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:44] "[37mGET /static/index.js HTTP/1.1[0m" 200 -
+2020-07-23 21:54:44,584 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:44] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 21:54:44,618 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 21:54:44] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:25:07,951 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:07] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:25:28,808 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:28] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:25:28,877 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:28] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:25:31,497 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:31] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:25:31,578 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:31] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:25:40,457 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:40] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:25:46,609 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:46] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:25:55,208 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:55] "[32mPOST /login HTTP/1.1[0m" 302 -
+2020-07-23 22:25:56,112 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:56] "[37mGET /wms_index HTTP/1.1[0m" 200 -
+2020-07-23 22:25:56,142 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:25:56] "[37mGET /static/wms_index.css HTTP/1.1[0m" 200 -
+2020-07-23 22:26:01,259 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:26:01] "[32mGET /logout HTTP/1.1[0m" 302 -
+2020-07-23 22:26:01,272 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:26:01] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:27:09,344 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:09] "[32mPOST /login HTTP/1.1[0m" 302 -
+2020-07-23 22:27:10,387 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:10] "[37mGET /wms_index HTTP/1.1[0m" 200 -
+2020-07-23 22:27:19,090 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:19] "[37mGET /supplier_info HTTP/1.1[0m" 200 -
+2020-07-23 22:27:21,209 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:21] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-23 22:27:21,235 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:21] "[37mGET /static/images/”√ªß‘ˆº”.png HTTP/1.1[0m" 200 -
+2020-07-23 22:27:21,250 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:21] "[37mGET /static/images/»À-ºı…Ÿ.png HTTP/1.1[0m" 200 -
+2020-07-23 22:27:21,251 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:21] "[37mGET /static/images/HTSCIT_”√ªß◊ ¡œ–ﬁ∏ƒ.png HTTP/1.1[0m" 200 -
+2020-07-23 22:27:23,798 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:23] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-23 22:27:26,428 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:26] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-23 22:27:28,326 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:28] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-23 22:27:48,237 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:48] "[32mGET /logout HTTP/1.1[0m" 302 -
+2020-07-23 22:27:48,253 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:27:48] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:36:22,794 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:36:22] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:36:25,823 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:36:25] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:36:28,591 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:36:28] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:41:02,624 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:41:02] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:41:02,651 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:41:02] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 22:41:02,652 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:41:02] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 22:41:02,654 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:41:02] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 22:41:02,671 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:41:02] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 22:41:12,240 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:41:12] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:41:25,917 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:41:25] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:42:29,088 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:29] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:42:29,118 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:29] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 22:42:29,120 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:29] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 22:42:29,120 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:29] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 22:42:29,134 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:29] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 22:42:29,180 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:29] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:42:33,000 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:32] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:42:33,062 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:33] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:42:35,437 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:42:35] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:43:03,253 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:43:03] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:43:03,285 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:43:03] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 22:43:03,286 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:43:03] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 22:43:03,298 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:43:03] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 22:43:22,479 - base.py[line:701] - ERROR: Exception during reset or similar
+Traceback (most recent call last):
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\network.py", line 265, in recv_plain
+    chunk = self.sock.recv(4 - packet_len)
+  File "C:\Python\Python38\lib\ssl.py", line 1226, in recv
+    return self.read(buflen)
+  File "C:\Python\Python38\lib\ssl.py", line 1101, in read
+    return self._sslobj.read(len)
+TimeoutError: [WinError 10060] ”…”⁄¡¨Ω”∑Ω‘⁄“ª∂Œ ±º‰∫Û√ª”–’˝»∑¥∏¥ªÚ¡¨Ω”µƒ÷˜ª˙√ª”–∑¥”¶£¨¡¨Ω”≥¢ ‘ ß∞‹°£
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\pool\base.py", line 693, in _finalize_fairy
+    fairy._reset(pool)
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\pool\base.py", line 880, in _reset
+    pool._dialect.do_rollback(self)
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\dialects\mysql\base.py", line 2337, in do_rollback
+    dbapi_connection.rollback()
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 966, in rollback
+    self._execute_query("ROLLBACK")
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 978, in _execute_query
+    self.cmd_query(query)
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 598, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 354, in _send_cmd
+    return self._socket.recv()
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\network.py", line 293, in recv_plain
+    raise errors.OperationalError(
+mysql.connector.errors.OperationalError: 2055: Lost connection to MySQL server at '47.105.166.136:3306', system error: 10060 ”…”⁄¡¨Ω”∑Ω‘⁄“ª∂Œ ±º‰∫Û√ª”–’˝»∑¥∏¥ªÚ¡¨Ω”µƒ÷˜ª˙√ª”–∑¥”¶£¨¡¨Ω”≥¢ ‘ ß∞‹°£
+2020-07-23 22:43:22,496 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:43:22] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 22:43:56,811 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:43:56] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:43:56,860 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:43:56] "[37mGET /static/index.js HTTP/1.1[0m" 200 -
+2020-07-23 22:43:56,891 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:43:56] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:44:11,943 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:44:11] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:44:19,326 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:44:19] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:44:21,382 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:44:21] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:44:23,322 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:44:23] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:44:29,854 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:44:29] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:45:33,801 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:45:33] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:45:33,851 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:45:33] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 22:45:33,853 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:45:33] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 22:45:33,857 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:45:33] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 22:45:33,875 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:45:33] "[37mGET /static/index.js HTTP/1.1[0m" 200 -
+2020-07-23 22:45:33,876 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:45:33] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 22:45:33,999 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:45:33] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:46:29,210 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:46:29] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:46:29,235 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:46:29] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 22:46:29,240 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:46:29] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 22:46:29,241 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:46:29] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 22:46:29,242 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:46:29] "[37mGET /static/index.js HTTP/1.1[0m" 200 -
+2020-07-23 22:46:29,258 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:46:29] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 22:46:29,297 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:46:29] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:46:38,724 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:46:38] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:48:49,827 - base.py[line:701] - ERROR: Exception during reset or similar
+Traceback (most recent call last):
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\network.py", line 265, in recv_plain
+    chunk = self.sock.recv(4 - packet_len)
+  File "C:\Python\Python38\lib\ssl.py", line 1226, in recv
+    return self.read(buflen)
+  File "C:\Python\Python38\lib\ssl.py", line 1101, in read
+    return self._sslobj.read(len)
+TimeoutError: [WinError 10060] ”…”⁄¡¨Ω”∑Ω‘⁄“ª∂Œ ±º‰∫Û√ª”–’˝»∑¥∏¥ªÚ¡¨Ω”µƒ÷˜ª˙√ª”–∑¥”¶£¨¡¨Ω”≥¢ ‘ ß∞‹°£
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\pool\base.py", line 693, in _finalize_fairy
+    fairy._reset(pool)
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\pool\base.py", line 880, in _reset
+    pool._dialect.do_rollback(self)
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\dialects\mysql\base.py", line 2337, in do_rollback
+    dbapi_connection.rollback()
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 966, in rollback
+    self._execute_query("ROLLBACK")
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 978, in _execute_query
+    self.cmd_query(query)
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 598, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 354, in _send_cmd
+    return self._socket.recv()
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\network.py", line 293, in recv_plain
+    raise errors.OperationalError(
+mysql.connector.errors.OperationalError: 2055: Lost connection to MySQL server at '47.105.166.136:3306', system error: 10060 ”…”⁄¡¨Ω”∑Ω‘⁄“ª∂Œ ±º‰∫Û√ª”–’˝»∑¥∏¥ªÚ¡¨Ω”µƒ÷˜ª˙√ª”–∑¥”¶£¨¡¨Ω”≥¢ ‘ ß∞‹°£
+2020-07-23 22:49:09,024 - base.py[line:701] - ERROR: Exception during reset or similar
+Traceback (most recent call last):
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\network.py", line 265, in recv_plain
+    chunk = self.sock.recv(4 - packet_len)
+  File "C:\Python\Python38\lib\ssl.py", line 1226, in recv
+    return self.read(buflen)
+  File "C:\Python\Python38\lib\ssl.py", line 1101, in read
+    return self._sslobj.read(len)
+TimeoutError: [WinError 10060] ”…”⁄¡¨Ω”∑Ω‘⁄“ª∂Œ ±º‰∫Û√ª”–’˝»∑¥∏¥ªÚ¡¨Ω”µƒ÷˜ª˙√ª”–∑¥”¶£¨¡¨Ω”≥¢ ‘ ß∞‹°£
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\pool\base.py", line 693, in _finalize_fairy
+    fairy._reset(pool)
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\pool\base.py", line 880, in _reset
+    pool._dialect.do_rollback(self)
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\dialects\mysql\base.py", line 2337, in do_rollback
+    dbapi_connection.rollback()
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 966, in rollback
+    self._execute_query("ROLLBACK")
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 978, in _execute_query
+    self.cmd_query(query)
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 598, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 354, in _send_cmd
+    return self._socket.recv()
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\network.py", line 293, in recv_plain
+    raise errors.OperationalError(
+mysql.connector.errors.OperationalError: 2055: Lost connection to MySQL server at '47.105.166.136:3306', system error: 10060 ”…”⁄¡¨Ω”∑Ω‘⁄“ª∂Œ ±º‰∫Û√ª”–’˝»∑¥∏¥ªÚ¡¨Ω”µƒ÷˜ª˙√ª”–∑¥”¶£¨¡¨Ω”≥¢ ‘ ß∞‹°£
+2020-07-23 22:49:25,765 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:25] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:49:25,793 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:25] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 22:49:25,794 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:25] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 22:49:25,795 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:25] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 22:49:25,811 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:25] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 22:49:25,853 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:25] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:49:28,220 - base.py[line:701] - ERROR: Exception during reset or similar
+Traceback (most recent call last):
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\network.py", line 265, in recv_plain
+    chunk = self.sock.recv(4 - packet_len)
+  File "C:\Python\Python38\lib\ssl.py", line 1226, in recv
+    return self.read(buflen)
+  File "C:\Python\Python38\lib\ssl.py", line 1101, in read
+    return self._sslobj.read(len)
+TimeoutError: [WinError 10060] ”…”⁄¡¨Ω”∑Ω‘⁄“ª∂Œ ±º‰∫Û√ª”–’˝»∑¥∏¥ªÚ¡¨Ω”µƒ÷˜ª˙√ª”–∑¥”¶£¨¡¨Ω”≥¢ ‘ ß∞‹°£
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\pool\base.py", line 693, in _finalize_fairy
+    fairy._reset(pool)
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\pool\base.py", line 880, in _reset
+    pool._dialect.do_rollback(self)
+  File "C:\Python\Python38\lib\site-packages\sqlalchemy\dialects\mysql\base.py", line 2337, in do_rollback
+    dbapi_connection.rollback()
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 966, in rollback
+    self._execute_query("ROLLBACK")
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 978, in _execute_query
+    self.cmd_query(query)
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 598, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\connection.py", line 354, in _send_cmd
+    return self._socket.recv()
+  File "C:\Python\Python38\lib\site-packages\mysql\connector\network.py", line 293, in recv_plain
+    raise errors.OperationalError(
+mysql.connector.errors.OperationalError: 2055: Lost connection to MySQL server at '47.105.166.136:3306', system error: 10060 ”…”⁄¡¨Ω”∑Ω‘⁄“ª∂Œ ±º‰∫Û√ª”–’˝»∑¥∏¥ªÚ¡¨Ω”µƒ÷˜ª˙√ª”–∑¥”¶£¨¡¨Ω”≥¢ ‘ ß∞‹°£
+2020-07-23 22:49:29,074 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:29] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:49:32,007 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:32] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:49:33,183 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:33] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:49:36,933 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:36] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:49:38,005 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:38] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:49:39,140 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:39] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:49:40,245 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:49:40] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:50:35,343 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:35] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:50:49,019 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:49] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:50:57,639 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:57] "[37mGET / HTTP/1.1[0m" 200 -
+2020-07-23 22:50:57,669 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:57] "[37mGET /static/common.css HTTP/1.1[0m" 200 -
+2020-07-23 22:50:57,680 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:57] "[37mGET /static/common.js HTTP/1.1[0m" 200 -
+2020-07-23 22:50:57,684 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:57] "[37mGET /static/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-07-23 22:50:57,690 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:57] "[37mGET /static/index.js HTTP/1.1[0m" 200 -
+2020-07-23 22:50:57,699 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:57] "[37mGET /static/images/ABUIABAEGAAgrumH1QUo6PDxxwYwvAU4rgE.png HTTP/1.1[0m" 200 -
+2020-07-23 22:50:57,815 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:50:57] "[37mGET /static/images/ABUIABAFGAAghr3-1gUoqLWW5wcwEDgQ.ico HTTP/1.1[0m" 200 -
+2020-07-23 22:51:31,878 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:51:31] "[37mGET /login HTTP/1.1[0m" 200 -
+2020-07-23 22:51:58,332 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:51:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2020-07-23 22:51:59,135 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:51:59] "[37mGET /wms_index HTTP/1.1[0m" 200 -
+2020-07-23 22:51:59,170 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:51:59] "[37mGET /static/wms_index.css HTTP/1.1[0m" 200 -
+2020-07-23 22:52:10,502 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:52:10] "[32mGET /logout HTTP/1.1[0m" 302 -
+2020-07-23 22:52:10,517 - _internal.py[line:113] - INFO: 127.0.0.1 - - [23/Jul/2020 22:52:10] "[37mGET /login HTTP/1.1[0m" 200 -
