@@ -65,14 +65,6 @@ def logout():
 
 @app.route('/')
 def index():
-    # with open("utils/date.json", 'r') as load_f:
-    #     load_dict = json.load(load_f)
-    # print(load_dict["1"])
-    
-    # if today != load_dict["1"]:
-    #     riqi = get_date.get_date()
-    # else:
-    #     riqi = load_dict
     dbsession = DBSession()
     ret = dbsession.query(Run).filter(Run.appointment_date == func.date_format(
         func.now(), '%Y-%m-%d')).order_by("unloading_time").all()
@@ -135,7 +127,16 @@ def add_supplier():
         dbsession.close()
         flash("添加成功")
         time.sleep(1)
-        return render_template("supplier.html")
+        return render_template("add_supplier.html")
+
+@app.route('/del_supplier',methods=['GET', 'POST'])
+@login_required
+def del_supplier():
+    dbsession=DBSession()
+    supplier_numbers =dbsession.query(Supplier).all().limit(10)
+    dbsession.close()
+    return render_template('del_supplier.html',supplier_numbers=supplier_numbers)
+
 @app.route('/supplier_info',methods=['GET', 'POST'])
 @login_required
 def supplier_info():
