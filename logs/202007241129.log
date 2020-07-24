@@ -1,0 +1,43 @@
+2020-07-24 11:29:43,528 - app.py[line:35] - WARNING: this is a logger warning message
+2020-07-24 11:29:43,528 - app.py[line:36] - ERROR: this is a logger error message
+2020-07-24 11:29:43,528 - app.py[line:37] - CRITICAL: this is a logger critical message
+2020-07-24 11:29:43,547 - _internal.py[line:113] - WARNING:  * Debugger is active!2020-07-24 12:15:43,731 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:15:47,854 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:15:57,053 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:16:24,730 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:16:29,743 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:16:41,103 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:30:55,588 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:30:59,406 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:31:04,023 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:31:07,733 - _internal.py[line:113] - INFO:  * Restarting with stat
+2020-07-24 12:31:47,347 - _internal.py[line:113] - INFO:  * Restarting with stat
+
+2020-07-24 11:30:01,768 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 11:30:01] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+2020-07-24 11:30:01,776 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 11:30:01] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+2020-07-24 11:30:01,786 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 11:30:01] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+2020-07-24 11:30:01,843 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 11:30:01] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+2020-07-24 11:30:02,054 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 11:30:02] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+2020-07-24 11:30:02,255 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 11:30:02] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+2020-07-24 12:10:37,810 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:37] "[35m[1mGET /del_supplier_index HTTP/1.1[0m" 500 -
+2020-07-24 12:10:37,860 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:37] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+2020-07-24 12:10:37,861 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:37] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+2020-07-24 12:10:37,870 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:37] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+2020-07-24 12:10:37,904 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:37] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+2020-07-24 12:10:37,960 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:37] "[37mGET /del_supplier_index?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+2020-07-24 12:10:51,156 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:51] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 12:10:56,483 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:56] "[37mGET /supplier_info HTTP/1.1[0m" 200 -
+2020-07-24 12:10:59,061 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:10:59] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 12:11:00,007 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:11:00] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-24 12:11:01,788 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:11:01] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 12:14:27,419 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:27] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-24 12:14:29,120 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:29] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 12:14:30,603 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:30] "[37mGET /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 12:14:33,795 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:33] "[35m[1mGET /del_supplier/adf%20 HTTP/1.1[0m" 500 -
+2020-07-24 12:14:33,818 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:33] "[37mGET /del_supplier/adf%20?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+2020-07-24 12:14:33,822 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:33] "[37mGET /del_supplier/adf%20?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+2020-07-24 12:14:33,823 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:33] "[37mGET /del_supplier/adf%20?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+2020-07-24 12:14:33,857 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:33] "[37mGET /del_supplier/adf%20?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+2020-07-24 12:14:33,911 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:33] "[37mGET /del_supplier/adf%20?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+2020-07-24 12:14:33,959 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 12:14:33] "[37mGET /del_supplier/adf%20?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+2020-07-24 12:15:43,496 - _internal.py[line:113] - INFO:  * Detected change in 'D:\\go\\src\\github.com\\guosaichong\\yufan\\app.py', reloading

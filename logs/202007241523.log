@@ -1,0 +1,3 @@
+2020-07-24 15:23:05,119 - app.py[line:36] - WARNING: this is a logger warning message
+2020-07-24 15:23:05,119 - app.py[line:37] - ERROR: this is a logger error message
+2020-07-24 15:23:05,119 - app.py[line:38] - CRITICAL: this is a logger critical message

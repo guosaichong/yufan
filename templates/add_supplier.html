@@ -4,10 +4,11 @@
 <div>
     <p><a href="{{url_for('supplier')}}">供应商管理</a>>添加供应商</p>
     <form action="{{url_for('add_supplier')}}" method="POST">
-        <label for="supplier_name">供应商名称：</label>
-        <input type="text" id="supplier_name" name="supplier_name" required autocomplete="off">
+        
         <label for="supplier_number">供应商号：</label>
         <input type="text" id="supplier_number" name="supplier_number" required autocomplete="off">
+        <label for="supplier_name">供应商名称：</label>
+        <input type="text" id="supplier_name" name="supplier_name" required autocomplete="off">
         <button type="submit">添加</button>
         {%for message in get_flashed_messages()%}
         <p style="color: red">{{message}}</p>

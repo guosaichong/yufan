@@ -1,0 +1,14 @@
+2020-07-24 16:30:41,441 - app.py[line:36] - WARNING: this is a logger warning message
+2020-07-24 16:30:41,441 - app.py[line:37] - ERROR: this is a logger error message
+2020-07-24 16:30:41,441 - app.py[line:38] - CRITICAL: this is a logger critical message
+2020-07-24 16:30:41,454 - _internal.py[line:113] - WARNING:  * Debugger is active!
+2020-07-24 16:30:41,458 - _internal.py[line:113] - INFO:  * Debugger PIN: 144-154-270
+2020-07-24 16:30:41,470 - _internal.py[line:113] - INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-24 16:30:53,023 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 16:30:53] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-24 16:30:54,567 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 16:30:54] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 16:30:55,896 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 16:30:55] "[37mGET /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 16:30:57,953 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 16:30:57] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 16:30:59,522 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 16:30:59] "[37mGET /mod_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 16:31:05,353 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 16:31:05] "[32mGET /mod_supplier/123 HTTP/1.1[0m" 302 -
+2020-07-24 16:31:06,096 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 16:31:06] "[37mGET /mod_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 16:32:17,960 - _internal.py[line:113] - INFO:  * Detected change in 'D:\\go\\src\\github.com\\guosaichong\\yufan\\app.py', reloading

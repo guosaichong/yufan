@@ -1,0 +1,8 @@
+{% extends "view_base.html" %}
+{% block title %}供应商管理{% endblock %}
+{% block view %}
+<div>
+    <p><a href="{{url_for('supplier')}}">供应商管理</a>><a href="{{url_for('mod_supplier_index')}}">修改供应商</a>>{{mod_supplier_number}}</p>
+
+</div>
+{% endblock %}

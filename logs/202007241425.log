@@ -1,0 +1,18 @@
+2020-07-24 14:25:32,449 - app.py[line:35] - WARNING: this is a logger warning message
+2020-07-24 14:25:32,449 - app.py[line:36] - ERROR: this is a logger error message
+2020-07-24 14:25:32,449 - app.py[line:37] - CRITICAL: this is a logger critical message
+2020-07-24 14:25:32,471 - _internal.py[line:113] - WARNING:  * Debugger is active!
+2020-07-24 14:25:32,475 - _internal.py[line:113] - INFO:  * Debugger PIN: 144-154-270
+2020-07-24 14:25:32,529 - _internal.py[line:113] - INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-24 14:25:42,039 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:25:42] "[37mGET /supplier_info HTTP/1.1[0m" 200 -
+2020-07-24 14:25:43,674 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:25:43] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 14:25:44,991 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:25:44] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-24 14:25:52,084 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:25:52] "[37mPOST /add_supplier HTTP/1.1[0m" 200 -
+2020-07-24 14:25:58,493 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:25:58] "[37mPOST /add_supplier HTTP/1.1[0m" 200 -
+2020-07-24 14:26:03,486 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:26:03] "[37mGET /supplier_info HTTP/1.1[0m" 200 -
+2020-07-24 14:26:05,506 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:26:05] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 14:26:07,064 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:26:07] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-24 14:26:08,507 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:26:08] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 14:26:10,121 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:26:10] "[37mGET /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 14:26:18,971 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 14:26:18] "[37mPOST /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 14:29:00,098 - _internal.py[line:113] - INFO:  * Detected change in 'D:\\go\\src\\github.com\\guosaichong\\yufan\\app.py', reloading

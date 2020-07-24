@@ -1,0 +1,33 @@
+{% extends "view_base.html" %}
+{% block title %}供应商管理{% endblock %}
+{% block view %}
+<div>
+    <p><a href="{{url_for('supplier')}}">供应商管理</a>>删除供应商</p>
+    <form action="{{url_for('del_supplier_index')}}" method="POST">
+        
+        <label for="supplier_number">供应商号或名称：</label>
+        <input type="text" id="supplier_number" name="supplier_number" autocomplete="off" required>
+        <button type="submit">查找</button>
+        {%for message in get_flashed_messages()%}
+        <p style="color: red">{{message}}</p>
+        {%endfor%}
+    </form>
+    <div>
+        <table>
+            <th>序号</th>
+            <th>供应商号</th>
+            <th>供应商名称</th>
+            <th></th>
+            {%for s in supplier_numbers%}
+            <tr>
+                <td></td>
+                <td>{{s.supplier_number}}</td>
+                <td>{{s.supplier_name}}</td>
+                <td><a href="{{url_for('del_supplier',del_supplier_number=s.supplier_number)}}">删除</a></td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

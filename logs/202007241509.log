@@ -1,0 +1,16 @@
+2020-07-24 15:09:43,106 - app.py[line:36] - WARNING: this is a logger warning message
+2020-07-24 15:09:43,106 - app.py[line:37] - ERROR: this is a logger error message
+2020-07-24 15:09:43,106 - app.py[line:38] - CRITICAL: this is a logger critical message
+2020-07-24 15:09:43,117 - _internal.py[line:113] - WARNING:  * Debugger is active!
+2020-07-24 15:09:43,121 - _internal.py[line:113] - INFO:  * Debugger PIN: 144-154-270
+2020-07-24 15:09:43,153 - _internal.py[line:113] - INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-24 15:09:53,044 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:09:53] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 15:09:54,645 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:09:54] "[37mGET /add_supplier HTTP/1.1[0m" 200 -
+2020-07-24 15:09:56,072 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:09:56] "[37mGET /supplier HTTP/1.1[0m" 200 -
+2020-07-24 15:09:57,699 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:09:57] "[37mGET /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 15:10:01,519 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:10:01] "[37mPOST /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 15:10:06,356 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:10:06] "[37mPOST /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 15:10:16,331 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:10:16] "[37mPOST /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 15:10:30,937 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:10:30] "[37mPOST /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 15:10:36,971 - _internal.py[line:113] - INFO: 127.0.0.1 - - [24/Jul/2020 15:10:36] "[37mPOST /del_supplier_index HTTP/1.1[0m" 200 -
+2020-07-24 15:11:22,912 - _internal.py[line:113] - INFO:  * Detected change in 'D:\\go\\src\\github.com\\guosaichong\\yufan\\app.py', reloading
