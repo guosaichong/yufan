@@ -1,4 +1,0 @@
-2020-07-23 21:50:54,437 - app.py[line:35] - WARNING: this is a logger warning message
-2020-07-23 21:50:54,437 - app.py[line:36] - ERROR: this is a logger error message
-2020-07-23 21:50:54,438 - app.py[line:37] - CRITICAL: this is a logger critical message
-2020-07-23 21:50:54,472 - _internal.py[line:113] - INFO:  * Restarting with stat

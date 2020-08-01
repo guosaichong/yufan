@@ -1,0 +1,30 @@
+{% extends "view_base.html" %}
+{% block title %}零部件管理{% endblock %}
+{% block view %}
+<div class="machinepart_management">
+    <div class="show-cards">
+        <div>
+            <a href="{{url_for('add_machinepart')}}">
+                <!-- <img src="../static/images/用户增加.png" alt="增加供应商"> -->
+                <p>增加零部件</p>
+            </a>
+        </div>
+        <div>
+            <a href="{{url_for('del_machinepart_index')}}">
+                <!-- <img src="../static/images/人-减少.png" alt="删除供应商"> -->
+                <p>删除零部件</p>
+            </a>
+            
+        </div>
+        <div>
+            <a href="{{url_for('mod_supplier_index')}}">
+                <!-- <img src="../static/images/HTSCIT_用户资料修改.png" alt="修改供应商"> -->
+                <p>修改零部件</p>
+            </a>
+            
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

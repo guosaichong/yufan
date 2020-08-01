@@ -57,26 +57,29 @@ class Role(Base,BaseModel):
 
     rid = Column(Integer, primary_key=True, autoincrement=True)
     rname = Column(String(18), nullable=False, unique=True, index=True)
-    
-
-        
-supplier_to_machinepart=Table("supplier_to_machinepart",Base.metadata, Column('supplier_id', Integer, ForeignKey('supplier.id'), primary_key=True),
-                     Column('machinepart_id', Integer, ForeignKey('machinepart.id'), primary_key=True))
+       
+# supplier_to_machinepart=Table("supplier_to_machinepart",Base.metadata, Column('supplier_id', Integer, ForeignKey('supplier.id'), primary_key=True),
+#                      Column('machinepart_id', Integer, ForeignKey('machinepart.id'), primary_key=True))
 
 class Supplier(Base,BaseModel):
     __tablename__="supplier"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    supplier_number=Column(String(20),nullable=False, index=True)
+    supplier_number=Column(String(20),nullable=False, index=True,unique=True)
     supplier_name=Column(String(30),nullable=False)
     
     
 class Machinepart(Base,BaseModel):
     __tablename__="machinepart"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    part_number=Column(String(20),nullable=False, index=True)
+    part_number=Column(String(20),nullable=False, index=True,unique=True)
     part_name=Column(String(30),nullable=False)
     part_state=Column(Enum('合格','不合格'),default='合格')
     amount=Column(Integer,default=0)
     quantifier=Column(String(2),nullable=False)
-    
+
+class Supplier_To_Machinepart(Base,BaseModel):
+    __tablename__="supplier_to_machinepart"
+    supplier_id=Column(Integer,ForeignKey('supplier.id'),primary_key=True)
+    machinepart_id=Column(Integer,ForeignKey("machinepart.id"),primary_key=True)
+
 Base.metadata.create_all(engine)

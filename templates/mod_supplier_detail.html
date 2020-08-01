@@ -2,7 +2,19 @@
 {% block title %}供应商管理{% endblock %}
 {% block view %}
 <div>
-    <p><a href="{{url_for('supplier')}}">供应商管理</a>><a href="{{url_for('mod_supplier_index')}}">修改供应商</a>>{{mod_supplier_number}}</p>
+    <p><a href="{{url_for('supplier')}}">供应商管理</a>><a
+            href="{{url_for('mod_supplier_index')}}">修改供应商</a>>{{mod_supplier_number}}</p>
+    <form action="{{url_for('mod_supplier',mod_supplier_number=mod_supplier_number)}}" method="POST">
 
+        <label for="supplier_number">供应商号：</label>
+        <input type="text" id="supplier_number" name="supplier_number" autocomplete="off"
+            value="{{mod_supplier_number}}" readonly="readonly">
+        <label for="supplier_name">供应商名称：</label>
+        <input type="text" id="supplier_name" name="supplier_name" autocomplete="off" value="{{mod_supplier_name}}">
+        <button type="submit">修改</button>
+        {%for message in get_flashed_messages()%}
+        <p style="color: red">{{message}}</p>
+        {%endfor%}
+    </form>
 </div>
 {% endblock %}
