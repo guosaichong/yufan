@@ -3,5 +3,23 @@
 {% block view %}
 <div>
     <p>截止{{today}},共有{{supplier_amount}}家供应商</p>
+    <table>
+        <th>序号</th>
+        <th>供应商号</th>
+        <th>供应商名称</th>
+        <th>供应产品</th>
+        {%for s in supplier_numbers%}
+
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{s.supplier_number}}</td>
+            <td>{{s.supplier_name}}</td>
+
+            <td>{{ supplier_part_list[loop.index-1 ]}}</td>
+
+        </tr>
+        {%endfor%}
+
+    </table>
 </div>
 {%endblock%}

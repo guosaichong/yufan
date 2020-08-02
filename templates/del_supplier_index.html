@@ -20,7 +20,7 @@
             <th></th>
             {%for s in supplier_numbers%}
             <tr>
-                <td></td>
+                <td>{{ loop.index }}</td>
                 <td>{{s.supplier_number}}</td>
                 <td>{{s.supplier_name}}</td>
                 <td><a href="{{url_for('del_supplier',del_supplier_number=s.supplier_number)}}">删除</a></td>

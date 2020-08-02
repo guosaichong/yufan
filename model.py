@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, Text, DateTime, UniqueConstraint
 import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.orm import sessionmaker, relationship,backref
 from config import engine
 Base = declarative_base()
 
@@ -58,15 +58,15 @@ class Role(Base,BaseModel):
     rid = Column(Integer, primary_key=True, autoincrement=True)
     rname = Column(String(18), nullable=False, unique=True, index=True)
        
-# supplier_to_machinepart=Table("supplier_to_machinepart",Base.metadata, Column('supplier_id', Integer, ForeignKey('supplier.id'), primary_key=True),
-#                      Column('machinepart_id', Integer, ForeignKey('machinepart.id'), primary_key=True))
+supplier_to_machinepart=Table("supplier_to_machinepart",Base.metadata, Column('supplier_id', Integer, ForeignKey('supplier.id'), primary_key=True),
+                     Column('machinepart_id', Integer, ForeignKey('machinepart.id'), primary_key=True))
 
 class Supplier(Base,BaseModel):
     __tablename__="supplier"
     id = Column(Integer, primary_key=True, autoincrement=True)
     supplier_number=Column(String(20),nullable=False, index=True,unique=True)
     supplier_name=Column(String(30),nullable=False)
-    
+    machineparts = relationship("Machinepart", secondary=supplier_to_machinepart, backref='suppliers')
     
 class Machinepart(Base,BaseModel):
     __tablename__="machinepart"
@@ -77,9 +77,9 @@ class Machinepart(Base,BaseModel):
     amount=Column(Integer,default=0)
     quantifier=Column(String(2),nullable=False)
 
-class Supplier_To_Machinepart(Base,BaseModel):
-    __tablename__="supplier_to_machinepart"
-    supplier_id=Column(Integer,ForeignKey('supplier.id'),primary_key=True)
-    machinepart_id=Column(Integer,ForeignKey("machinepart.id"),primary_key=True)
+# class Supplier_To_Machinepart(Base,BaseModel):
+#     __tablename__="supplier_to_machinepart"
+#     supplier_id=Column(Integer,ForeignKey('supplier.id', ondelete='CASCADE'),primary_key=True)
+#     machinepart_id=Column(Integer,ForeignKey("machinepart.id", ondelete='CASCADE'),primary_key=True)
 
 Base.metadata.create_all(engine)

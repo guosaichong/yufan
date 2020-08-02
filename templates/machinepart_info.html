@@ -3,5 +3,26 @@
 {% block view %}
 <div>
     <p>截止{{today}},共有{{machinepart_amount}}种零部件</p>
+    <table>
+        <th>序号</th>
+        <th>所属供应商</th>
+        <th>零部件号</th>
+        <th>零部件名称</th>
+        <th>零部件数量</th>
+        <th>零部件单位</th>
+        
+        {%for p in part_numbers%}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{part_supplier_list[loop.index-1]}}</td>
+            <td>{{p.part_number}}</td>
+            <td>{{p.part_name}}</td>
+            <td>{{p.amount}}</td>
+            <td>{{p.quantifier}}</td>
+            
+            
+        </tr>
+        {%endfor%}
+    </table>
 </div>
 {%endblock%}

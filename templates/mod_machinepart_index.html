@@ -2,11 +2,11 @@
 {% block title %}零部件管理{% endblock %}
 {% block view %}
 <div>
-    <p><a href="{{url_for('machinepart')}}">零部件管理</a>>删除零部件</p>
-    <form action="{{url_for('del_machinepart_index')}}" method="POST">
-        
-        <label for="machinepart">零部件号或名称：</label>
-        <input type="text" id="machinepart" name="machinepart" autocomplete="off" required>
+    <p><a href="{{url_for('machinepart')}}">零部件管理</a>>修改零部件</p>
+    <form action="{{url_for('mod_machinepart_index')}}" method="POST">
+
+        <label for="machinepart_number">零部件号或名称：</label>
+        <input type="text" id="machinepart_number" name="machinepart_number" autocomplete="off" required>
         <button type="submit">查找</button>
         {%for message in get_flashed_messages()%}
         <p style="color: red">{{message}}</p>
@@ -17,21 +17,16 @@
             <th>序号</th>
             <th>零部件号</th>
             <th>零部件名称</th>
-            <th>零部件数量</th>
-            <th>零部件单位</th>
             <th></th>
             {%for p in part_numbers%}
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{p.part_number}}</td>
                 <td>{{p.part_name}}</td>
-                <td>{{p.amount}}</td>
-                <td>{{p.quantifier}}</td>
-                <td><a href="{{url_for('del_machinepart',del_part_number=p.part_number)}}">删除</a></td>
+                <td><a href="{{url_for('mod_machinepart',mod_machinepart_number=p.part_number)}}">修改</a></td>
             </tr>
             {%endfor%}
         </table>
     </div>
 </div>
-
-{% endblock %}
+{%endblock%}

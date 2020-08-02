@@ -12,8 +12,8 @@ $(document).ready(function () {
     if (today.getDay() == 5) day = "星期五 "
     if (today.getDay() == 6) day = "星期六 "
     document.getElementById('nowDateTimeSpan').innerHTML = yyyy + "年" + MM + "月" + dd + "日" + " " + day;
-
-
+    document.getElementById('order').innerHTML=today.getTime()
+    document.getElementById('todayDate').innerHTML=yyyy + "年" + MM + "月" + dd + "日"
     //获得当前<ul>
     var $uList = $(".scroll-box ul");
     var timer = null;

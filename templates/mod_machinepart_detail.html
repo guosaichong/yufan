@@ -1,0 +1,20 @@
+{% extends "view_base.html" %}
+{% block title %}零部件管理{% endblock %}
+{% block view %}
+<div>
+    <p><a href="{{url_for('machinepart')}}">零部件管理</a>><a
+            href="{{url_for('mod_machinepart_index')}}">修改零部件</a>>{{mod_machinepart_number}}</p>
+    <form action="{{url_for('mod_machinepart',mod_machinepart_number=mod_machinepart_number)}}" method="POST">
+
+        <label for="machinepart_number">零部件号：</label>
+        <input type="text" id="machinepart_number" name="machinepart_number" autocomplete="off"
+            value="{{mod_machinepart_number}}" readonly="readonly">
+        <label for="machinepart_name">零部件名称：</label>
+        <input type="text" id="machinepart_name" name="machinepart_name" autocomplete="off" value="{{mod_machinepart_name}}">
+        <button type="submit">修改</button>
+        {%for message in get_flashed_messages()%}
+        <p style="color: red">{{message}}</p>
+        {%endfor%}
+    </form>
+</div>
+{% endblock %}

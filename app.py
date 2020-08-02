@@ -112,16 +112,25 @@ def wms_index():
 def supplier_info():
     dbsession = DBSession()
     supplier_amount = dbsession.query(func.count(Supplier.id)).scalar()
+    supplier_numbers = dbsession.query(Supplier).all()
+    supplier_part_list=[]
+    
+    for s in supplier_numbers:
+        # print(s.machineparts)
+        part_list=[]
+        for i in s.machineparts:
+            # print(i.part_name)
+            part_list.append(i.part_name)
+        supplier_part_list.append(part_list)
+    # print(supplier_part_list)
     dbsession.close()
-    return render_template("supplier_info.html", today=today, supplier_amount=supplier_amount)
-
-
+    return render_template("supplier_info.html", today=today, supplier_amount=supplier_amount,supplier_numbers=supplier_numbers,supplier_part_list=supplier_part_list)
+# 管理供应商
 @app.route('/supplier', methods=['GET', 'POST'])
 @login_required
 def supplier():
     return render_template("supplier.html")
-
-
+# 添加供应商
 @app.route('/add_supplier', methods=['GET', 'POST'])
 @login_required
 def add_supplier():
@@ -140,9 +149,9 @@ def add_supplier():
         if supplier_number:
             flash('此供应商号已存在')
             return redirect('/add_supplier')
-        if supplier_name:
-            flash('此供应商名称已存在')
-            return redirect('/add_supplier')
+        # if supplier_name:
+        #     flash('此供应商名称已存在')
+        #     return redirect('/add_supplier')
         new_supplier = Supplier(
             supplier_number=input_supplier_number, supplier_name=input_supplier_name)
         dbsession.add(new_supplier)
@@ -152,7 +161,7 @@ def add_supplier():
         time.sleep(1)
         return render_template("add_supplier.html")
 
-
+# 删除供应商
 @app.route('/del_supplier_index', methods=['GET', 'POST'])
 @login_required
 def del_supplier_index():
@@ -180,7 +189,7 @@ def del_supplier_index():
             dbsession.close()
             return render_template('del_supplier_index.html', supplier_numbers=supplier_numbers)
 
-
+# 删除供应商
 @app.route("/del_supplier/<del_supplier_number>")
 @login_required
 def del_supplier(del_supplier_number):
@@ -192,7 +201,8 @@ def del_supplier(del_supplier_number):
     # 有就删除
     if supplier:
         try:
-
+            # # 先删除供应商下的所有零部件
+            # dbsession.query(Supplier_To_Machinepart).filter_by(supplier_id=supplier.id).delete()
             dbsession.delete(supplier)
             dbsession.commit()
             dbsession.close()
@@ -207,7 +217,7 @@ def del_supplier(del_supplier_number):
         flash("供应商找不到")
     return redirect(url_for("del_supplier_index"))
 
-
+# 修改供应商
 @app.route('/mod_supplier_index', methods=['GET', 'POST'])
 @login_required
 def mod_supplier_index():
@@ -234,7 +244,7 @@ def mod_supplier_index():
             dbsession.close()
             return render_template('mod_supplier_index.html', supplier_numbers=supplier_numbers)
 
-
+# 修改供应商
 @app.route("/mod_supplier/<mod_supplier_number>", methods=['GET', 'POST'])
 @login_required
 def mod_supplier(mod_supplier_number):
@@ -270,16 +280,27 @@ def mod_supplier(mod_supplier_number):
         time.sleep(1)
         return render_template('mod_supplier_detail.html', mod_supplier_number=mod_supplier_number, mod_supplier_name=input_supplier_name)
 
-
+# 查询零部件
 @app.route('/machinepart_info', methods=['GET', 'POST'])
 @login_required
 def machinepart_info():
     dbsession = DBSession()
     machinepart_amount = dbsession.query(func.count(Machinepart.id)).scalar()
+    part_numbers = dbsession.query(Machinepart).all()
+    part_supplier_list=[]
+    
+    for p in part_numbers:
+        # print(s.machineparts)
+        supplier_list=[]
+        for i in p.suppliers:
+            # print(i.part_name)
+            supplier_list.append(i.supplier_name)
+        part_supplier_list.append(supplier_list)
+    # print(supplier_part_list)
     dbsession.close()
-    return render_template("machinepart_info.html", today=today, machinepart_amount=machinepart_amount)
+    return render_template("machinepart_info.html", today=today, machinepart_amount=machinepart_amount,part_numbers=part_numbers,part_supplier_list=part_supplier_list)
 
-
+# 管理零部件
 @app.route('/machinepart', methods=['GET', 'POST'])
 @login_required
 def machinepart():
@@ -307,6 +328,7 @@ def add_machinepart():
         # print(input_part_number,input_part_name)
         dbsession = DBSession()
         supplier=dbsession.query(Supplier).filter_by(supplier_number=input_supplier).first()
+        # supplier=Supplier(supplier_number=input_supplier)
         # print(supplier)
         part = dbsession.query(Machinepart).filter_by(
             part_number=input_part_number).first()
@@ -319,18 +341,21 @@ def add_machinepart():
             return render_template('add_machinepart.html',suppliers=suppliers)
         new_part = Machinepart(
             part_number=input_part_number, part_name=input_part_name, amount=int(input_amount), quantifier=input_quantifier)
-        dbsession.add(new_part)
-        dbsession.commit()
-        add_part = dbsession.query(Machinepart).filter_by(
-            part_number=input_part_number).first()
-        new_stom=Supplier_To_Machinepart(supplier_id=supplier.id,machinepart_id=add_part.id)
-        dbsession.add(new_stom)
+        # dbsession.add(new_part)
+        # add_part = dbsession.query(Machinepart).filter_by(
+        #     part_number=input_part_number).first()
+        # new_s2m=Supplier_To_Machinepart(supplier_id=supplier.id,machinepart_id=add_part.id)
+        # dbsession.add(new_s2m)
+        # supplier = dbsession.merge(supplier)
+        supplier.machineparts.append(new_part)
+        dbsession.add(supplier)
         dbsession.commit()
         dbsession.close()
         flash("添加成功")
         time.sleep(1)
         return render_template('add_machinepart.html',suppliers=suppliers)
 
+# 删除零部件
 @app.route('/del_machinepart_index', methods=['GET', 'POST'])
 @login_required
 def del_machinepart_index():
@@ -358,6 +383,7 @@ def del_machinepart_index():
             dbsession.close()
             return render_template('del_machinepart_index.html', part_numbers=part_numbers)
 
+# 删除零部件
 @app.route("/del_machinepart/<del_part_number>")
 @login_required
 def del_machinepart(del_part_number):
@@ -366,10 +392,11 @@ def del_machinepart(del_part_number):
     dbsession = DBSession()
     machinepart = dbsession.query(Machinepart).filter_by(
         part_number=del_part_number).first()
-    # 有就删除
+    # 有就删除 
     if machinepart:
         try:
-
+            # # 先删除supplier_to_machinepart中machinepart_id为machinepart.id的所有记录
+            # dbsession.query(Supplier_To_Machinepart).filter_by(machinepart_id=machinepart.id).delete()
             dbsession.delete(machinepart)
             dbsession.commit()
             dbsession.close()
@@ -379,10 +406,81 @@ def del_machinepart(del_part_number):
             flash("删除零部件出错")
             dbsession.rollback()
             dbsession.close()
-            return redirect(url_for("del_machinepart_index"))
     else:
         flash("供应商找不到")
     return redirect(url_for("del_machinepart_index"))
+
+# 修改零部件
+@app.route('/mod_machinepart_index', methods=['GET', 'POST'])
+@login_required
+def mod_machinepart_index():
+    if request.method == "GET":
+        dbsession = DBSession()
+        part_numbers = dbsession.query(Machinepart).all()
+        dbsession.close()
+        return render_template('mod_machinepart_index.html', part_numbers=part_numbers)
+    elif request.method == "POST":
+
+        input_machinepart = request.form.get('machinepart_number')
+        dbsession = DBSession()
+        input_machinepart = dbsession.query(Machinepart).filter(or_(Machinepart.part_number.like(
+            '%'+input_machinepart+'%'), Machinepart.part_name.like('%'+input_machinepart+'%')))
+        dbsession.close()
+        # print(input_supplier.count())
+        if input_machinepart.count():
+
+            return render_template('mod_machinepart_index.html', part_numbers=input_machinepart)
+        else:
+            flash('没有找到')
+            dbsession = DBSession()
+            part_numbers = dbsession.query(Machinepart).all()
+            dbsession.close()
+            return render_template('mod_machinepart_index.html', part_numbers=part_numbers)
+
+# 修改零部件
+@app.route("/mod_machinepart/<mod_machinepart_number>", methods=['GET', 'POST'])
+@login_required
+def mod_machinepart(mod_machinepart_number):
+    if request.method == "GET":
+        # 查询
+        dbsession = DBSession()
+        machinepart = dbsession.query(Machinepart).filter_by(
+            part_number=mod_machinepart_number).first()
+        
+        dbsession.close()
+        if machinepart:
+
+            return render_template('mod_machinepart_detail.html', mod_machinepart_number=mod_machinepart_number, mod_machinepart_name=machinepart.part_name)
+    elif request.method == "POST":
+        input_machinepart_name = request.form.get('machinepart_name')
+        input_machinepart_number = request.form.get('machinepart_number')
+        
+        dbsession = DBSession()
+        machinepart_number = dbsession.query(Machinepart).filter_by(
+            part_number=input_machinepart_number).first()
+
+        machinepart_name = dbsession.query(Machinepart).filter_by(
+            part_name=input_machinepart_name).first()
+        
+        if machinepart_name:
+            flash('此零部件名称已存在')
+            return render_template('mod_machinepart_detail.html', mod_machinepart_number=mod_machinepart_number, mod_machinepart_name=input_machinepart_name)
+        dbsession.query(Machinepart).filter(Machinepart.part_number == input_machinepart_number).update(
+            {Machinepart.part_name: input_machinepart_name})
+        dbsession.commit()
+        dbsession.close()
+        flash("修改成功")
+        time.sleep(1)
+        return render_template('mod_machinepart_detail.html', mod_machinepart_number=mod_machinepart_number, mod_machinepart_name=input_machinepart_name)
+
+@app.route("/warehousing", methods=['GET', 'POST'])
+@login_required
+def warehousing():
+    dbsession = DBSession()
+    suppliers = dbsession.query(Supplier).all()
+    # print(supplier.supplier_name)
+    dbsession.close()
+    return render_template("warehousing.html",suppliers=suppliers)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

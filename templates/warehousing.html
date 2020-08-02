@@ -1,0 +1,34 @@
+{% extends "view_base.html" %}
+{% block title %}入库管理{% endblock %}
+{% block view %}
+<div>
+    <div class="title">入库明细</div>
+    <div><label for="supplier">供应商：</label>
+        <select name="supplier" id="supplier" required>
+            {%for s in suppliers%}
+            <option value="{{s.supplier_name}}">{{s.supplier_name}}</option>
+            {%endfor%}
+        </select>单号：<span id="order"></span>日期：<span id="todayDate"></span></div>
+    <div>
+        <table>
+            <th>序号</th>
+            <th>零部件名称</th>
+            <th>零部件号</th>
+            <th>数量</th>
+            <th>单位</th>
+            
+            <th>备注</th>
+            <tr>
+                <td></td>
+                <td>+</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div>制单：经手人：收货人：</div>
+</div>
+
+{% endblock %}
