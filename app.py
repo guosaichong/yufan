@@ -1,7 +1,7 @@
 from flask import Flask, render_template, get_flashed_messages, flash, request, redirect, url_for
 from config import engine
 from model import *
-from datetime import datetime
+from datetime import datetime,timedelta
 from sqlalchemy import and_, func, or_
 from utils import get_date
 from sqlalchemy.orm import sessionmaker
@@ -71,8 +71,7 @@ def logout():
 @app.route('/')
 def index():
     dbsession = DBSession()
-    ret = dbsession.query(Run).filter(Run.appointment_date == func.date_format(
-        func.now(), '%Y-%m-%d')).order_by("unloading_time").all()
+    ret = dbsession.query(Run).filter(Run.appointment_date >= datetime.now() - timedelta(days=1)).order_by("unloading_time").all()
     dbsession.close()
 
     return render_template("index.html", ret=ret, today=today)

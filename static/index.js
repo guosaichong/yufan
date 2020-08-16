@@ -10,4 +10,9 @@ window.onload = function (){
     setInterval(function () {
         window.location.reload()
     }, 1800000);
+    var tel=document.getElementById("tel");
+    
+    var reg = /^(\d{3})\d{4}(\d{4})$/g;  
+    tel.replace(reg, "$1****$2");
+    
 }

@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 import mysql.connector
 
 # 数据库配置
-engine = create_engine("mysql+mysqlconnector://test:123456@47.105.166.136/yufan?charset=utf8",
+engine = create_engine("mysql+mysqlconnector://test:123456@39.102.200.61/yufan?charset=utf8",
                        max_overflow=0,  # 超过连接池大小外最多创建的连接
                        pool_size=20,  # 连接池大小
                        pool_pre_ping=True,  # 预检测链接是否有效
