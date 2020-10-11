@@ -1,6 +1,5 @@
 from flask import Flask, render_template, get_flashed_messages, flash, request, redirect, url_for
-from config import engine
-from model import *
+# from model import *
 from datetime import datetime,timedelta
 from sqlalchemy import and_, func, or_
 from utils import get_date
@@ -10,6 +9,8 @@ import json
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 import os
 import logging
+from wms import creat_app
+from flask_script import Manager
 
 # 创建日志文件目录
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -38,9 +39,9 @@ logger.warning('this is a logger warning message')
 logger.error('this is a logger error message')
 logger.critical('this is a logger critical message')
 
-app = Flask(__name__)
-app.secret_key = "tianjin"
-
+# 创建flask的应用对象
+app=creat_app("develop")
+manager=Manager(app)
 
 DBSession = sessionmaker(bind=engine)
 
@@ -505,7 +506,11 @@ def register():
         else:
             flash("用户已经注册")
             return redirect(url_for('login'))
+@manager.command
+def runserver():
+    print("服务开启成功")
+
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    manager.run()
