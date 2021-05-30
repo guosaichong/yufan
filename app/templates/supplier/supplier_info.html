@@ -1,0 +1,63 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<link rel="stylesheet" href="../../static/css/supplier_info.css">
+<title>供应商信息</title>
+{% endblock %}
+{%block maincontent%}
+<div class="supplier_amount"></div>
+<div class="linkto">
+    <p>当前没有供应商信息，<a href="{{url_for('supplier.add_supplier')}}">点此</a>增加供应商。</p>
+</div>
+<div class="supplier_info"></div>
+<div style="text-align: center;margin-top: 10px;">
+    <p class="page_info"></p>
+</div>
+<script>
+    $(document).ready(function () {
+
+        var today = new Date();//定义日期对象     
+        var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年      
+        var MM = today.getMonth() + 1;//通过日期对象的getMonth()方法返回年      
+        var dd = today.getDate();//通过日期对象的getDate()方法返回年  
+        $.post("/supplier/supplier_info", {}, function (data, status) {
+            if (status == "success") {
+                $(".supplier_amount").text("截止" + yyyy + "年" + MM + "月" + dd + "日，共有" + data.supplier_amount + "家供应商。");
+                if (data.supplier_amount == 0) {
+                    $(".linkto").css("display", "block");
+                } else {
+                    var table = $("<table></table>");
+                    table.id = "table";
+                    var thead = $("<thead></thead>");
+                    var thead_tr = $("<tr></tr>").html("<th>序号</th><th>供应商号</th><th>供应商名称</th><th>供应零件</th>");
+                    thead.append(thead_tr);
+                    var tbody = $("<tbody></tbody>");
+                    for (var index = 0; index < data.supplier_list.length; index++) {
+
+                        // var tr = $("<tr></tr>").html("<td></td><td></td><td></td><td></td><td></td><td></td>")
+                        var tr = $("<tr></tr>");
+                        var td1 = $("<td></td>").text(index + 1);
+                        var td2 = $("<td></td>").text(data.supplier_list[index].supplier_number);
+                        var td3 = $("<td></td>").text(data.supplier_list[index].supplier_name);
+                        var td4 = $("<td></td>").text(data.supplier_list[index].parts);
+                        tr.append(td1);
+                        tr.append(td2);
+                        tr.append(td3);
+                        tr.append(td4);
+
+                        tbody.append(tr)
+                    }
+                    table.append(thead);
+                    table.append(tbody);
+                    $(".supplier_info").append(table);
+                    $(".page_info").text("上一页 第1页 共" + data.page_total + "页 下一页")
+                }
+
+
+
+            }
+        }, "json")
+    })
+</script>
+{%endblock%}

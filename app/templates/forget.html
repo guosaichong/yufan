@@ -1,0 +1,266 @@
+<!-- 导入模版 -->
+{% extends "base.html" %}
+<!-- head -->
+{% block head %}
+
+<script src="../static/js/md5.js"></script>
+<title>忘记密码</title>
+<style>
+    .container {
+        min-height: 650px;
+        margin: 0 auto;
+        position: relative;
+        width: 1200px;
+        padding: 10px;
+    }
+
+    .wrapper {
+        position: relative;
+        margin: 0 auto;
+        margin-top: 30px;
+        border: 1px solid rgb(30, 80, 174);
+        width: 380px;
+        height: 380px;
+
+    }
+
+    .wrapper .title {
+        margin-top: 50px;
+        text-align: center;
+        /* border: 1px solid red; */
+    }
+
+    .content {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .login-box {
+        margin-top: 20px;
+        text-align: center;
+        /* border: 1px solid red; */
+    }
+
+    .uname-box {
+        position: relative;
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 260px;
+        height: 46px;
+        border: 1px solid #c5cddb;
+        background: #fff;
+        font-size: 12px;
+    }
+
+    #uname_tips {
+        color: red;
+        font-size: larger;
+        position: relative;
+        margin: 0 auto;
+        margin-left: 60px;
+        text-align: left;
+        font-family: "Microsoft YaHei", "微软雅黑";
+    }
+
+
+    .u-input {
+        float: left;
+        height: 46px;
+        margin-left: 5px;
+    }
+
+    .u-input input {
+        height: 46px;
+        line-height: 46px;
+        padding-left: 8px;
+        color: #333;
+        border: 0;
+        font-size: 16px;
+        font-weight: bold;
+        outline: 0;
+        background: #fff;
+    }
+
+    .pwd-box {
+        position: relative;
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 260px;
+        height: 46px;
+        border: 1px solid #c5cddb;
+        background: #fff;
+        font-size: 12px;
+    }
+
+    #pwd_tips {
+        color: red;
+        font-size: larger;
+        position: relative;
+        text-align: left;
+        margin: 0 auto;
+        margin-left: 60px;
+        font-family: "Microsoft YaHei", "微软雅黑";
+    }
+
+    .active {
+        border: 1px solid #4aafe9;
+    }
+
+    .p-input {
+        float: left;
+        height: 46px;
+        margin-left: 5px;
+    }
+
+    .p-input input {
+        height: 46px;
+        line-height: 46px;
+        padding-left: 8px;
+        color: #333;
+        border: 0;
+        font-size: 16px;
+        font-weight: bold;
+        outline: 0;
+        background: #fff;
+    }
+
+    .sub-btn {
+        position: relative;
+        margin: 0 auto;
+        width: 260px;
+        height: 50px;
+        margin-top: 30px;
+        line-height: 50px;
+        background: #3977db;
+        border-radius: 4px;
+        cursor: pointer;
+
+    }
+
+    .sub-btn a {
+        font-family: "Microsoft YaHei", "微软雅黑";
+        font-size: 20px;
+        color: #fff;
+        background-color: #3977db;
+    }
+</style>
+{% endblock %}
+<!-- 网页内容 -->
+{% block content %}
+<!-- 网页内容的主体 -->
+<div class="container">
+    <div class="wrapper">
+        <div class="title">
+            <h2>忘记密码</h2>
+        </div>
+
+        <div class="login-box">
+
+            <div class="uname-box">
+
+
+
+
+                <div class="u-input">
+                    <input type="text" placeholder="请输入用户名">
+
+                </div>
+            </div>
+            <div id="uname_tips"></div>
+            <div class="pwd-box">
+
+                <div class="p-input">
+                    <input type="email" placeholder="请输入预留邮箱地址">
+
+                </div>
+
+            </div>
+            <div id="pwd_tips"></div>
+            <div class="sub-btn">
+                <a>确&nbsp;&nbsp;定</a>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        $(document).keydown(function (event) {
+            if (event.keyCode == 13) {
+                $(".sub-btn").click();
+            }
+        });
+        // 输入框获得焦点
+        $(".u-input input").focus(function () {
+            // 清空输入框的占位字符
+            $(".u-input input").attr("placeholder", "");
+            // 用户名输入错误时提示的文字
+            $("#uname_tips").text("");
+            // 提示效果，边框改变一下颜色
+            $(".uname-box").addClass("active")
+        });
+        // 输入框失去焦点
+        $(".u-input input").blur(function () {
+            // 占位字符
+            $(".u-input input").attr("placeholder", "请输入用户名");
+            // 效果去掉
+            $(".uname-box").removeClass("active")
+        });
+        $(".p-input input").focus(function () {
+            $(".p-input input").attr("placeholder", "");
+            $("#pwd_tips").text("");
+            $(".pwd-box").addClass("active")
+        });
+        $(".p-input input").blur(function () {
+            $(".p-input input").attr("placeholder", "请输入预留邮箱地址");
+            $(".pwd-box").removeClass("active")
+        });
+        // 鼠标经过按钮时的效果
+        $(".sub-btn").mouseenter(function () {
+            $(".sub-btn").css("background-color", "#1760D7");
+            $(".sub-btn a").css("background-color", "#1760D7")
+        });
+        // 鼠标离开按钮时的效果
+        $(".sub-btn").mouseleave(function () {
+            $(".sub-btn").css("background-color", "#3977db");
+            $(".sub-btn a").css("background-color", "#3977db")
+        });
+        // 点击按钮
+        $(".sub-btn").click(function () {
+            var username = $(".u-input input").val();
+            var email = $(".p-input input").val();
+            if (username == "") {
+                $("#uname_tips").text("用户名不能为空！");
+            } else if (email == "") {
+                $("#pwd_tips").text("邮箱地址不能为空！");
+            } else {
+
+                $.post("/forget",
+                    {
+                        username: username,
+                        email: email
+                    },
+                    function (data, status) {
+                        if (status == "success") {
+                            if (data.code == 1) {
+                                $("#uname_tips").text(data.msg);
+                            }
+
+                            if (data.code == 2) {
+                                $("#pwd_tips").text(data.msg);
+                            }
+
+                            if (data.code == 0) {
+                                window.location.href = "/success";
+                            }
+
+                        }
+
+                    });
+            }
+        })
+    });
+</script>
+{%endblock%}

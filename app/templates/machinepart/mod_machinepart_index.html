@@ -1,0 +1,95 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<title>修改零件</title>
+{% endblock %}
+{%block maincontent%}
+<style>
+    .part_management li:nth-child(2) {
+        background-color: rgba(200, 189, 136, .4);
+    }
+
+    a {
+        text-decoration: none;
+
+    }
+
+
+    table {
+        margin: 5px auto;
+        text-align: center;
+        border-collapse: collapse;
+        width: 100%;
+
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 5px;
+
+    }
+
+    th {
+        background-color: rgb(200, 189, 136);
+
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(200, 189, 136, .4);
+    }
+
+    /* table tr:hover {
+        background-color: rgba(200, 189, 136, .6);
+    } */
+</style>
+<form action="{{url_for('machinepart.mod_machinepart_index')}}" method="POST">
+
+    <label for="part_number">零件号或名称：</label>
+    <input type="text" id="part_number" name="part_number" autocomplete="off" required>
+    <button type="submit">查找</button>
+    {%for message in get_flashed_messages()%}
+    <p class="tips" style="color: red">{{message}}</p>
+    {%endfor%}
+</form>
+<div>
+    <table>
+        <thead>
+            <th>序号</th>
+            <th>零件号</th>
+            <th>零件名称</th>
+            <th>零件单位</th>
+        </thead>
+        <tbody>
+            {%for m in machinepart_numbers%}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{m.part_number}}<a
+                        href="{{url_for('machinepart.mod_machinepart',mod_machinepart_number=m.part_number)}}"
+                        title="修改"><img src="../../static/images/修改.png" alt="修改"
+                            style="width: 16px;height: 16px; margin-left: 10px;" /></a>
+                </td>
+                <td>{{m.part_name}}</td>
+                <td>{{m.quantifier}}</td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        // 输入框获得焦点
+        $("input").focus(function () {
+
+            $(".tips").text("");
+
+        });
+
+    });
+</script>
+{%endblock%}

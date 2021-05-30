@@ -1,0 +1,35 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<link rel="stylesheet" href="../../static/css/management.css">
+{% endblock %}
+{%block maincontent%}
+<div class="machinepart_management">
+    <div class="show-cards">
+        <div>
+            <a href="{{url_for('machinepart.add')}}">
+
+                <p>增加零部件</p>
+            </a>
+        </div>
+        <div>
+            <a href="{{url_for('machinepart.del_machinepart_index')}}">
+
+                <p>删除零部件</p>
+            </a>
+
+        </div>
+        <div>
+            <a href="{{url_for('machinepart.mod_machinepart_index')}}">
+
+                <p>修改零部件</p>
+            </a>
+
+        </div>
+    </div>
+
+</div>
+
+
+{%endblock%}

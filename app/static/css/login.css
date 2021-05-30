@@ -1,0 +1,162 @@
+.container{
+    position: relative;
+    margin: 0 auto;
+    width: 1200px;
+    min-height: 650px;
+    padding: 10px;
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+    background-color: white;
+}
+a:link, a:visited {
+	text-decoration : none;
+	color : black;
+	background : transparent; 
+	/* border-bottom:1px solid #900b09; */
+	}
+
+a:hover {
+	text-decoration : none;
+	color: #ff0000;
+	background : transparent; 
+	/* border-bottom:1px solid #ff0000; */
+	}
+
+a:active {
+	text-decoration : none;
+	color : #ff0000;
+	background : transparent;  
+	}
+
+.wrapper{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 1px solid rgb(30, 80, 174);
+    background-color:whitesmoke;
+    width: 400px;
+    height: 400px;
+    
+}
+.wrapper .title{
+    /* position: relative;
+    margin: 0 auto; */
+    margin-top: 50px;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+.login-box{
+    margin-top: 20px;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+.uname-box {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 260px;
+    height: 46px;
+    border: 1px solid #c5cddb;
+    background: #fff;
+    font-size: 12px;
+}
+#uname_tips{
+    color: red;
+    font-size: larger;
+    position: relative;
+    margin: 0 auto;
+    margin-left: 110px;
+    text-align: left;
+    font-family: "Microsoft YaHei","微软雅黑";
+}
+
+.u-logo-img1{
+    float: left;
+    width: 22px;
+    height: 24px;
+    margin-top: 12px;
+    margin-left: 6px;
+    background: url(../images/ico-user.png) no-repeat;
+}
+
+.u-input{
+    float: left;
+    height: 46px;
+    margin-left: 5px;
+}
+.u-input input{
+    height: 46px;
+    line-height: 46px;
+    padding-left: 8px;
+    color: #333;
+    border: 0;
+    font-size: 16px;
+    font-weight: bold;
+    outline: 0;
+    background: #fff;
+}
+.pwd-box {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 260px;
+    height: 46px;
+    border: 1px solid #c5cddb;
+    background: #fff;
+    font-size: 12px;
+}
+#pwd_tips{
+    color: red;
+    font-size: larger;
+    position: relative;
+    text-align: left;
+    margin: 0 auto;
+    margin-left: 110px;
+    font-family: "Microsoft YaHei","微软雅黑";
+}
+.active {
+    border: 1px solid #4aafe9;
+}
+.p-logo-img1{
+    float: left;
+    width: 22px;
+    height: 24px;
+    margin-top: 12px;
+    margin-left: 6px;
+    background: url(../images/ico-password.png) no-repeat;
+}
+.p-input{
+    float: left;
+    height: 46px;
+    margin-left: 5px;
+}
+.p-input input{
+    height: 46px;
+    line-height: 46px;
+    padding-left: 8px;
+    color: #333;
+    border: 0;
+    font-size: 16px;
+    font-weight: bold;
+    outline: 0;
+    background: #fff;
+}
+.sub-btn{
+    position: relative;
+    margin: 0 auto;
+    width: 260px;
+    height: 50px;
+    margin-top: 30px;
+    line-height: 50px;
+    background: #3977db;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+.sub-btn a{
+    font-family: "Microsoft YaHei","微软雅黑";
+    font-size: 20px;
+    color: #fff;
+    background-color: #3977db;
+}

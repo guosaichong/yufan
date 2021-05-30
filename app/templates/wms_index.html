@@ -1,0 +1,54 @@
+<!-- 导入模版 -->
+{% extends "base.html" %}
+<!-- head -->
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<title>天津禹帆物流有限公司</title>
+{% endblock %}
+<!-- 网页内容 -->
+{% block content %}
+<!-- 网页内容的主体 -->
+<div class="container">
+    <div id="navsecond">
+
+        <div id="course">
+            <h3>基础数据</h3>
+            <ul class="info">
+                <li><a href="{{url_for('supplier.supplier_info')}}" title="供应商信息">供应商信息</a></li>
+                <li><a href="{{url_for('machinepart.machinepart_info')}}" title="零件信息">零件信息</a></li>
+            </ul>
+            <h3>入库管理</h3>
+            <ul>
+                <li><a href="" title="入库">入库</a></li>
+                <li><a href="#" title="单据查询">单据查询</a></li>
+                
+            </ul>
+            <h3>出库管理</h3>
+            <ul>
+                <li><a href="#" title="出库">出库</a></li>
+                <li><a href="#" title="单据查询">单据查询</a></li>
+                
+            </ul>
+            <h3>供应商维护</h3>
+            <ul class="management">
+                <li><a href="{{url_for('supplier.add_supplier')}}" title="添加供应商">添加供应商</a></li>
+                <li><a href="{{url_for('supplier.mod_supplier_index')}}" title="修改供应商">修改供应商</a></li>
+                <li><a href="{{url_for('supplier.del_supplier_index')}}" title="删除供应商">删除供应商</a></li>
+                
+            </ul>
+            <h3>零件维护</h3>
+            <ul class="part_management">
+                <li><a href="{{url_for('machinepart.add')}}" title="添加零件">添加零件</a></li>
+                <li><a href="{{url_for('machinepart.mod_machinepart_index')}}" title="修改零件">修改零件</a></li>
+                <li><a href="{{url_for('machinepart.del_machinepart_index')}}" title="删除零件">删除零件</a></li>
+                
+            </ul>
+        </div>
+
+    </div>
+    <div id="maincontent">
+        {% block maincontent %}
+        {%endblock%}
+    </div>
+</div>
+{% endblock %}

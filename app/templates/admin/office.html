@@ -1,0 +1,1079 @@
+{% extends "base.html" %}
+<!-- head -->
+{% block head %}
+<title>办公设备</title>
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin: 0 auto;
+        width: 1200px;
+        min-height: 650px;
+        /* padding: 10px; */
+        /* border: 1px solid red; */
+        box-sizing: border-box;
+
+    }
+
+    .equipment-group,
+    .department-group,
+    .location-group {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .equipment-group-first-line,
+    .equipment-group-second-line,
+    .equipment-group-third-line,
+    .department-group-first-line,
+    .department-group-second-line,
+    .department-group-third-line,
+    .location-group-first-line,
+    .location-group-second-line,
+    .location-group-third-line,
+    .location-group-fourth-line,
+    .location-group-fifth-line {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .equipment-group-first-line>div,
+    .equipment-group-second-line>div,
+    .equipment-group-third-line>div,
+    .department-group-first-line>div,
+    .department-group-second-line>div,
+    .department-group-third-line>div,
+    .location-group-first-line>div,
+    .location-group-second-line>div,
+    .location-group-third-line>div,
+    .location-group-fourth-line>div,
+    .location-group-fifth-line>div {
+        width: 290px;
+        height: 350px;
+        border: 1px solid blue;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    #equipment-group-first-line-more,
+    #equipment-group-second-line-more,
+    #department-group-first-line-more,
+    #location-group-first-line-more,
+    #location-group-second-line-more,
+    #location-group-third-line-more,
+    #location-group-fourth-line-more {
+        color: rgb(30, 80, 184);
+    }
+
+    #equipment-group-first-line-more:hover,
+    #equipment-group-second-line-more:hover,
+    #department-group-first-line-more:hover,
+    #location-group-first-line-more:hover,
+    #location-group-second-line-more:hover,
+    #location-group-third-line-more:hover,
+    #location-group-fourth-line-more:hover {
+        color: rgb(30, 80, 204);
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:link {
+        color: rgb(30, 80, 174);
+    }
+
+    a:visited {
+        color: rgb(30, 80, 184);
+    }
+
+    a:hover {
+        color: rgb(30, 80, 204);
+    }
+
+    a:active {
+        color: rgb(30, 80, 204);
+    }
+
+    #footer {
+        /* display: flex; */
+        position: relative;
+        margin: 0 auto;
+        width: 1200px;
+        height: 100px;
+        padding: 10px;
+        /* border: 1px solid red; */
+        box-sizing: border-box;
+        /* background-color: rgb(245,246,250); */
+    }
+
+    #footer div {
+
+        margin: 30px auto;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div style="position: relative;height: 40px;margin-top: 10px;">
+        <div style="width: 8px;
+        height: 30px;
+        content: '';
+        background-color: rgb(255, 0, 64);
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-top: 5px;"></div>
+        <p style="font-size: 26px;margin-left: 15px;">按类别……</p>
+    </div>
+    <div class="equipment-group">
+        <div class="equipment-group-first-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='8')}}">
+                        <img src="../../static/images/电脑.png" alt="电脑"
+                            style="width: 35px;height: 35px;vertical-align:middle;margin-top: 5px;margin-left:5px;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">电脑</span><span
+                            id="computer_count" style="vertical-align:middle;"></span>
+                    </a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="computer_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='9')}}">
+                        <img src="../../static/images/打印机.png" alt="打印机"
+                            style="width: 35px;height: 35px;vertical-align:middle;margin-top: 5px;margin-left:5px;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">打印机</span><span
+                            id="printer_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="printer_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='5')}}">
+                        <img src="../../static/images/监控摄像头 (1).png" alt="摄像头"
+                            style="width: 40px;height: 40px;vertical-align:middle;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">摄像头</span><span
+                            id="camera_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="camera_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='4')}}">
+                        <img src="../../static/images/设备类_DVR.png" alt="录像机"
+                            style="width: 35px;height: 35px;vertical-align:middle;margin-top: 3px;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">录像机</span><span
+                            id="video_recorder_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="video_recorder_list">
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- 隐藏的第二行 -->
+        <div style="display: none;" class="equipment-group-second-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='1')}}">
+                        <img src="../../static/images/256PDA手持工作设备.png" alt="手持终端"
+                            style="width: 40px;height: 40px;vertical-align:middle;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">手持终端</span><span
+                            id="handheld_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="handheld_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='7')}}">
+                        <img src="../../static/images/wifi.png" alt="AP"
+                            style="width: 35px;height: 35px;vertical-align:middle;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">AP</span><span
+                            id="AP_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="AP_list">
+
+                </ul>
+            </div>
+            <!-- 投影仪 -->
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='11')}}">
+                        <img src="../../static/images/投影仪.png" alt="投影仪"
+                            style="width: 45px;height: 45px;vertical-align:middle;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">投影仪</span><span
+                            id="projector_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="projector_list">
+
+                </ul>
+            </div>
+            <!-- 机柜 -->
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='10')}}">
+                        <img src="../../static/images/机柜.png" alt="机柜"
+                            style="width: 40px;height: 40px;vertical-align:middle;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">机柜</span><span
+                            id="cabinet_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="cabinet_list">
+
+                </ul>
+            </div>
+
+
+        </div>
+
+
+        <!-- 隐藏的第三行 -->
+        <div style="display: none;" class="equipment-group-third-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='3')}}">
+                        <img src="../../static/images/UPS.png" alt="UPS"
+                            style="width: 36px;height: 36px;vertical-align:middle;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">UPS</span><span
+                            id="UPS_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="UPS_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='2')}}">
+                        <img src="../../static/images/交换机.png" alt="交换机"
+                            style="width: 40px;height: 40px;vertical-align:middle;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">交换机</span><span
+                            id="switch_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="switch_list">
+
+                </ul>
+            </div>
+
+            <!-- 路由 -->
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='6')}}">
+                        <img src="../../static/images/路由器.png" alt="路由"
+                            style="width: 34px;height: 34px;vertical-align:middle;margin-top: 3px;margin-left: 3px;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">路由</span><span
+                            id="router_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="router_list">
+
+                </ul>
+            </div>
+            <!-- 其它 -->
+            <div>
+                <div>
+                    <a href="{{url_for('admin.detail',name='12')}}">
+                        <img src="../../static/images/其它.png" alt="其它"
+                            style="width: 40px;height: 40px;vertical-align:middle;">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">其它</span><span
+                            id="other_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="other_list">
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <p style="text-align: right;"><span id="equipment-group-first-line-more">更多……</span></p>
+    </div>
+    <div>
+        <p style="text-align: right;display: none;"><span id="equipment-group-second-line-more">更多……</span></p>
+    </div>
+    <!-- ----------------------------------------------------------部门--------------------------------------------------------- -->
+    <div style="position: relative;height: 40px;margin-top: 10px;">
+        <div style="width: 8px;
+        height: 30px;
+        content: '';
+        background-color: rgb(0, 255, 34);
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-top: 5px;"></div>
+        <p style="font-size: 26px;margin-left: 15px;">按部门……</p>
+    </div>
+    <div class="department-group">
+        <div class="department-group-first-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',name='1')}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">集团派驻</span><span
+                            id="stationing_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="stationing_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',name='2')}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">行政部</span><span
+                            id="integrated_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="integrated_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',name='3')}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">财务部</span><span
+                            id="finance_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="finance_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',name='4')}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">运营部</span><span
+                            id="operation_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="operation_list">
+
+                </ul>
+            </div>
+        </div>
+        <!-- 隐藏的第二行 -->
+        <div style="display: none;" class="department-group-second-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',name='5')}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">排序管理室</span><span
+                            id="sorting_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="sorting_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',name='6')}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">计划办公室</span><span
+                            id="planning_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="planning_list">
+
+                </ul>
+            </div>
+
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',name='7')}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">仓储部</span><span
+                            id="storage_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="storage_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',name='8')}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">人事部</span><span
+                            id="personnel_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="personnel_list">
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <p style="text-align: right;"><span id="department-group-first-line-more">更多……</span></p>
+    </div>
+    <!-- -----------------------------------------------------------位置----------------------------------------------------- -->
+    <div style="position: relative;height: 40px;margin-top: 10px;">
+        <div style="width: 8px;
+        height: 30px;
+        content: '';
+        background-color: rgb(25, 0, 255);
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-top: 5px;"></div>
+        <p style="font-size: 26px;margin-left: 15px;">按位置……</p>
+    </div>
+    <div class="location-group">
+        <div class="location-group-first-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=5)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">领导办公室</span><span
+                            id="location_leader_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_leader_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=6)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">运营办公室</span><span
+                            id="location_operate_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_operate_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=7)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">综合管理室</span><span
+                            id="location_integrated_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_integrated_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=8)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">财务办公室</span><span
+                            id="location_finance_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_finance_list">
+
+                </ul>
+            </div>
+        </div>
+        <!-- 隐藏的第二行 -->
+        <div style="display: none;" class="location-group-second-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=9)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">业务规划室</span><span
+                            id="location_business_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_business_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=15)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">计划办公室</span><span
+                            id="location_planning_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_planning_list">
+
+                </ul>
+            </div>
+
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=16)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">仓储办公室</span><span
+                            id="location_storage_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_storage_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=13)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">FIS办公室</span><span
+                            id="location_fis_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="location_fis_list">
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- 隐藏的第三行 -->
+        <div style="display: none;" class="location-group-third-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=14)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">华友收货口</span><span
+                            id="location_receive_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_receive_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=17)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">网络机柜室</span><span
+                            id="location_network_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_network_list">
+
+                </ul>
+            </div>
+
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=1)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">西门保安室</span><span
+                            id="location_W_guard_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_W_guard_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=2)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">南门保安室</span><span
+                            id="location_S_guard_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_S_guard_list">
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- 隐藏的第四行 -->
+        <div style="display: none;" class="location-group-fourth-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=3)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">一楼大厅</span><span
+                            id="location_hall_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="location_hall_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=4)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">食堂</span><span
+                            id="location_canteen_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_canteen_list">
+
+                </ul>
+            </div>
+
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=10)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">小会议室</span><span
+                            id="location_small_meeting_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_small_meeting_list">
+
+                </ul>
+            </div>
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=11)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">会议室</span><span
+                            id="location_meeting_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_meeting_list">
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- 隐藏的第五行 -->
+        <div style="display: none;" class="location-group-fifth-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.location',id=12)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">生产厂区</span><span
+                            id="location_production_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px"
+                    class="location_production_list">
+
+                </ul>
+            </div>
+            <div style="display: none;">
+
+            </div>
+
+            <div style="display: none;">
+
+            </div>
+            <div style="display: none;">
+
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <p style="text-align: right;"><span id="location-group-first-line-more">更多……</span></p>
+    </div>
+    <div>
+        <p style="text-align: right;display: none;"><span id="location-group-second-line-more">更多……</span></p>
+    </div>
+    <div>
+        <p style="text-align: right;display: none;"><span id="location-group-third-line-more">更多……</span></p>
+    </div>
+    <div>
+        <p style="text-align: right;display: none;"><span id="location-group-fourth-line-more">更多……</span></p>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $.post("/admin/office", {}, function (data, status) {
+            if (status == "success") {
+                $("#computer_count").text("(" + data.computer_count + ")");
+                for (var index = 0; index < data.computer_list.length; index++) {
+                    var li = $("<li></li>").text(data.computer_list[index].name + "/" + data.computer_list[index].model + "/" + data.computer_list[index].asset_number);
+                    $(".computer_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".computer_list").append(li)
+
+                $("#printer_count").text("(" + data.printer_count + ")");
+                for (var index = 0; index < data.printer_list.length; index++) {
+                    var li = $("<li></li>").text(data.printer_list[index].name + "/" + data.printer_list[index].model + "/" + data.printer_list[index].asset_number);
+                    $(".printer_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".printer_list").append(li)
+
+                $("#camera_count").text("(" + data.camera_count + ")");
+                for (var index = 0; index < data.camera_list.length; index++) {
+                    var li = $("<li></li>").text(data.camera_list[index].name + "/" + data.camera_list[index].model + "/" + data.camera_list[index].asset_number);
+                    $(".camera_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".camera_list").append(li)
+                // video_recorder
+                $("#video_recorder_count").text("(" + data.video_recorder_count + ")");
+                for (var index = 0; index < data.video_recorder_list.length; index++) {
+                    var li = $("<li></li>").text(data.video_recorder_list[index].name + "/" + data.video_recorder_list[index].model + "/" + data.video_recorder_list[index].asset_number);
+                    $(".video_recorder_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".video_recorder_list").append(li)
+                // 集团派驻
+                $("#stationing_count").text("(" + data.stationing_count + ")");
+                for (var index = 0; index < data.stationing_list.length; index++) {
+                    var li = $("<li></li>").text(data.stationing_list[index].name + "/" + data.stationing_list[index].model + "/" + data.stationing_list[index].asset_number);
+                    $(".stationing_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".stationing_list").append(li)
+                // 综合管理室
+                $("#integrated_count").text("(" + data.integrated_count + ")");
+                for (var index = 0; index < data.integrated_list.length; index++) {
+                    var li = $("<li></li>").text(data.integrated_list[index].name + "/" + data.integrated_list[index].model + "/" + data.integrated_list[index].asset_number);
+                    $(".integrated_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".integrated_list").append(li)
+                // 财务部
+                $("#finance_count").text("(" + data.finance_count + ")");
+                for (var index = 0; index < data.finance_list.length; index++) {
+                    var li = $("<li></li>").text(data.finance_list[index].name + "/" + data.finance_list[index].model + "/" + data.finance_list[index].asset_number);
+                    $(".finance_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".finance_list").append(li)
+                // 运营部
+                $("#operation_count").text("(" + data.operation_count + ")");
+                for (var index = 0; index < data.operation_list.length; index++) {
+                    var li = $("<li></li>").text(data.operation_list[index].name + "/" + data.operation_list[index].model + "/" + data.operation_list[index].asset_number);
+                    $(".operation_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".operation_list").append(li)
+                // 领导办公室
+                $("#location_leader_count").text("(" + data.location_leader_count + ")");
+                for (var index = 0; index < data.location_leader_list.length; index++) {
+                    var li = $("<li></li>").text(data.location_leader_list[index].name + "/" + data.location_leader_list[index].model + "/" + data.location_leader_list[index].asset_number);
+                    $(".location_leader_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".location_leader_list").append(li)
+                // 运营办公室
+                $("#location_operate_count").text("(" + data.location_operate_count + ")");
+                for (var index = 0; index < data.location_operate_list.length; index++) {
+                    var li = $("<li></li>").text(data.location_operate_list[index].name + "/" + data.location_operate_list[index].model + "/" + data.location_operate_list[index].asset_number);
+                    $(".location_operate_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".location_operate_list").append(li)
+                // 综合管理室
+                $("#location_integrated_count").text("(" + data.location_integrated_count + ")");
+                for (var index = 0; index < data.location_integrated_list.length; index++) {
+                    var li = $("<li></li>").text(data.location_integrated_list[index].name + "/" + data.location_integrated_list[index].model + "/" + data.location_integrated_list[index].asset_number);
+                    $(".location_integrated_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".location_integrated_list").append(li)
+                // 财务办公室
+                $("#location_finance_count").text("(" + data.location_finance_count + ")");
+                for (var index = 0; index < data.location_finance_list.length; index++) {
+                    var li = $("<li></li>").text(data.location_finance_list[index].name + "/" + data.location_finance_list[index].model + "/" + data.location_finance_list[index].asset_number);
+                    $(".location_finance_list").append(li)
+                }
+                var li = $("<li></li>").text("......")
+                $(".location_finance_list").append(li)
+            }
+
+        })
+        // 按部门分组里面的第二行
+        $("#department-group-first-line-more").click(function () {
+            $(".department-group-second-line").css({ "display": "flex" });
+            $.post("/admin/department_second_line", {}, function (data, status) {
+                if (status == "success") {
+                    $("#sorting_count").text("(" + data.sorting_count + ")");
+                    for (var index = 0; index < data.sorting_list.length; index++) {
+                        var li = $("<li></li>").text(data.sorting_list[index].name + "/" + data.sorting_list[index].model + "/" + data.sorting_list[index].asset_number);
+                        $(".sorting_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".sorting_list").append(li)
+
+                    $("#planning_count").text("(" + data.planning_count + ")");
+                    for (var index = 0; index < data.planning_list.length; index++) {
+                        var li = $("<li></li>").text(data.planning_list[index].name + "/" + data.planning_list[index].model + "/" + data.planning_list[index].asset_number);
+                        $(".planning_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".planning_list").append(li)
+
+                    $("#storage_count").text("(" + data.storage_count + ")");
+                    for (var index = 0; index < data.storage_list.length; index++) {
+                        var li = $("<li></li>").text(data.storage_list[index].name + "/" + data.storage_list[index].model + "/" + data.storage_list[index].asset_number);
+                        $(".storage_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".storage_list").append(li)
+
+                    $("#personnel_count").text("(" + data.personnel_count + ")");
+                    for (var index = 0; index < data.personnel_list.length; index++) {
+                        var li = $("<li></li>").text(data.personnel_list[index].name + "/" + data.personnel_list[index].model + "/" + data.personnel_list[index].asset_number);
+                        $(".personnel_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".personnel_list").append(li)
+
+                    $("#department-group-first-line-more").parent().remove()
+                }
+
+            })
+        })
+        // 设备组里面第二行
+        $("#equipment-group-first-line-more").click(function () {
+            $(".equipment-group-second-line").css({ "display": "flex" });
+            $.post("/admin/second_line", {}, function (data, status) {
+                if (status == "success") {
+                    $("#handheld_count").text("(" + data.handheld_count + ")");
+                    for (var index = 0; index < data.handheld_list.length; index++) {
+                        var li = $("<li></li>").text(data.handheld_list[index].name + "/" + data.handheld_list[index].model + "/" + data.handheld_list[index].asset_number);
+                        $(".handheld_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".handheld_list").append(li)
+
+                    $("#AP_count").text("(" + data.AP_count + ")");
+                    for (var index = 0; index < data.AP_list.length; index++) {
+                        var li = $("<li></li>").text(data.AP_list[index].name + "/" + data.AP_list[index].model + "/" + data.AP_list[index].asset_number);
+                        $(".AP_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".AP_list").append(li)
+
+                    $("#projector_count").text("(" + data.projector_count + ")");
+                    for (var index = 0; index < data.projector_list.length; index++) {
+                        var li = $("<li></li>").text(data.projector_list[index].name + "/" + data.projector_list[index].model + "/" + data.projector_list[index].asset_number);
+                        $(".projector_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".projector_list").append(li)
+
+                    $("#cabinet_count").text("(" + data.cabinet_count + ")");
+                    for (var index = 0; index < data.cabinet_list.length; index++) {
+                        var li = $("<li></li>").text(data.cabinet_list[index].name + "/" + data.cabinet_list[index].model + "/" + data.cabinet_list[index].asset_number);
+                        $(".cabinet_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".cabinet_list").append(li)
+                    $("#equipment-group-first-line-more").parent().remove()
+
+                    $("#equipment-group-second-line-more").parent().css({ "display": "block" });
+                }
+
+            })
+        })
+        // 第三行
+        $("#equipment-group-second-line-more").click(function () {
+            $(".equipment-group-third-line").css({ "display": "flex" });
+            $.post("/admin/third_line", {}, function (data, status) {
+                if (status == "success") {
+                    // UPS
+                    $("#UPS_count").text("(" + data.UPS_count + ")");
+                    for (var index = 0; index < data.UPS_list.length; index++) {
+                        var li = $("<li></li>").text(data.UPS_list[index].name + "/" + data.UPS_list[index].model + "/" + data.UPS_list[index].asset_number);
+                        $(".UPS_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".UPS_list").append(li)
+
+                    $("#switch_count").text("(" + data.switch_count + ")");
+                    for (var index = 0; index < data.switch_list.length; index++) {
+                        var li = $("<li></li>").text(data.switch_list[index].name + "/" + data.switch_list[index].model + "/" + data.switch_list[index].asset_number);
+                        $(".switch_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".switch_list").append(li)
+
+                    // router
+                    $("#router_count").text("(" + data.router_count + ")");
+                    for (var index = 0; index < data.router_list.length; index++) {
+                        var li = $("<li></li>").text(data.router_list[index].name + "/" + data.router_list[index].model + "/" + data.router_list[index].asset_number);
+                        $(".router_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".router_list").append(li)
+                    // other
+                    $("#other_count").text("(" + data.other_count + ")");
+                    for (var index = 0; index < data.other_list.length; index++) {
+                        var li = $("<li></li>").text(data.other_list[index].name + "/" + data.other_list[index].model + "/" + data.other_list[index].asset_number);
+                        $(".other_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".other_list").append(li)
+
+                    $("#equipment-group-second-line-more").parent().remove()
+                }
+
+            })
+        })
+        // 位置组里面第二行
+        $("#location-group-first-line-more").click(function () {
+            $(".location-group-second-line").css({ "display": "flex" });
+            $.post("/admin/location_second_line", {}, function (data, status) {
+                if (status == "success") {
+                    $("#location_business_count").text("(" + data.location_business_count + ")");
+                    for (var index = 0; index < data.location_business_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_business_list[index].name + "/" + data.location_business_list[index].model + "/" + data.location_business_list[index].asset_number);
+                        $(".location_business_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_business_list").append(li)
+
+                    $("#location_planning_count").text("(" + data.location_planning_count + ")");
+                    for (var index = 0; index < data.location_planning_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_planning_list[index].name + "/" + data.location_planning_list[index].model + "/" + data.location_planning_list[index].asset_number);
+                        $(".location_planning_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_planning_list").append(li)
+
+                    $("#location_storage_count").text("(" + data.location_storage_count + ")");
+                    for (var index = 0; index < data.location_storage_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_storage_list[index].name + "/" + data.location_storage_list[index].model + "/" + data.location_storage_list[index].asset_number);
+                        $(".location_storage_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_storage_list").append(li)
+
+                    $("#location_fis_count").text("(" + data.location_fis_count + ")");
+                    for (var index = 0; index < data.location_fis_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_fis_list[index].name + "/" + data.location_fis_list[index].model + "/" + data.location_fis_list[index].asset_number);
+                        $(".location_fis_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_fis_list").append(li)
+                    $("#location-group-first-line-more").parent().remove()
+
+                    $("#location-group-second-line-more").parent().css({ "display": "block" });
+                }
+
+            })
+        })
+        // 位置组里面第三行
+        $("#location-group-second-line-more").click(function () {
+            $(".location-group-third-line").css({ "display": "flex" });
+            $.post("/admin/location_third_line", {}, function (data, status) {
+                if (status == "success") {
+                    $("#location_receive_count").text("(" + data.location_receive_count + ")");
+                    for (var index = 0; index < data.location_receive_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_receive_list[index].name + "/" + data.location_receive_list[index].model + "/" + data.location_receive_list[index].asset_number);
+                        $(".location_receive_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_receive_list").append(li)
+
+                    $("#location_network_count").text("(" + data.location_network_count + ")");
+                    for (var index = 0; index < data.location_network_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_network_list[index].name + "/" + data.location_network_list[index].model + "/" + data.location_network_list[index].asset_number);
+                        $(".location_network_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_network_list").append(li)
+
+                    $("#location_W_guard_count").text("(" + data.location_W_guard_count + ")");
+                    for (var index = 0; index < data.location_W_guard_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_W_guard_list[index].name + "/" + data.location_W_guard_list[index].model + "/" + data.location_W_guard_list[index].asset_number);
+                        $(".location_W_guard_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_W_guard_list").append(li)
+
+                    $("#location_S_guard_count").text("(" + data.location_S_guard_count + ")");
+                    for (var index = 0; index < data.location_S_guard_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_S_guard_list[index].name + "/" + data.location_S_guard_list[index].model + "/" + data.location_S_guard_list[index].asset_number);
+                        $(".location_S_guard_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_S_guard_list").append(li)
+
+                    $("#location-group-second-line-more").parent().remove()
+
+                    $("#location-group-third-line-more").parent().css({ "display": "block" });
+                }
+
+            })
+        })
+        // 位置组里面第四行
+        $("#location-group-third-line-more").click(function () {
+            $(".location-group-fourth-line").css({ "display": "flex" });
+            $.post("/admin/location_fourth_line", {}, function (data, status) {
+                if (status == "success") {
+                    $("#location_hall_count").text("(" + data.location_hall_count + ")");
+                    for (var index = 0; index < data.location_hall_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_hall_list[index].name + "/" + data.location_hall_list[index].model + "/" + data.location_hall_list[index].asset_number);
+                        $(".location_hall_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_hall_list").append(li)
+
+                    $("#location_canteen_count").text("(" + data.location_canteen_count + ")");
+                    for (var index = 0; index < data.location_canteen_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_canteen_list[index].name + "/" + data.location_canteen_list[index].model + "/" + data.location_canteen_list[index].asset_number);
+                        $(".location_canteen_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_canteen_list").append(li)
+
+                    $("#location_small_meeting_count").text("(" + data.location_small_meeting_count + ")");
+                    for (var index = 0; index < data.location_small_meeting_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_small_meeting_list[index].name + "/" + data.location_small_meeting_list[index].model + "/" + data.location_small_meeting_list[index].asset_number);
+                        $(".location_small_meeting_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_small_meeting_list").append(li)
+
+                    $("#location_meeting_count").text("(" + data.location_meeting_count + ")");
+                    for (var index = 0; index < data.location_meeting_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_meeting_list[index].name + "/" + data.location_meeting_list[index].model + "/" + data.location_meeting_list[index].asset_number);
+                        $(".location_meeting_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_meeting_list").append(li)
+
+                    $("#location-group-third-line-more").parent().remove()
+
+                    $("#location-group-fourth-line-more").parent().css({ "display": "block" });
+                }
+
+            })
+        })
+        // 位置组里面第五行
+        $("#location-group-fourth-line-more").click(function () {
+            $(".location-group-fifth-line").css({ "display": "flex" });
+            $.post("/admin/location_fifth_line", {}, function (data, status) {
+                if (status == "success") {
+                    $("#location_production_count").text("(" + data.location_production_count + ")");
+                    for (var index = 0; index < data.location_production_list.length; index++) {
+                        var li = $("<li></li>").text(data.location_production_list[index].name + "/" + data.location_production_list[index].model + "/" + data.location_production_list[index].asset_number);
+                        $(".location_production_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".location_production_list").append(li)
+
+
+
+                    $("#location-group-fourth-line-more").parent().remove()
+
+                }
+
+            })
+        })
+    })
+</script>
+{%endblock%}

@@ -1,0 +1,135 @@
+<!-- 导入模版 -->
+{% extends "base.html" %}
+<!-- head -->
+{% block head %}
+<link rel="stylesheet" href="../static/css/login.css">
+<script src="../static/js/md5.js"></script>
+<title>登录</title>
+{% endblock %}
+<!-- 网页内容 -->
+{% block content %}
+<!-- 网页内容的主体 -->
+<div class="container">
+    <div class="wrapper">
+        <div class="title">
+            <h2>仓储管理系统</h2>
+        </div>
+        <div class="login-box">
+
+            <div class="uname-box">
+
+                <div class="u-logo-img1"></div>
+
+
+                <div class="u-input">
+                    <input type="text" placeholder="请输入用户名">
+
+                </div>
+            </div>
+            <div id="uname_tips"></div>
+            <div class="pwd-box">
+                <div class="p-logo-img1"></div>
+                <div class="p-input">
+                    <input type="password" placeholder="请输入密码">
+
+                </div>
+
+            </div>
+            <div id="pwd_tips"></div>
+            <div class="sub-btn">
+                <a>登&nbsp;&nbsp;录</a>
+            </div>
+
+
+        </div>
+        <div style="margin:20px auto;text-align: center;">
+            <a
+                href="{{url_for('visitor.forget')}}">忘记密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                href="{{url_for('visitor.register')}}">用户注册</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(document).keydown(function (event) {
+            if (event.keyCode == 13) {
+                $(".sub-btn").click();
+            }
+        });
+        // 输入框获得焦点
+        $(".u-input input").focus(function () {
+            // 清空输入框的占位字符
+            $(".u-input input").attr("placeholder", "");
+            // 用户名输入错误时提示的文字
+            $("#uname_tips").text("");
+            // 提示效果，边框改变一下颜色
+            $(".uname-box").addClass("active")
+        });
+        // 输入框失去焦点
+        $(".u-input input").blur(function () {
+            // 占位字符
+            $(".u-input input").attr("placeholder", "请输入用户名");
+            // 效果去掉
+            $(".uname-box").removeClass("active")
+        });
+        $(".p-input input").focus(function () {
+            $(".p-input input").attr("placeholder", "");
+            $("#pwd_tips").text("");
+            $(".pwd-box").addClass("active")
+        });
+        $(".p-input input").blur(function () {
+            $(".p-input input").attr("placeholder", "请输入密码");
+            $(".pwd-box").removeClass("active")
+        });
+        // 鼠标经过按钮时的效果
+        $(".sub-btn").mouseenter(function () {
+            $(".sub-btn").css("background-color", "#1760D7");
+            $(".sub-btn a").css("background-color", "#1760D7")
+        });
+        // 鼠标离开按钮时的效果
+        $(".sub-btn").mouseleave(function () {
+            $(".sub-btn").css("background-color", "#3977db");
+            $(".sub-btn a").css("background-color", "#3977db")
+        });
+        // 点击按钮
+        $(".sub-btn").click(function () {
+            var username = $(".u-input input").val();
+            var password = $(".p-input input").val();
+            if (username == "") {
+                $("#uname_tips").text("用户名不能为空！");
+            } else if (password == "") {
+                $("#pwd_tips").text("密码不能为空！");
+            } else {
+                var password_md5 = $.md5(password);
+                // console.log(password_md5);
+                $.post("/login",
+                    {
+                        username: username,
+                        password: password_md5
+                    },
+                    function (data, status) {
+                        if (status == "success") {
+                            if (data.code == 1) {
+                                $("#uname_tips").text(data.msg);
+                            }
+
+                            if (data.code == 2) {
+                                $("#pwd_tips").text(data.msg);
+                            }
+
+                            if (data.code == 0) {
+                                window.location.href = "/supplier/supplier_info";
+                            }
+
+                        }
+
+                    });
+            }
+        })
+    });
+</script>
+
+
+{% endblock %}

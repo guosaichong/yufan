@@ -1,0 +1,32 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{%block maincontent%}
+<div class="supplier_management">
+    <div class="show-cards">
+        <div>
+            <a href="{{url_for('supplier.add_supplier')}}">
+                
+                <p>增加供应商</p>
+            </a>
+        </div>
+        <div>
+            <a href="{{url_for('supplier.del_supplier_index')}}">
+                
+                <p>删除供应商</p>
+            </a>
+
+        </div>
+        <div>
+            <a href="{{url_for('supplier.mod_supplier_index')}}">
+                
+                <p>修改供应商</p>
+            </a>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

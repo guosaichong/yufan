@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<link rel="stylesheet" href="../static/css/index.css">
+<title>来访登记</title>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="tablename">
+        <span>日期：<input type="date" name="date" id="date"></span>
+        <a href="javascript:;" target="_self" id="btnSearch" class="search-btn">查询</a>
+    </div>
+    <div class="linkto" style="margin-top: 10px;display: none;">
+        <p>当前没有来访人员信息，请稍后<a href="{{url_for('visitor.visitor_info')}}">刷新</a>页面。</p>
+    </div>
+    <div class="table" style="display: none;">
+        <table id="bbsTab">
+            <thead>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>手机号</th>
+                <th>车牌号</th>
+                <th>供应商</th>
+                <th>物流公司</th>
+                <th>来访时间</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+    <div class="footer" style="text-align: center;margin-top:20px;margin-bottom: 20px;display: none;">
+        <p><img id="previous" src="../static/images/left.png"></imag>&nbsp;&nbsp;第<span
+                id="page_number"></span>页&nbsp;&nbsp;共<span id="page_total"></span>页&nbsp;&nbsp;<img
+                src="../static/images/right.png " id="next">
+            </imag>
+        </p>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function p(s) {
+        return s < 10 ? '0' + s : s
+    }
+    $(document).ready(function () {
+        var oTable = document.getElementById("bbsTab");
+        var search_date = $("#date").val();
+        var page_number = $("#page_number").text();
+        // console.log(search_date);
+        if (!search_date) {
+            var ddd = new Date();
+            var day = ddd.getDate();
+
+            if (ddd.getMonth() < 10) {
+                var month = "0" + (ddd.getMonth() + 1);
+            }
+
+            if (ddd.getDate() < 10) {
+                day = "0" + ddd.getDate();
+            }
+
+            var datew = ddd.getFullYear() + "-" + month + "-" + day;
+            var datew = datew.toString();
+
+            $("#date").val(datew);
+        };
+        search_date = $("#date").val();
+        $.post("/visitor", { search_date: search_date }, function (data, status) {
+
+            if (status == "success") {
+                if (data.quantity == 0) {
+
+                    $(".linkto").css("display", "block");
+                } else {
+                    $(".table").css("display", "block");
+                    $(".footer").css("display", "block");
+                    
+                    $("tbody").remove();
+
+                    var tbody = $("<tbody></tbody>");
+
+                    $("table").append(tbody);
+
+
+                    for (var index = 0; index < data.ret.length; index++) {
+
+                        var tr = $("<tr></tr>").html("<td></td><td></td><td></td><td></td><td></td><td></td><td></td>")
+                        $("tbody").append(tr)
+                    }
+                    $("#page_total").text(data.page_total);
+                    $("#page_number").text(1);
+                    var reg = /^(\d{3})\d{4}(\d{4})$/;
+                    for (var i = 1; i < data.ret.length + 1; i++) {
+                        oTable.rows[i].cells[0].innerHTML = i;
+                        console.log(data.ret[i - 1]);
+                        oTable.rows[i].cells[1].innerHTML = data.ret[i - 1][0];
+                        // 手机号 隐藏中间4位
+                        // oTable.rows[i].cells[2].innerHTML = data[i - 1][1].replace(reg, "$1****$2");
+                        oTable.rows[i].cells[2].innerHTML = data.ret[i - 1][1];
+                        oTable.rows[i].cells[3].innerHTML = data.ret[i - 1][2];
+                        oTable.rows[i].cells[4].innerHTML = data.ret[i - 1][3];
+                        oTable.rows[i].cells[5].innerHTML = data.ret[i - 1][4];
+                        // 来访时间 时间转换
+                        var da = new Date(data.ret[i - 1][5])
+                        // console.log(da.getTime()-8*60*60*1000)
+                        var d = new Date(da.getTime() - 8 * 60 * 60 * 1000)
+                        oTable.rows[i].cells[6].innerHTML = d.getFullYear() + '-' + p((d.getMonth() + 1)) + '-' + p(d.getDate()) + " " + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+                        // oTable.rows[i].cells[6].innerHTML = data[i - 1][5];
+                        if (i % 2 == 0) {
+                            for (var j = 0; j < oTable.rows[i].cells.length; j++) {
+                                // console.log(oTable.rows[i].cells.length);
+                                oTable.rows[i].cells[j].style.backgroundColor = "rgba(200, 189, 136,.5)";
+                            }
+                        }
+                    };
+
+
+                }
+            }
+        });
+        $("#previous").click(function () {
+            if (parseInt($("#page_number").text()) == 0 || parseInt($("#page_number").text()) == 1) {
+
+
+            } else {
+                search_date = $("#date").val();
+                page_number = parseInt($("#page_number").text()) - 1;
+                // console.log(page_number)
+                $.post("/visitor/<search_date>/<page_number>", { search_date: search_date, page_number: page_number }, function (data, status) {
+                    // console.log(data);
+                    if (status == "success") {
+                        $("tbody").remove();
+                        var tbody = $("<tbody></tbody>");
+
+                        $("table").append(tbody);
+
+
+                        for (var index = 0; index < data.ret.length; index++) {
+
+                            var tr = $("<tr></tr>").html("<td></td><td></td><td></td><td></td><td></td><td></td><td></td>")
+                            $("tbody").append(tr)
+                        }
+                        $("#page_total").text(data.ret.page_total);
+                        $("#page_number").text(page_number);
+                        var reg = /^(\d{3})\d{4}(\d{4})$/;
+                        for (var i = 1; i < data.ret.length + 1; i++) {
+                            oTable.rows[i].cells[0].innerHTML = i;
+                            oTable.rows[i].cells[1].innerHTML = data.ret[i - 1][0];
+                            // 手机号 隐藏中间4位
+                            // oTable.rows[i].cells[2].innerHTML = data[i - 1][1].replace(reg, "$1****$2");
+                            oTable.rows[i].cells[2].innerHTML = data.ret[i - 1][1];
+                            oTable.rows[i].cells[3].innerHTML = data.ret[i - 1][2];
+                            oTable.rows[i].cells[4].innerHTML = data.ret[i - 1][3];
+                            oTable.rows[i].cells[5].innerHTML = data.ret[i - 1][4];
+                            // 来访时间 时间转换
+                            var da = new Date(data.ret[i - 1][5])
+                            // console.log(da.getTime()-8*60*60*1000)
+                            var d = new Date(da.getTime() - 8 * 60 * 60 * 1000)
+                            oTable.rows[i].cells[6].innerHTML = d.getFullYear() + '-' + p((d.getMonth() + 1)) + '-' + p(d.getDate()) + " " + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+                            // oTable.rows[i].cells[6].innerHTML = data[i - 1][5];
+                            if (i % 2 == 0) {
+                                for (var j = 0; j < oTable.rows[i].cells.length; j++) {
+                                    // console.log(oTable.rows[i].cells.length);
+                                    oTable.rows[i].cells[j].style.backgroundColor = "rgba(200, 189, 136,.5)";
+                                }
+                            }
+                        };
+
+                    }
+                })
+            }
+
+        });
+        $("#next").click(function () {
+            if (parseInt($("#page_number").text()) == 0) {
+
+            } else if ($("#page_number").text() == $("#page_total").text()) {
+
+            } else {
+                search_date = $("#date").val();
+                page_number = parseInt($("#page_number").text()) + 1;
+                // console.log(page_number)
+                $.post("/visitor/<search_date>/<page_number>", { search_date: search_date, page_number: page_number }, function (data, status) {
+                    console.log(data);
+                    if (status == "success") {
+                        $("tbody").remove();
+                        var tbody = $("<tbody></tbody>");
+
+                        $("table").append(tbody);
+
+
+                        for (var index = 0; index < data.ret.length; index++) {
+
+                            var tr = $("<tr></tr>").html("<td></td><td></td><td></td><td></td><td></td><td></td><td></td>")
+                            $("tbody").append(tr)
+                        }
+                        $("#page_total").text(data.ret.page_total);
+                        $("#page_number").text(page_number);
+                        var reg = /^(\d{3})\d{4}(\d{4})$/;
+                        for (var i = 1; i < data.ret.length + 1; i++) {
+                            oTable.rows[i].cells[0].innerHTML = i;
+                            oTable.rows[i].cells[1].innerHTML = data.ret[i - 1][0];
+                            // 手机号 隐藏中间4位
+                            // oTable.rows[i].cells[2].innerHTML = data[i - 1][1].replace(reg, "$1****$2");
+                            oTable.rows[i].cells[2].innerHTML = data.ret[i - 1][1];
+                            oTable.rows[i].cells[3].innerHTML = data.ret[i - 1][2];
+                            oTable.rows[i].cells[4].innerHTML = data.ret[i - 1][3];
+                            oTable.rows[i].cells[5].innerHTML = data.ret[i - 1][4];
+                            // 来访时间 时间转换
+                            var da = new Date(data.ret[i - 1][5])
+                            // console.log(da.getTime()-8*60*60*1000)
+                            var d = new Date(da.getTime() - 8 * 60 * 60 * 1000)
+                            oTable.rows[i].cells[6].innerHTML = d.getFullYear() + '-' + p((d.getMonth() + 1)) + '-' + p(d.getDate()) + " " + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+                            // oTable.rows[i].cells[6].innerHTML = data[i - 1][5];
+                            if (i % 2 == 0) {
+                                for (var j = 0; j < oTable.rows[i].cells.length; j++) {
+                                    // console.log(oTable.rows[i].cells.length);
+                                    oTable.rows[i].cells[j].style.backgroundColor = "rgba(200, 189, 136,.5)";
+                                }
+                            }
+                        };
+
+                    }
+                })
+            }
+
+        });
+        $("#btnSearch").click(function () {
+
+
+            search_date = $("#date").val();
+            // console.log(search_date)
+            $.post("/visitor", { search_date: search_date }, function (data, status) {
+
+                // console.log(data);
+                if (status == "success") {
+                    if (data.quantity == 0) {
+                        $(".table").css("display", "none");
+                        $(".footer").css("display", "none");
+                        $(".linkto").css("display", "block");
+                    } else {
+                        $(".linkto").css("display", "none");
+                        $(".table").css("display", "block");
+                        $(".footer").css("display", "block");
+                        // var oTable = document.getElementById("bbsTab");
+                        $("tbody").remove();
+                        var tbody = $("<tbody></tbody>");
+
+                        $("table").append(tbody);
+                        // $("#page_total").text();
+                        for (var index = 0; index < data.ret.length; index++) {
+
+                            var tr = $("<tr></tr>").html("<td></td><td></td><td></td><td></td><td></td><td></td><td></td>")
+                            $("tbody").append(tr)
+                        }
+                        $("#page_total").text(data.page_total);
+                        if (data.page_total == 0) {
+                            $("#page_number").text(0);
+                        } else {
+                            $("#page_number").text(1);
+                        }
+                        var reg = /^(\d{3})\d{4}(\d{4})$/;
+                        for (var i = 1; i < data.ret.length + 1; i++) {
+                            oTable.rows[i].cells[0].innerHTML = i;
+                            oTable.rows[i].cells[1].innerHTML = data.ret[i - 1][0];
+                            // 手机号 隐藏中间4位
+                            // oTable.rows[i].cells[2].innerHTML = data[i - 1][1].replace(reg, "$1****$2");
+                            oTable.rows[i].cells[2].innerHTML = data.ret[i - 1][1];
+                            oTable.rows[i].cells[3].innerHTML = data.ret[i - 1][2];
+                            oTable.rows[i].cells[4].innerHTML = data.ret[i - 1][3];
+                            oTable.rows[i].cells[5].innerHTML = data.ret[i - 1][4];
+                            // 来访时间 时间转换
+                            var da = new Date(data.ret[i - 1][5])
+                            // console.log(da.getTime()-8*60*60*1000)
+                            var d = new Date(da.getTime() - 8 * 60 * 60 * 1000)
+                            oTable.rows[i].cells[6].innerHTML = d.getFullYear() + '-' + p((d.getMonth() + 1)) + '-' + p(d.getDate()) + " " + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+                            // oTable.rows[i].cells[6].innerHTML = data[i - 1][5];
+                            if (i % 2 == 0) {
+                                for (var j = 0; j < oTable.rows[i].cells.length; j++) {
+                                    // console.log(oTable.rows[i].cells.length);
+                                    oTable.rows[i].cells[j].style.backgroundColor = "rgba(200, 189, 136,.5)";
+                                }
+                            }
+                        };
+                    }
+
+
+                }
+            })
+
+        })
+    })
+
+
+
+
+
+</script>
+{% endblock %}

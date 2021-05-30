@@ -1,0 +1,40 @@
+.container{
+    position: relative;
+    margin: 0 auto;
+    width: 1200px;
+    height: 650px;
+    padding: 10px;
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+    
+}
+.tablename{
+    text-align: right;
+    
+}
+#btnSearch{
+    text-decoration: none;
+}
+table{
+    margin: 5px auto;
+    text-align: center;
+    border-collapse : collapse;
+    width: 100%;
+    
+}
+table,th,td{
+    border: 1px solid #ccc;
+    padding: 5px;
+    
+}
+th{
+    background-color: rgb(200, 189, 136);
+    
+}
+
+#previous,#next{
+    vertical-align:middle;
+    width: 20px;
+    height: 20px;
+    cursor:pointer;
+}

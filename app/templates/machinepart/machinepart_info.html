@@ -1,0 +1,67 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<link rel="stylesheet" href="../../static/css/machinepart_info.css">
+<title>零件信息</title>
+{% endblock %}
+{%block maincontent%}
+<div class="part_amount"></div>
+<div class="linkto">
+    <p>当前没有零件信息，<a href="{{url_for('machinepart.add')}}">点此</a>增加零件。</p>
+</div>
+<div class="part_info"></div>
+<div style="text-align: center;margin-top: 10px;">
+    <p class="page_info"></p>
+</div>
+<script>
+    $(document).ready(function () {
+
+        var today = new Date();//定义日期对象     
+        var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年      
+        var MM = today.getMonth() + 1;//通过日期对象的getMonth()方法返回年      
+        var dd = today.getDate();//通过日期对象的getDate()方法返回年  
+        $.post("/machinepart/machinepart_info", {}, function (data, status) {
+            if (status == "success") {
+                $(".part_amount").text("截止" + yyyy + "年" + MM + "月" + dd + "日，共有" + data.machinepart_amount + "种零件。");
+                if (data.machinepart_amount == 0) {
+                    $(".linkto").css("display", "block");
+                } else {
+                    var table = $("<table></table>");
+                    table.id = "table";
+                    var thead = $("<thead></thead>");
+                    var thead_tr = $("<tr></tr>").html("<th>序号</th><th>零件号</th><th>零件名称</th><th>数量</th><th>单位</th><th>供应商</th>");
+                    thead.append(thead_tr);
+                    var tbody = $("<tbody></tbody>");
+                    for (var index = 0; index < data.part_list.length; index++) {
+
+                        // var tr = $("<tr></tr>").html("<td></td><td></td><td></td><td></td><td></td><td></td>")
+                        var tr = $("<tr></tr>");
+                        var td1 = $("<td></td>").text(index + 1);
+                        var td2 = $("<td></td>").text(data.part_list[index].part_number);
+                        var td3 = $("<td></td>").text(data.part_list[index].part_name);
+                        var td4 = $("<td></td>").text(data.part_list[index].amount);
+                        var td5 = $("<td></td>").text(data.part_list[index].quantifier);
+                        var td6 = $("<td></td>").text(data.part_list[index].suppliers);
+                        tr.append(td1);
+                        tr.append(td2);
+                        tr.append(td3);
+                        tr.append(td4);
+                        tr.append(td5);
+                        tr.append(td6);
+
+                        tbody.append(tr)
+                    }
+                    table.append(thead);
+                    table.append(tbody);
+                    $(".part_info").append(table);
+                    $(".page_info").text("上一页 第1页 共" + data.page_total + "页 下一页")
+                }
+
+
+
+            }
+        }, "json")
+    })
+</script>
+{%endblock%}

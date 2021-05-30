@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/css/wms_index.css">
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <script src="../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/common.js"></script>
+    <title>修改供应商信息</title>
+    <style>
+        .management li:nth-child(2) {
+            background-color: rgba(200, 189, 136, .4);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:link {
+            color: rgb(30, 80, 174);
+        }
+
+        a:visited {
+            color: rgb(30, 80, 184);
+        }
+
+        a:hover {
+            color: rgb(30, 80, 204);
+            font-weight: bold;
+        }
+
+        a:active {
+            color: rgb(30, 80, 204);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网页内容的头部 -->
+    <div class="header">
+        <div class="logo">
+            <img src="../../static/images/logo.png" alt="禹帆物流">
+            <span>专业第三方物流供应商</span>
+        </div>
+
+        <div class="address">
+            <p>天津市宁河区一汽大众华北基地</p>
+
+            <span>服务热线：022-69329006 69329008</span>
+        </div>
+
+        <div class="scroll-box">
+
+            <ul>
+                <li><span id="nowDateTimeSpan"></span></li>
+                <li><span>天津禹帆物流有限公司</span></li>
+
+            </ul>
+        </div>
+    </div>
+    <!-- 网页内容的导航条 -->
+    <div class="navigator">
+
+    </div>
+    <!-- 网页内容的主体 -->
+    <div class="container">
+        <div id="navsecond">
+
+            <div id="course">
+                <h3>基础数据</h3>
+                <ul class="info">
+                    <li><a href="{{url_for('supplier.supplier_info')}}" title="供应商信息">供应商信息</a></li>
+                    <li><a href="{{url_for('machinepart.machinepart_info')}}" title="零件信息">零件信息</a></li>
+                </ul>
+                <h3>入库管理</h3>
+                <ul>
+                    <li><a href="" title="入库">入库</a></li>
+                    <li><a href="#" title="单据查询">单据查询</a></li>
+
+                </ul>
+                <h3>出库管理</h3>
+                <ul>
+                    <li><a href="#" title="出库">出库</a></li>
+                    <li><a href="#" title="单据查询">单据查询</a></li>
+
+                </ul>
+                <h3>供应商维护</h3>
+                <ul class="management">
+                    <li><a href="{{url_for('supplier.add_supplier')}}" title="添加供应商">添加供应商</a></li>
+                    <li><a href="{{url_for('supplier.mod_supplier_index')}}" title="修改供应商">修改供应商</a></li>
+                    <li><a href="{{url_for('supplier.del_supplier_index')}}" title="删除供应商">删除供应商</a></li>
+
+                </ul>
+                <h3>零件维护</h3>
+                <ul class="part_management">
+                    <li><a href="{{url_for('machinepart.add')}}" title="添加零件">添加零件</a></li>
+                    <li><a href="{{url_for('machinepart.mod_machinepart_index')}}" title="修改零件">修改零件</a></li>
+                    <li><a href="{{url_for('machinepart.del_machinepart_index')}}" title="删除零件">删除零件</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div id="maincontent">
+            <div>
+                <p><a href="{{url_for('supplier.mod_supplier_index')}}">修改供应商</a>>{{mod_supplier_number}}</p>
+                <form action="{{url_for('supplier.mod_supplier',mod_supplier_number=mod_supplier_number)}}"
+                    method="POST">
+
+                    <label for="supplier_number">供应商号：</label>
+                    <input type="text" id="supplier_number" name="supplier_number" autocomplete="off"
+                        value="{{mod_supplier_number}}" readonly="readonly">
+                    <label for="supplier_name">供应商名称：</label>
+                    <input type="text" id="supplier_name" name="supplier_name" autocomplete="off"
+                        value="{{mod_supplier_name}}">
+                    <button type="submit">修改</button>
+                    {%for message in get_flashed_messages()%}
+                    <p class="tips" style="color: red">{{message}}</p>
+                    {%endfor%}
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            // 输入框获得焦点
+            $("input").focus(function () {
+
+                $(".tips").text("");
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

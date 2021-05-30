@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <script src="../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/common.js"></script>
+    <title>办公设备</title>
+    <style>
+        .container {
+            position: relative;
+            margin: 0 auto;
+            width: 1200px;
+            height: 650px;
+            /* padding: 10px; */
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+
+        }
+
+        table {
+            margin: 5px auto;
+            text-align: center;
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 5px;
+
+        }
+
+        th {
+            background-color: rgb(200, 189, 136);
+
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(200, 189, 136, .4);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网页内容的头部 -->
+    <div class="header">
+        <div class="logo">
+            <img src="../../static/images/logo.png" alt="禹帆物流">
+            <span>专业第三方物流供应商</span>
+        </div>
+
+        <div class="address">
+            <p>天津市宁河区一汽大众华北基地</p>
+
+            <span>服务热线：022-69329006 69329008</span>
+        </div>
+
+        <div class="scroll-box">
+
+            <ul>
+                <li><span id="nowDateTimeSpan"></span></li>
+                <li><span>天津禹帆物流有限公司</span></li>
+
+            </ul>
+        </div>
+    </div>
+    <!-- 网页内容的导航条 -->
+    <div class="navigator">
+
+    </div>
+    <div class="container">
+        <table>
+            
+            {%if resu%}
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>设备名称</th>
+                    <th>规格型号</th>
+                    <th>所属部门</th>
+                    <th>存放位置</th>
+
+                    <th>资产编号</th>
+                    <th>资产状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for r in resu%}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{r[0]}}</td>
+                    <td>{{r[1]}}</td>
+                    <td>{{r[2]}}</td>
+                    <td>{{r[3]}}</td>
+                    <td>{{r[4]}}</td>
+                    <td>{{r[5]}}</td>
+
+                </tr>
+
+                {%endfor%}
+            </tbody>
+            {%else%}
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>设备名称</th>
+                    <th>规格型号</th>
+                    <th>所属部门</th>
+                    <th>存放位置</th>
+                    <th>使用人</th>
+                    <th>IP地址</th>
+                    <th>资产编号</th>
+                    <th>资产状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for r in res%}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{r[0]}}</td>
+                    <td>{{r[1]}}</td>
+                    <td>{{r[2]}}</td>
+                    <td>{{r[3]}}</td>
+                    <td>{{r[4]}}</td>
+                    <td>{{r[5]}}</td>
+                    <td>{{r[6]}}</td>
+                    <td>{{r[7]}}</td>
+
+                </tr>
+                {%endfor%}
+
+            </tbody>
+            {%endif%}
+            
+        </table>
+    </div>
+</body>
+
+</html>

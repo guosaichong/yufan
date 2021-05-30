@@ -1,0 +1,37 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<link rel="stylesheet" href="../../static/css/add_supplier.css">
+<title>增加供应商</title>
+{% endblock %}
+{%block maincontent%}
+<div>
+    <!-- <p>所在位置：<a href="{{url_for('supplier.supplier_management')}}">供应商管理</a>>添加供应商</p> -->
+    <form action="{{url_for('supplier.add_supplier')}}" method="POST">
+
+        <label for="supplier_number">供应商代码：</label>
+        <input type="text" id="supplier_number" name="supplier_number" required autocomplete="off">
+        <label for="supplier_name">供应商名称：</label>
+        <input type="text" id="supplier_name" name="supplier_name" required autocomplete="off">
+        <button type="submit">添加</button>
+        {%for message in get_flashed_messages()%}
+        <p class="tips" style="color: red">{{message}}</p>
+        {%endfor%}
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        // 输入框获得焦点
+        $("input").focus(function () {
+
+            $(".tips").text("");
+
+        });
+
+    });
+</script>
+
+{%endblock%}

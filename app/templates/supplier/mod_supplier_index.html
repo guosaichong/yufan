@@ -1,0 +1,58 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<link rel="stylesheet" href="../../static/css/mod_supplier_index.css">
+<title>修改供应商</title>
+{% endblock %}
+{%block maincontent%}
+<!-- <p><a href="{{url_for('supplier.supplier_management')}}">供应商管理</a>>修改供应商</p> -->
+<form action="{{url_for('supplier.mod_supplier_index')}}" method="POST">
+
+    <label for="supplier_number">供应商号或名称：</label>
+    <input type="text" id="supplier_number" name="supplier_number" autocomplete="off" required>
+    <button type="submit">查找</button>
+    {%for message in get_flashed_messages()%}
+    <p class="tips" style="color: red">{{message}}</p>
+    {%endfor%}
+</form>
+<div>
+    <table>
+        <thead>
+            <th>序号</th>
+            <th>供应商号</th>
+            <th>供应商名称</th>
+        </thead>
+        <tbody>
+            {%for s in supplier_numbers%}
+            <tr>
+                <td>{{ loop.index }}</td>
+                
+                <td>{{s.supplier_number}}<a title="修改"
+                        href="{{url_for('supplier.mod_supplier',mod_supplier_number=s.supplier_number)}}"><img alt="修改" style="width: 16px;height: 16px; margin-left: 10px;"
+                            src="../../static/images/修改.png" />
+                    </a>
+                </td>
+                <td>{{s.supplier_name}}</td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        // 输入框获得焦点
+        $("input").focus(function () {
+
+            $(".tips").text("");
+
+        });
+
+    });
+</script>
+
+
+{%endblock%}

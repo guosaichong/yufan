@@ -1,0 +1,118 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<title>删除零件</title>
+{% endblock %}
+{%block maincontent%}
+<style>
+    .part_management li:nth-child(3) {
+        background-color: rgba(200, 189, 136, .4);
+    }
+
+    table {
+        margin: 5px auto;
+        text-align: center;
+        border-collapse: collapse;
+        width: 100%;
+
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 5px;
+
+    }
+
+    th {
+        background-color: rgb(200, 189, 136);
+
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(200, 189, 136, .4);
+    }
+
+    /* table tr:hover {
+        background-color: rgba(200, 189, 136, .6);
+    } */
+
+
+    a {
+        text-decoration: none;
+
+    }
+
+    a:link {
+
+        color: black;
+    }
+
+    a:visited {
+
+        color: black;
+    }
+
+    a:hover {
+        color: rgb(30, 80, 204);
+        font-weight: bold;
+    }
+
+    a:active {
+        color: rgb(30, 80, 204);
+    }
+</style>
+<div>
+    <form action="{{url_for('machinepart.del_machinepart_index')}}" method="POST">
+
+        <label for="machinepart">零件号或名称：</label>
+        <input type="text" id="machinepart" name="machinepart" autocomplete="off" required>
+        <button type="submit">查找</button>
+        {%for message in get_flashed_messages()%}
+        <p class="tips" style="color: red">{{message}}</p>
+        {%endfor%}
+    </form>
+    <div>
+        <table>
+            <thead>
+                <th>序号</th>
+
+                <th>零件号</th>
+                <th>零件名称</th>
+                <th>零件数量</th>
+                <th>零件单位</th>
+            </thead>
+            <tbody>
+                {%for p in part_members%}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{p.part_number}}<a
+                            href="{{url_for('machinepart.del_machinepart',del_part_number=p.part_number)}}"
+                            title="删除"><img src="../../static/images/删除.png" alt="删除"
+                                style="width: 16px;height: 16px; margin-left: 10px;" /></a></td>
+                    <td>{{p.part_name}}</td>
+                    <td>{{p.amount}}</td>
+                    <td>{{p.quantifier}}</td>
+
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        // 输入框获得焦点
+        $("input").focus(function () {
+
+            $(".tips").text("");
+
+        });
+    })
+</script>
+
+
+{% endblock %}

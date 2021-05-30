@@ -1,0 +1,59 @@
+<!-- 导入模版 -->
+{% extends "wms_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/wms_index.css">
+<link rel="stylesheet" href="../../static/css/add.css">
+<title>增加零件</title>
+{% endblock %}
+{%block maincontent%}
+<div>
+    <form action="{{url_for('machinepart.add')}}" method="POST">
+        <label for="supplier">所属供应商：</label>
+        <select name="supplier" id="supplier" required>
+            {%for s in suppliers%}
+            <option value="{{s.supplier_number}}">{{s.supplier_number}}|{{s.supplier_name}}</option>
+            {%endfor%}
+        </select>
+        <label for="part_number">零件号：</label>
+        <input type="text" id="part_number" name="part_number" required autocomplete="off">
+        <label for="part_name">零件名称：</label>
+        <input type="text" id="part_name" name="part_name" required autocomplete="off">
+        <label for="quantifier">零件单位：</label>
+        <input type="text" id="quantifier" name="quantifier" required autocomplete="off">
+
+        <button type="submit">添加</button>
+        {%for message in get_flashed_messages()%}
+        <p class="tips" style="color: red">{{message}}</p>
+        {%endfor%}
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        // 输入框获得焦点
+        $("input").focus(function () {
+
+            $(".tips").text("");
+
+        });
+        $("#part_number").blur(function(){
+            // 零件号输入框失去焦点
+            var part_number=$("#part_number").val();
+            if (part_number==""){
+        
+            }else{
+                $.post("/machinepart/query_part",{part_number:part_number},function(data){
+                    // console.log(data);
+                    $("#part_name").val(data.part_name);
+                    $("#part_name").attr("readonly",data.readonly);
+                    $("#quantifier").val(data.quantifier);
+                    $("#quantifier").attr("readonly",data.readonly);
+                })  
+            }
+        })
+
+    });
+</script>
+
+{%endblock%}
