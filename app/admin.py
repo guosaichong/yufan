@@ -648,7 +648,8 @@ def add(category_name):
             "asset_number":asset_number
         }
         return jsonify(RET)
-    return render_template("admin/add_detail.html",category_name=category_name)
+    category_id=db.session.query(Category.id).filter(Category.name==category_name).first()
+    return render_template("admin/add_detail.html",category_name=category_name,category_id=category_id[0])
 # 按类别下载
 @admin.route("/down/<int:category_id>",methods=["GET"])
 def down(category_id):
