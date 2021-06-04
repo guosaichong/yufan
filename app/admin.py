@@ -597,7 +597,8 @@ def mod_info(asset_number):
     res=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.user,Equipment.IPaddress,Equipment.asset_status,Equipment.category_id).join(Department,Equipment.department_id==Department.id).join(Location,Equipment.location_id==Location.id).filter(
             Equipment.asset_number==asset_number).first()
     category_name=db.session.query(Category.name).join(Equipment,Equipment.category_id==Category.id).filter(Equipment.asset_number==asset_number).first()[0]
-    return render_template("admin/mod_info_detail.html",res=res,asset_number=asset_number,category_name=category_name)
+    category_id=db.session.query(Category.id).filter(Category.name==category_name).first()
+    return render_template("admin/mod_info_detail.html",res=res,asset_number=asset_number,category_name=category_name,category_id=category_id[0])
 # 删除
 @admin.route("/delete/<asset_number>",methods=["GET"])
 def delete(asset_number):

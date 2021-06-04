@@ -25,7 +25,7 @@ class Config(object):
 class DevelopmentConfig(Config):
     """开发模式的配置信息"""
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = ""
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://test:123456@localhost/access"
 
 class ProductionConfig(Config):
     """生产环境的配置信息"""
