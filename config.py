@@ -1,4 +1,4 @@
-
+#!/usr/bin/env
 import pymysql
 
 
@@ -42,3 +42,4 @@ HOST='smtp.sina.com'
 PORT=465
 ACCOUNT='gsc21@sina.com'
 PASSWORD=''
+

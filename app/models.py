@@ -1,3 +1,4 @@
+#!/usr/bin/env
 # mysql 日期设置默认值必须使用timestamp类型
 from sqlalchemy.sql.sqltypes import Boolean, Integer, TIMESTAMP
 from sqlalchemy.sql import func
@@ -160,14 +161,17 @@ class Equipment(db.Model):
     category = db.relationship("Category", backref="equipments")
     location = db.relationship("Location", backref="equipments")
 
-    def __init__(self, name, model, storage_location, asset_number, asset_status,department_id,category_id):
+    def __init__(self, name, model, user, IPaddress,asset_number, asset_status,department_id,category_id,location_id):
         self.name = name
         self.model = model
-        self.storage_location = storage_location
+        self.user=user
+        self.IPaddress=IPaddress
+        
         self.asset_number = asset_number
         self.asset_status = asset_status
         self.department_id=department_id
         self.category_id=category_id
+        self.location_id = location_id
 
     def __repr__(self):
-        return "<Equipment(name:%s,model:%s,storage_location:%s,asset_number:%s,asset_status:%s)>" % (self.name, self.model, self.storage_location, self.asset_number, self.asset_status)
+        return "<Equipment(name:%s,model:%s,asset_number:%s,asset_status:%s)>" % (self.name, self.model, self.asset_number, self.asset_status)

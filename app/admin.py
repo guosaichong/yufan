@@ -1,8 +1,12 @@
+#!/usr/bin/env
+from flask.helpers import make_response, send_file
 from flask_login import login_required, login_user, logout_user
-from flask import Blueprint, render_template, request, jsonify, url_for, redirect
+from flask import Blueprint, render_template, request, jsonify, url_for, redirect,send_from_directory
 import os
+from flask_sqlalchemy import model
 from sqlalchemy import and_, func, or_
-from .models import Location, User, db, Equipment, Department
+import xlsxwriter
+from .models import Category, Location, User, db, Equipment, Department
 
 
 admin = Blueprint('admin', __name__)
@@ -339,6 +343,25 @@ def department_second_line():
     }
     return jsonify(RET)
 
+@admin.route("/department_third_line", methods=["POST"])
+def department_third_line():
+    # 二配
+    distribution_count = db.session.query(func.count(Equipment.id)).filter(
+            Equipment.department_id==9).scalar()
+    distribution = Equipment.query.filter(
+        Equipment.department_id==9).limit(5).all()
+    distribution_list = []
+    for c in distribution:
+        obj = {"name": c.name, "model": c.model, 
+                "asset_number": c.asset_number, "asset_status": c.asset_status}
+        distribution_list.append(obj)
+
+    RET = {
+        "distribution_count": distribution_count,
+        "distribution_list": distribution_list
+    }
+    return jsonify(RET)
+
 @admin.route("/location_second_line", methods=["POST"])
 def location_second_line():
     location_business_count = db.session.query(func.count(Equipment.id)).filter(
@@ -527,30 +550,180 @@ def location_fifth_line():
         "location_production_list":location_production_list
     }
     return jsonify(RET)
-@admin.route("/detail/<name>", methods=["GET"])
-def detail(name):
-    if name=="8":
-        res=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.user,Equipment.IPaddress,Equipment.asset_number,Equipment.asset_status,Equipment.category_id).join(Department,Equipment.department_id==Department.id).join(Location,Equipment.location_id==Location.id).filter(
-            Equipment.category_id==8).order_by(Department.name,Location.name).all()
-        return render_template("admin/detail.html",res=res)
-    else:
-        resu=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.asset_number,Equipment.asset_status).join(Department,Equipment.department_id==Department.id).join(Location,Equipment.location_id==Location.id).filter(
-            Equipment.category_id==int(name)).order_by(Department.name,Location.name).all()
-
-        return render_template("admin/detail.html",resu=resu)
-
-@admin.route("/department/<name>", methods=["GET"])
-def department(name):
+# 按类别 设备列表
+@admin.route("/detail/<int:category_id>", methods=["GET"])
+def detail(category_id):
     
-    res=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.asset_number,Equipment.asset_status).join(Location,Equipment.location_id==Location.id).join(Department,Equipment.department_id==Department.id).filter(
-            Department.id==name).all()
-    
-    return render_template("admin/department_detail.html",res=res)
+    res=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.user,Equipment.IPaddress,Equipment.asset_number,Equipment.asset_status).join(Department,Equipment.department_id==Department.id).join(Location,Equipment.location_id==Location.id).join(Category,Equipment.category_id==Category.id).filter(
+        Equipment.category_id==category_id).order_by(Department.name,Location.name).all()
+    category_name=Category.query.get(category_id).name
+    return render_template("admin/detail.html",res=res,category_name=category_name,category_id=category_id)  
 
-@admin.route("/location/<id>", methods=["GET"])
+@admin.route("/department/<int:id>", methods=["GET"])
+def department(id):
+    
+    res=db.session.query(Equipment.name,Equipment.model,Category.name, Location.name,Equipment.asset_number,Equipment.asset_status).join(Location,Equipment.location_id==Location.id).join(Category,Equipment.category_id==Category.id).filter(
+            Equipment.department_id==id).order_by(Category.name,Location.name).all()
+    department_name=Department.query.get(id).name
+    return render_template("admin/department_detail.html",res=res,department_name=department_name,department_id=id)
+
+@admin.route("/location/<int:id>", methods=["GET"])
 def location(id):
     
-    res=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.asset_number,Equipment.asset_status).join(Location,Equipment.location_id==Location.id).join(Department,Equipment.department_id==Department.id).filter(
-            Location.id==id).all()
+    res=db.session.query(Equipment.name,Equipment.model,Department.name, Category.name,Equipment.asset_number,Equipment.asset_status).join(Category,Equipment.category_id==Category.id).join(Department,Equipment.department_id==Department.id).filter(
+            Equipment.location_id==id).order_by(Category.name,Department.name).all()
+    location_name=Location.query.get(id).name
+    return render_template("admin/location_detail.html",res=res,location_name=location_name,location_id=id)
+# 修改信息
+@admin.route("/mod_info/<asset_number>",methods=["GET","POST"])
+def mod_info(asset_number):
+    if request.method=="POST":
+        name=request.form.get("name")
+        model=request.form.get("model")
+        department=request.form.get("department")
+        location=request.form.get("location")
+        user=request.form.get("user")
+        IPaddress=request.form.get("IPaddress")
+        asset_status=request.form.get("asset_status")
+        department_id=db.session.query(Department.id).filter(Department.name==department).first()
+        location_id=db.session.query(Location.id).filter(Location.name==location).first()
+        Equipment.query.filter(Equipment.asset_number==asset_number).update({"name":name,"model":model,"user":user,"IPaddress":IPaddress,"asset_status":asset_status,"department_id":department_id[0],"location_id":location_id[0]})
+        db.session.commit()
+        RET={
+            "code":0,
+            "msg":"修改成功"
+        }
+        return jsonify(RET)
+    res=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.user,Equipment.IPaddress,Equipment.asset_status,Equipment.category_id).join(Department,Equipment.department_id==Department.id).join(Location,Equipment.location_id==Location.id).filter(
+            Equipment.asset_number==asset_number).first()
+    category_name=db.session.query(Category.name).join(Equipment,Equipment.category_id==Category.id).filter(Equipment.asset_number==asset_number).first()[0]
+    return render_template("admin/mod_info_detail.html",res=res,asset_number=asset_number,category_name=category_name)
+# 删除
+@admin.route("/delete/<asset_number>",methods=["GET"])
+def delete(asset_number):
+    category_name=db.session.query(Category.name).join(Equipment,Equipment.asset_number==asset_number).filter(Category.id==Equipment.category_id).first()
+
+    Equipment.query.filter(Equipment.asset_number==asset_number).delete()
+    db.session.commit()
+    return redirect(url_for("admin.detail",category_name=category_name[0]))
+# 增加前先验证资产编号唯一
+@admin.route("/add_verifi/<asset_number>",methods=["POST"])
+def add_verifi(asset_number):
+    asset_number_list=db.session.query(Equipment.asset_number).all()
+    for a in asset_number_list:
+        if a[0]==asset_number:
+
+            RET={
+                "code":1,
+                "msg":"资产编号已存在"
+            }
+            return jsonify(RET)
+    RET={
+                "code":0,
+                "msg":"资产编号可以使用"
+            }
+    return jsonify(RET)
+
+# 增加
+@admin.route("/add/<category_name>",methods=["GET","POST"])
+def add(category_name):
+    if request.method=="POST":
+        asset_number=request.form.get("asset_number")
+        name=request.form.get("name")
+        model=request.form.get("model")
+        department=request.form.get("department")
+        location=request.form.get("location")
+        user=request.form.get("user")
+        IPaddress=request.form.get("IPaddress")
+        asset_status=request.form.get("asset_status")
+        category_id=db.session.query(Category.id).filter(Category.name==category_name).first()
+        department_id=db.session.query(Department.id).filter(Department.name==department).first()
+        location_id=db.session.query(Location.id).filter(Location.name==location).first()
+        equipment=Equipment(name=name,model=model,user=user,IPaddress=IPaddress,asset_number=asset_number,asset_status=asset_status,department_id=department_id[0],category_id=category_id[0],location_id=location_id[0])
+        db.session.add(equipment)
+        db.session.commit()
+        RET={
+            "code":0,
+            "msg":"增加成功",
+            "asset_number":asset_number
+        }
+        return jsonify(RET)
+    return render_template("admin/add_detail.html",category_name=category_name)
+# 按类别下载
+@admin.route("/down/<int:category_id>",methods=["GET"])
+def down(category_id):
+    resu=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.user,Equipment.IPaddress,Equipment.asset_number,Equipment.asset_status).join(Department,Equipment.department_id==Department.id).join(Location,Equipment.location_id==Location.id).join(Category,Equipment.category_id==Category.id).filter(
+        Equipment.category_id==category_id).order_by(Department.name,Location.name).all()
+    category_name=Category.query.get(category_id).name
+    workbook=xlsxwriter.Workbook(os.path.join('download',f"{category_name}.xlsx"))
+    worksheet=workbook.add_worksheet()
+    worksheet.write(0,0,"名称")
+    worksheet.write(0,1,"规格型号")
+    worksheet.write(0,2,"所属部门")
+    worksheet.write(0,3,"存放位置")
+    worksheet.write(0,4,"使用人")
+    worksheet.write(0,5,"IP地址")
+    worksheet.write(0,6,"资产编号")
+    worksheet.write(0,7,"资产状态")
+    for row in range(len(resu)):
+        for col in range(len(resu[row])):
+            worksheet.write(row+1,col,resu[row][col])
+    workbook.close()
     
-    return render_template("admin/location_detail.html",res=res)
+    directory = os.getcwd()  # 假设在当前目录
+    response = make_response(send_from_directory(directory+os.sep+'download', f"{category_name}.xlsx", as_attachment=True))
+    response.headers["Content-Disposition"] = "attachment; filename={}.xlsx".format(category_name.encode().decode('latin-1'))
+    # os.system("del "+directory+os.sep +'download'+os.sep+f"{category_name}.xlsx")
+    return response
+# 按部门下载
+@admin.route("/ddown/<int:id>",methods=["GET"])
+def ddown(id):
+    resu=db.session.query(Equipment.name,Equipment.model,Category.name, Location.name,Equipment.asset_number,Equipment.asset_status).join(Location,Equipment.location_id==Location.id).join(Category,Equipment.category_id==Category.id).filter(
+            Equipment.department_id==id).order_by(Category.name,Location.name).all()
+    department_name=Department.query.get(id).name
+    
+    workbook=xlsxwriter.Workbook(os.path.join('download',f"{department_name}.xlsx"))
+    worksheet=workbook.add_worksheet()
+    worksheet.write(0,0,"名称")
+    worksheet.write(0,1,"规格型号")
+    worksheet.write(0,2,"所属类别")
+    worksheet.write(0,3,"存放位置")
+    worksheet.write(0,4,"资产编号")
+    worksheet.write(0,5,"资产状态")
+    for row in range(len(resu)):
+        for col in range(len(resu[row])):
+            worksheet.write(row+1,col,resu[row][col])
+    workbook.close()
+    
+    directory = os.getcwd()  # 假设在当前目录
+    response = make_response(send_from_directory(directory+os.sep+'download', f"{department_name}.xlsx", as_attachment=True))
+    response.headers["Content-Disposition"] = "attachment; filename={}.xlsx".format(department_name.encode().decode('latin-1'))
+    # os.system("del "+directory+os.sep +'download'+os.sep+f"{category_name}.xlsx")
+    return response
+
+# 按位置下载
+@admin.route("/ldown/<int:location_id>",methods=["GET"])
+def ldown(location_id):
+    resu=db.session.query(Equipment.name,Equipment.model,Department.name, Category.name,Equipment.asset_number,Equipment.asset_status).join(Category,Equipment.category_id==Category.id).join(Department,Equipment.department_id==Department.id).filter(
+            Equipment.location_id==location_id).order_by(Category.name,Department.name).all()
+    location_name=Location.query.get(location_id).name
+    
+    workbook=xlsxwriter.Workbook(os.path.join('download',f"{location_name}.xlsx"))
+    worksheet=workbook.add_worksheet()
+    worksheet.write(0,0,"名称")
+    worksheet.write(0,1,"规格型号")
+    worksheet.write(0,2,"所属部门")
+    worksheet.write(0,3,"所属类别")
+    worksheet.write(0,4,"资产编号")
+    worksheet.write(0,5,"资产状态")
+    for row in range(len(resu)):
+        for col in range(len(resu[row])):
+            worksheet.write(row+1,col,resu[row][col])
+    workbook.close()
+    
+    directory = os.getcwd()  # 假设在当前目录
+    response = make_response(send_from_directory(directory+os.sep+'download', f"{location_name}.xlsx", as_attachment=True))
+    response.headers["Content-Disposition"] = "attachment; filename={}.xlsx".format(location_name.encode().decode('latin-1'))
+    # os.system("del "+directory+os.sep +'download'+os.sep+f"{category_name}.xlsx")
+    return response
+   

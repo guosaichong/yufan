@@ -1,4 +1,4 @@
-
+#!/usr/bin/env
 from flask import Blueprint, render_template, request, jsonify, send_file
 from sqlalchemy.sql.functions import func
 from . import db

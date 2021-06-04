@@ -61,6 +61,7 @@
     #equipment-group-first-line-more,
     #equipment-group-second-line-more,
     #department-group-first-line-more,
+    #department-group-second-line-more,
     #location-group-first-line-more,
     #location-group-second-line-more,
     #location-group-third-line-more,
@@ -71,6 +72,7 @@
     #equipment-group-first-line-more:hover,
     #equipment-group-second-line-more:hover,
     #department-group-first-line-more:hover,
+    #department-group-second-line-more:hover,
     #location-group-first-line-more:hover,
     #location-group-second-line-more:hover,
     #location-group-third-line-more:hover,
@@ -81,23 +83,18 @@
 
     a {
         text-decoration: none;
+        color: #212121;
+        transition: color .3s
     }
 
-    a:link {
-        color: rgb(30, 80, 174);
-    }
 
-    a:visited {
-        color: rgb(30, 80, 184);
-    }
 
     a:hover {
-        color: rgb(30, 80, 204);
+        text-decoration: none;
+        color: rgb(30, 80, 174);
+        font-weight: bold;
     }
 
-    a:active {
-        color: rgb(30, 80, 204);
-    }
 
     #footer {
         /* display: flex; */
@@ -136,7 +133,7 @@
         <div class="equipment-group-first-line">
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='8')}}">
+                    <a href="{{url_for('admin.detail',category_id=8)}}">
                         <img src="../../static/images/电脑.png" alt="电脑"
                             style="width: 35px;height: 35px;vertical-align:middle;margin-top: 5px;margin-left:5px;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">电脑</span><span
@@ -150,7 +147,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='9')}}">
+                    <a href="{{url_for('admin.detail',category_id=9)}}">
                         <img src="../../static/images/打印机.png" alt="打印机"
                             style="width: 35px;height: 35px;vertical-align:middle;margin-top: 5px;margin-left:5px;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">打印机</span><span
@@ -163,7 +160,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='5')}}">
+                    <a href="{{url_for('admin.detail',category_id=5)}}">
                         <img src="../../static/images/监控摄像头 (1).png" alt="摄像头"
                             style="width: 40px;height: 40px;vertical-align:middle;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">摄像头</span><span
@@ -176,7 +173,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='4')}}">
+                    <a href="{{url_for('admin.detail',category_id=4)}}">
                         <img src="../../static/images/设备类_DVR.png" alt="录像机"
                             style="width: 35px;height: 35px;vertical-align:middle;margin-top: 3px;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">录像机</span><span
@@ -194,7 +191,7 @@
         <div style="display: none;" class="equipment-group-second-line">
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='1')}}">
+                    <a href="{{url_for('admin.detail',category_id=1)}}">
                         <img src="../../static/images/256PDA手持工作设备.png" alt="手持终端"
                             style="width: 40px;height: 40px;vertical-align:middle;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">手持终端</span><span
@@ -207,7 +204,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='7')}}">
+                    <a href="{{url_for('admin.detail',category_id=7)}}">
                         <img src="../../static/images/wifi.png" alt="AP"
                             style="width: 35px;height: 35px;vertical-align:middle;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">AP</span><span
@@ -221,7 +218,7 @@
             <!-- 投影仪 -->
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='11')}}">
+                    <a href="{{url_for('admin.detail',category_id=11)}}">
                         <img src="../../static/images/投影仪.png" alt="投影仪"
                             style="width: 45px;height: 45px;vertical-align:middle;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">投影仪</span><span
@@ -235,7 +232,7 @@
             <!-- 机柜 -->
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='10')}}">
+                    <a href="{{url_for('admin.detail',category_id=10)}}">
                         <img src="../../static/images/机柜.png" alt="机柜"
                             style="width: 40px;height: 40px;vertical-align:middle;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">机柜</span><span
@@ -255,7 +252,7 @@
         <div style="display: none;" class="equipment-group-third-line">
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='3')}}">
+                    <a href="{{url_for('admin.detail',category_id=3)}}">
                         <img src="../../static/images/UPS.png" alt="UPS"
                             style="width: 36px;height: 36px;vertical-align:middle;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">UPS</span><span
@@ -268,7 +265,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='2')}}">
+                    <a href="{{url_for('admin.detail',category_id=2)}}">
                         <img src="../../static/images/交换机.png" alt="交换机"
                             style="width: 40px;height: 40px;vertical-align:middle;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">交换机</span><span
@@ -283,7 +280,7 @@
             <!-- 路由 -->
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='6')}}">
+                    <a href="{{url_for('admin.detail',category_id=6)}}">
                         <img src="../../static/images/路由器.png" alt="路由"
                             style="width: 34px;height: 34px;vertical-align:middle;margin-top: 3px;margin-left: 3px;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">路由</span><span
@@ -297,7 +294,7 @@
             <!-- 其它 -->
             <div>
                 <div>
-                    <a href="{{url_for('admin.detail',name='12')}}">
+                    <a href="{{url_for('admin.detail',category_id=12)}}">
                         <img src="../../static/images/其它.png" alt="其它"
                             style="width: 40px;height: 40px;vertical-align:middle;">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">其它</span><span
@@ -333,7 +330,7 @@
         <div class="department-group-first-line">
             <div>
                 <div>
-                    <a href="{{url_for('admin.department',name='1')}}">
+                    <a href="{{url_for('admin.department',id=1)}}">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">集团派驻</span><span
                             id="stationing_count" style="vertical-align:middle;"></span></a>
                 </div>
@@ -344,7 +341,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.department',name='2')}}">
+                    <a href="{{url_for('admin.department',id=2)}}">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">行政部</span><span
                             id="integrated_count" style="vertical-align:middle;"></span></a>
                 </div>
@@ -355,7 +352,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.department',name='3')}}">
+                    <a href="{{url_for('admin.department',id=3)}}">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">财务部</span><span
                             id="finance_count" style="vertical-align:middle;"></span></a>
                 </div>
@@ -366,7 +363,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.department',name='4')}}">
+                    <a href="{{url_for('admin.department',id=4)}}">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">运营部</span><span
                             id="operation_count" style="vertical-align:middle;"></span></a>
                 </div>
@@ -380,7 +377,7 @@
         <div style="display: none;" class="department-group-second-line">
             <div>
                 <div>
-                    <a href="{{url_for('admin.department',name='5')}}">
+                    <a href="{{url_for('admin.department',id=5)}}">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">排序管理室</span><span
                             id="sorting_count" style="vertical-align:middle;"></span></a>
                 </div>
@@ -391,7 +388,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.department',name='6')}}">
+                    <a href="{{url_for('admin.department',id=6)}}">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">计划办公室</span><span
                             id="planning_count" style="vertical-align:middle;"></span></a>
                 </div>
@@ -403,7 +400,7 @@
 
             <div>
                 <div>
-                    <a href="{{url_for('admin.department',name='7')}}">
+                    <a href="{{url_for('admin.department',id=7)}}">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">仓储部</span><span
                             id="storage_count" style="vertical-align:middle;"></span></a>
                 </div>
@@ -414,7 +411,7 @@
             </div>
             <div>
                 <div>
-                    <a href="{{url_for('admin.department',name='8')}}">
+                    <a href="{{url_for('admin.department',id=8)}}">
                         <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">人事部</span><span
                             id="personnel_count" style="vertical-align:middle;"></span></a>
                 </div>
@@ -425,9 +422,37 @@
             </div>
 
         </div>
+        <!-- 隐藏的第三行 -->
+        <div style="display: none;" class="department-group-third-line">
+            <div>
+                <div>
+                    <a href="{{url_for('admin.department',id=9)}}">
+                        <span style="font-size: 26px;margin-left: 5px;vertical-align:middle;">仓储二配</span><span
+                            id="distribution_count" style="vertical-align:middle;"></span></a>
+                </div>
+
+                <ul style="margin-top: 5px;list-style: none;margin-top: 10px;padding: 0 5px" class="distribution_list">
+
+                </ul>
+            </div>
+            <div style="display: none;">
+
+            </div>
+
+            <div style="display: none;">
+
+            </div>
+            <div style="display: none;">
+
+            </div>
+
+        </div>
     </div>
     <div>
         <p style="text-align: right;"><span id="department-group-first-line-more">更多……</span></p>
+    </div>
+    <div>
+        <p style="text-align: right;display: none;"><span id="department-group-second-line-more">更多……</span></p>
     </div>
     <!-- -----------------------------------------------------------位置----------------------------------------------------- -->
     <div style="position: relative;height: 40px;margin-top: 10px;">
@@ -691,6 +716,10 @@
 
 </div>
 
+
+{%endblock%}
+{% block myjs %}
+
 <script>
     $(document).ready(function () {
         $.post("/admin/office", {}, function (data, status) {
@@ -831,6 +860,26 @@
                     $(".personnel_list").append(li)
 
                     $("#department-group-first-line-more").parent().remove()
+                    $("#department-group-second-line-more").parent().css({ "display": "block" });
+                }
+
+            })
+        })
+        // 按部门分组里面的第三行
+        $("#department-group-second-line-more").click(function () {
+            $(".department-group-third-line").css({ "display": "flex" });
+            $.post("/admin/department_third_line", {}, function (data, status) {
+                if (status == "success") {
+                    $("#distribution_count").text("(" + data.distribution_count + ")");
+                    for (var index = 0; index < data.distribution_list.length; index++) {
+                        var li = $("<li></li>").text(data.distribution_list[index].name + "/" + data.distribution_list[index].model + "/" + data.distribution_list[index].asset_number);
+                        $(".distribution_list").append(li)
+                    }
+                    var li = $("<li></li>").text("......")
+                    $(".distribution_list").append(li)
+
+
+                    $("#department-group-second-line-more").parent().remove()
                 }
 
             })
@@ -1076,4 +1125,4 @@
         })
     })
 </script>
-{%endblock%}
+{% endblock %}

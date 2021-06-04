@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="../../static/css/common.css">
     <script src="../../static/js/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/common.js"></script>
-    <title>办公设备</title>
+    <title>{{category_name}}</title>
     <style>
         .container {
             position: relative;
             margin: 0 auto;
             width: 1200px;
-            height: 650px;
-            /* padding: 10px; */
+            min-height: 650px;
+            padding: 10px;
             /* border: 1px solid red; */
             box-sizing: border-box;
 
@@ -45,6 +45,39 @@
 
         tr:nth-child(even) {
             background-color: rgba(200, 189, 136, .4);
+        }
+
+        .nav {
+            padding: 0 5px;
+            height: 40px;
+
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #212121;
+            transition: color .3s
+        }
+
+        .nav a:hover {
+            text-decoration: none;
+            color: rgb(30, 80, 174);
+            font-weight: bold;
+        }
+
+        #footer {
+            margin: 0 auto;
+            width: 1200px;
+            height: 100px;
+            padding: 10px;
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+            /* background-color: rgb(245,246,250); */
+        }
+
+        #footer div {
+            margin: 30px auto;
+            text-align: center;
         }
     </style>
 </head>
@@ -77,37 +110,14 @@
 
     </div>
     <div class="container">
+        <div class="nav">
+            <p style="line-height: 40px;font-size: 18px;float: left;">当前位置：<a
+                    href="{{url_for('admin.office')}}">办公设备</a>>{{category_name}}</p>
+            <p style="line-height: 40px;font-size: 18px;float: right;"><a
+                    href="{{url_for('admin.down',category_id=category_id)}}">下载</a></p>
+        </div>
         <table>
-            
-            {%if resu%}
-            <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>设备名称</th>
-                    <th>规格型号</th>
-                    <th>所属部门</th>
-                    <th>存放位置</th>
-
-                    <th>资产编号</th>
-                    <th>资产状态</th>
-                </tr>
-            </thead>
-            <tbody>
-                {%for r in resu%}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{r[0]}}</td>
-                    <td>{{r[1]}}</td>
-                    <td>{{r[2]}}</td>
-                    <td>{{r[3]}}</td>
-                    <td>{{r[4]}}</td>
-                    <td>{{r[5]}}</td>
-
-                </tr>
-
-                {%endfor%}
-            </tbody>
-            {%else%}
+            {%if category_id==8%}
             <thead>
                 <tr>
                     <th>序号</th>
@@ -119,6 +129,7 @@
                     <th>IP地址</th>
                     <th>资产编号</th>
                     <th>资产状态</th>
+                    <th>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -133,14 +144,140 @@
                     <td>{{r[5]}}</td>
                     <td>{{r[6]}}</td>
                     <td>{{r[7]}}</td>
-
+                    <td><a title="修改" href="{{url_for('admin.mod_info',asset_number=r[6])}}"><img alt="修改"
+                                style="width: 16px;height: 16px; margin-left: 10px;" src="../../static/images/修改.png" />
+                        </a>&nbsp;<a title="删除" href="{{url_for('admin.delete',asset_number=r[6])}}"
+                            onclick="javascript:return del();"><img alt="删除"
+                                style="width: 16px;height: 16px; margin-left: 10px;" src="../../static/images/删除.png" />
+                        </a></td>
                 </tr>
                 {%endfor%}
+                <tr>
+                    <td><a href="{{url_for('admin.add',category_name=category_name)}}"><img alt="增加"
+                                style="width: 16px;height: 16px;" src="../../static/images/加号.png" /></a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+            {%elif category_id==5 or category_id==4%}
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>设备名称</th>
+                    <th>规格型号</th>
+                    <th>所属部门</th>
+                    <th>存放位置</th>
+                    <th>IP地址</th>
+                    <th>资产编号</th>
+                    <th>资产状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for r in res%}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{r[0]}}</td>
+                    <td>{{r[1]}}</td>
+                    <td>{{r[2]}}</td>
+                    <td>{{r[3]}}</td>
+                    <td>{{r[5]}}</td>
+                    <td>{{r[6]}}</td>
+                    <td>{{r[7]}}</td>
+                    <td><a title="修改" href="{{url_for('admin.mod_info',asset_number=r[6])}}"><img alt="修改"
+                                style="width: 16px;height: 16px; margin-left: 10px;" src="../../static/images/修改.png" />
+                        </a>&nbsp;<a title="删除" href="{{url_for('admin.delete',asset_number=r[6])}}"
+                            onclick="javascript:return del();"><img alt="删除"
+                                style="width: 16px;height: 16px; margin-left: 10px;" src="../../static/images/删除.png" />
+                        </a></td>
+                </tr>
+                {%endfor%}
+                <tr>
+                    <td><a href="{{url_for('admin.add',category_name=category_name)}}"><img alt="增加"
+                                style="width: 16px;height: 16px;" src="../../static/images/加号.png" /></a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+            {%else%}
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>设备名称</th>
+                    <th>规格型号</th>
+                    <th>所属部门</th>
+                    <th>存放位置</th>
+                    
+                    <th>资产编号</th>
+                    <th>资产状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for r in res%}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{r[0]}}</td>
+                    <td>{{r[1]}}</td>
+                    <td>{{r[2]}}</td>
+                    <td>{{r[3]}}</td>
+                    
+                    <td>{{r[6]}}</td>
+                    <td>{{r[7]}}</td>
+                    <td><a title="修改" href="{{url_for('admin.mod_info',asset_number=r[6])}}"><img alt="修改"
+                                style="width: 16px;height: 16px; margin-left: 10px;" src="../../static/images/修改.png" />
+                        </a>&nbsp;<a title="删除" href="{{url_for('admin.delete',asset_number=r[6])}}"
+                            onclick="javascript:return del();"><img alt="删除"
+                                style="width: 16px;height: 16px; margin-left: 10px;" src="../../static/images/删除.png" />
+                        </a></td>
+                </tr>
+                {%endfor%}
+                <tr>
+                    <td><a href="{{url_for('admin.add',category_name=category_name)}}"><img alt="增加"
+                                style="width: 16px;height: 16px;" src="../../static/images/加号.png" /></a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                    <td></td>
+                    <td></td>
+                </tr>
 
             </tbody>
             {%endif%}
-            
         </table>
+    </div>
+    <script>
+        function del() {
+            var msg = "您真的要删除吗？\n\n请确认！";
+            if (confirm(msg) == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+    <div id="footer">
+        <div>
+            Copyright © 2021 Guo Saichong. All rights reserved.
+        </div>
     </div>
 </body>
 

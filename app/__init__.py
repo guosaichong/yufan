@@ -1,9 +1,11 @@
-
+#!/usr/bin/env
 from flask import Flask, render_template
-import os
 from config import config_map
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+import os
+if not os.path.exists("download"):
+    os.makedirs("download")
 
 db = SQLAlchemy()
 loginmanager=LoginManager()

@@ -1,3 +1,4 @@
+#!/usr/bin/env
 from app import creat_app
 from flask import render_template
 app = creat_app("product")

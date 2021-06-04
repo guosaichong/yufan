@@ -1,3 +1,4 @@
+#!/usr/bin/env
 import math
 from flask import Blueprint, render_template, request, jsonify, url_for, redirect
 import os

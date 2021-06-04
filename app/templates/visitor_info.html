@@ -99,6 +99,7 @@
                     for (var i = 1; i < data.ret.length + 1; i++) {
                         oTable.rows[i].cells[0].innerHTML = i;
                         console.log(data.ret[i - 1]);
+                        console.log(typeof(data.ret[i - 1]));
                         oTable.rows[i].cells[1].innerHTML = data.ret[i - 1][0];
                         // 手机号 隐藏中间4位
                         // oTable.rows[i].cells[2].innerHTML = data[i - 1][1].replace(reg, "$1****$2");
@@ -107,9 +108,9 @@
                         oTable.rows[i].cells[4].innerHTML = data.ret[i - 1][3];
                         oTable.rows[i].cells[5].innerHTML = data.ret[i - 1][4];
                         // 来访时间 时间转换
-                        var da = new Date(data.ret[i - 1][5])
+                        var da = new Date(data.ret[i - 1][5]);
                         // console.log(da.getTime()-8*60*60*1000)
-                        var d = new Date(da.getTime() - 8 * 60 * 60 * 1000)
+                        var d = new Date(da.getTime() - 8 * 60 * 60 * 1000);
                         oTable.rows[i].cells[6].innerHTML = d.getFullYear() + '-' + p((d.getMonth() + 1)) + '-' + p(d.getDate()) + " " + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
                         // oTable.rows[i].cells[6].innerHTML = data[i - 1][5];
                         if (i % 2 == 0) {

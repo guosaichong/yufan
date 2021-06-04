@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <script src="../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/common.js"></script>
+    <title>增加{{category_name}}</title>
+    <style>
+        .container {
+            position: relative;
+            margin: 0 auto;
+            width: 1200px;
+            min-height: 650px;
+            padding: 10px;
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+
+        }
+
+        .nav {
+            padding: 0 5px;
+            height: 40px;
+
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #212121;
+            transition: color .3s
+        }
+
+        .nav a:hover {
+            text-decoration: none;
+            color: rgb(30, 80, 174);
+            font-weight: bold;
+        }
+
+        .show {
+            position: relative;
+            margin: 0 auto;
+            width: 600px;
+
+        }
+
+        .show-title {
+            text-align: center;
+            margin-left: 45px;
+        }
+
+        .show-content {
+            margin-top: 10px;
+            /* border: 1px solid red; */
+            height: 500px;
+        }
+
+        #tips {
+            display: none;
+            text-align: center;
+            color: red;
+        }
+
+        .show-content-left {
+            width: 50%;
+            float: left;
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+            text-align: right;
+        }
+
+        .show-content-left p {
+            line-height: 30px;
+        }
+
+        .show-content-left span {
+            color: red;
+        }
+
+        .show-content-right {
+            width: 50%;
+            float: right;
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+        }
+
+        .show-content-right p {
+            line-height: 30px;
+        }
+
+        #reset,
+        #enter {
+            text-align: center;
+            width: 80px;
+            margin-top: 20px;
+            background-color: rgb(57, 57, 240);
+            color: white;
+        }
+
+        #reset {
+            margin-left: 210px;
+        }
+
+        #reset:hover,
+        #enter:hover {
+            cursor: pointer;
+            background-color: blue
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网页内容的头部 -->
+    <div class="header">
+        <div class="logo">
+            <img src="../../static/images/logo.png" alt="禹帆物流">
+            <span>专业第三方物流供应商</span>
+        </div>
+
+        <div class="address">
+            <p>天津市宁河区一汽大众华北基地</p>
+
+            <span>服务热线：022-69329006 69329008</span>
+        </div>
+
+        <div class="scroll-box">
+
+            <ul>
+                <li><span id="nowDateTimeSpan"></span></li>
+                <li><span>天津禹帆物流有限公司</span></li>
+
+            </ul>
+        </div>
+    </div>
+    <!-- 网页内容的导航条 -->
+    <div class="navigator">
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <p style="line-height: 40px;font-size: 18px;float: left;">当前位置：<a
+                    href="{{url_for('admin.office')}}">办公设备</a>><a
+                    href="{{url_for('admin.detail',category_name=category_name)}}">{{category_name}}</a>>增加{{category_name}}
+            </p>
+        </div>
+        <div class="show">
+            <div class="show-content">
+                <div id="tips"></div>
+                <div class="show-content-left">
+                    <p><span>*</span>资产编号：</p>
+                    <p><span>*</span>名称：</p>
+                    <p>规格型号：</p>
+                    <p><span>*</span>所属部门：</p>
+                    <p><span>*</span>存放位置：</p>
+                    <p>使用人：</p>
+                    <p>IP地址：</p>
+                    <p><span>*</span>资产状态：</p>
+                    <p id="reset">重置</p>
+                </div>
+                <div class="show-content-right">
+                    <p><input type="text" name="asset_number" value=""></p>
+                    <p><input type="text" name="name" value=""></p>
+                    <p><input type="text" name="model" value=""></p>
+                    <p><input type="hidden" name="category_name" value="{{category_name}}"></p>
+                    <p><select name="select_dep">
+                            <option value="集团派驻">集团派驻</option>
+                            <option value="行政部">行政部</option>
+                            <option value="财务部">财务部</option>
+                            <option value="运营部">运营部</option>
+                            <option value="排序管理室">排序管理室</option>
+                            <option value="计划办公室">计划办公室</option>
+                            <option value="仓储部">仓储部</option>
+                            <option value="人事部">人事部</option>
+                            <option value="二配">二配</option>
+                        </select></p>
+
+
+                    <p><select name="select_loc">
+                            <option value="西门保安室">西门保安室</option>
+                            <option value="南门保安室">南门保安室</option>
+                            <option value="一楼大厅">一楼大厅</option>
+                            <option value="食堂">食堂</option>
+                            <option value="领导办公室">领导办公室</option>
+                            <option value="运营办公室">运营办公室</option>
+                            <option value="综合管理室">综合管理室</option>
+                            <option value="财务办公室">财务办公室</option>
+                            <option value="业务规划室">业务规划室</option>
+                            <option value="小会议室">小会议室</option>
+                            <option value="会议室">会议室</option>
+                            <option value="生产厂区">生产厂区</option>
+                            <option value="FIS办公室">FIS办公室</option>
+                            <option value="华友收货口">华友收货口</option>
+                            <option value="计划办公室">计划办公室</option>
+                            <option value="仓储办公室">仓储办公室</option>
+                            <option value="网络机柜室">网络机柜室</option>
+                        </select></p>
+                    <p><input type="text" name="user" value=""></p>
+                    <p><input type="text" name="IPaddress" value=""></p>
+
+                    <p><select name="select_status">
+                            <option value="在用">在用</option>
+                            <option value="闲置">闲置</option>
+                            <option value="报废">报废</option>
+                        </select></p>
+                    <p id="enter">确认</p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            // 重置
+            $("#reset").click(function () {
+                $("input").val("")
+            });
+            // 确认
+            $("#enter").click(function () {
+                var asset_number = $("[name='asset_number']").val();
+                var name = $("[name='name']").val();
+                var model = $("[name='model']").val();
+                var select_dep = $("[name='select_dep']").val();
+                var select_loc = $("[name='select_loc']").val();
+                var user = $("[name='user']").val();
+                var IPaddress = $("[name='IPaddress']").val();
+                var select_status = $("[name='select_status']").val();
+                var category_name=$("[name='category_name']").val();
+                if (asset_number != '') {
+
+                    var names = parseInt(name);//验证是否为数字
+                    if (isNaN(names)) {
+
+                        if (/[@#\$%\^&\*]+/gi.test(name)) { //验证是否含有特殊字符
+
+                            $("#tips").css("display", "block");
+                            $("#tips").text("资产编号不能带有特殊字符")
+
+                            return
+                        }
+
+                        if (name.length > 20) {
+                            $("#tips").css("display", "block");
+                            $("#tips").text("长度不符合规定")
+                            return
+                        }
+                        $.post("/admin/add_verifi/" + asset_number, { }, function (data) {
+                            if (data.code == 0) {
+
+                            } else {
+                                $("#tips").css("display", "block");
+                                $("#tips").text(data.msg)
+                                return
+                            }
+                        })
+
+                    } else {
+                        $("#tips").css("display", "block");
+                        $("#tips").text("资产编号不能是数字")
+                        return
+                    }
+
+                } else {
+                    $("#tips").css("display", "block");
+                    $("#tips").text("资产编号不能为空")
+                    return
+                }
+                if (name != '') {
+
+                    var names = parseInt(name);//验证是否为数字
+                    if (isNaN(names)) {
+
+                        if (/[@#\$%\^&\*]+/gi.test(name)) { //验证是否含有特殊字符
+
+                            $("#tips").css("display", "block");
+                            $("#tips").text("名称不能带有特殊字符")
+
+                            return
+                        }
+
+                        if (name.length > 10) {
+                            $("#tips").css("display", "block");
+                            $("#tips").text("长度不符合规定，请输十个或以下汉字")
+                            return
+                        }
+
+                    } else {
+                        $("#tips").css("display", "block");
+                        $("#tips").text("名称不能是数字")
+                        return
+                    }
+
+                } else {
+                    $("#tips").css("display", "block");
+                    $("#tips").text("名称不能为空")
+                    return
+                }
+                if (model != '') {
+                    if (model.length > 20) {
+                        $("#tips").css("display", "block");
+                        $("#tips").text("长度不符合规定")
+                        return
+                    }
+
+                }
+                if (user != '') {
+
+                    if (user.length > 10) {
+                        $("#tips").css("display", "block");
+                        $("#tips").text("长度不符合规定")
+                        return
+                    }
+                }
+                if (IPaddress != '') {
+                    if (!/^((25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))$/gi.test(IPaddress)) {
+
+                        $("#tips").css("display", "block");
+                        $("#tips").text("IP地址格式错误");
+
+                        return
+                    }
+                }
+                $.post("/admin/add/" + category_name, { "asset_number": asset_number, "name": name, "model": model, "department": select_dep, "location": select_loc, "user": user, "IPaddress": IPaddress, "asset_status": select_status }, function (data) {
+                    if (data.code == 0) {
+                        alert(data.msg);
+                        // $("#tips").css("display", "block");
+                        // $("#tips").text(data.msg);
+                        location.href = '/admin/mod_info/' + data.asset_number;
+                    }
+                })
+            });
+            $("input").focus(function () {
+                $("#tips").css("display", "none");
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-
+#!/usr/bin/env
 import smtplib
 #发送字符串的邮件
 from email.mime.text import MIMEText
