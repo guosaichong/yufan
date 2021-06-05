@@ -166,37 +166,17 @@
                     <p><input type="text" name="model" value=""></p>
                     <p><input type="hidden" name="category_name" value="{{category_name}}"></p>
                     <p><select name="select_dep">
-                            <option value="集团派驻">集团派驻</option>
-                            <option value="行政部">行政部</option>
-                            <option value="财务部">财务部</option>
-                            <option value="运营部">运营部</option>
-                            <option value="排序管理室">排序管理室</option>
-                            <option value="计划办公室">计划办公室</option>
-                            <option value="仓储部">仓储部</option>
-                            <option value="人事部">人事部</option>
-                            <option value="二配">二配</option>
-                        </select></p>
+                        {%for d in dep_list%}
+                        <option value="{{d[0]}}">{{d[0]}}</option>
+                        {%endfor%}
+                    </select></p>
 
 
                     <p><select name="select_loc">
-                            <option value="西门保安室">西门保安室</option>
-                            <option value="南门保安室">南门保安室</option>
-                            <option value="一楼大厅">一楼大厅</option>
-                            <option value="食堂">食堂</option>
-                            <option value="领导办公室">领导办公室</option>
-                            <option value="运营办公室">运营办公室</option>
-                            <option value="综合管理室">综合管理室</option>
-                            <option value="财务办公室">财务办公室</option>
-                            <option value="业务规划室">业务规划室</option>
-                            <option value="小会议室">小会议室</option>
-                            <option value="会议室">会议室</option>
-                            <option value="生产厂区">生产厂区</option>
-                            <option value="FIS办公室">FIS办公室</option>
-                            <option value="华友收货口">华友收货口</option>
-                            <option value="计划办公室">计划办公室</option>
-                            <option value="仓储办公室">仓储办公室</option>
-                            <option value="网络机柜室">网络机柜室</option>
-                        </select></p>
+                        {%for loc in loc_list%}
+                        <option value="{{loc[0]}}">{{loc[0]}}</option>
+                        {%endfor%}
+                    </select></p>
                     <p><input type="text" name="user" value=""></p>
                     <p><input type="text" name="IPaddress" value=""></p>
 

@@ -128,7 +128,7 @@ def machinepart_info():
     else:
         # 零件种类数
         machinepart_amount = Machinepart.query.count()
-        print(machinepart_amount)
+        # print(machinepart_amount)
         # 每页显示15条，共有多少页
         page_total = math.ceil(machinepart_amount/15)
         # 前15条数据
@@ -147,7 +147,7 @@ def machinepart_info():
             
             # print(obj)
             part_list.append(obj)
-        print(part_list)
+        # print(part_list)
         
         RET = {
             "machinepart_amount": machinepart_amount,

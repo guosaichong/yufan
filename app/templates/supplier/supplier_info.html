@@ -21,7 +21,7 @@
         var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年      
         var MM = today.getMonth() + 1;//通过日期对象的getMonth()方法返回年      
         var dd = today.getDate();//通过日期对象的getDate()方法返回年  
-        $.post("/supplier/supplier_info", {}, function (data, status) {
+        $.post("supplier_info", {}, function (data, status) {
             if (status == "success") {
                 $(".supplier_amount").text("截止" + yyyy + "年" + MM + "月" + dd + "日，共有" + data.supplier_amount + "家供应商。");
                 if (data.supplier_amount == 0) {
@@ -40,7 +40,11 @@
                         var td1 = $("<td></td>").text(index + 1);
                         var td2 = $("<td></td>").text(data.supplier_list[index].supplier_number);
                         var td3 = $("<td></td>").text(data.supplier_list[index].supplier_name);
-                        var td4 = $("<td></td>").text(data.supplier_list[index].parts);
+                        var parts_str="";
+                        for (var i=0;i<data.supplier_list[index].parts.length;i++){
+                            parts_str+=data.supplier_list[index].parts[i]+",";
+                        }
+                        var td4 = $("<td></td>").text(parts_str.slice(0,parts_str.length-1));
                         tr.append(td1);
                         tr.append(td2);
                         tr.append(td3);

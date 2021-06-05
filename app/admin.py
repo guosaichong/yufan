@@ -42,7 +42,7 @@ def office():
             Equipment.category_id==8).limit(5).all()
         computer_list = []
         for c in computer:
-            obj = {"name": c.name, "model": c.model, 
+            obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name,
                    "asset_number": c.asset_number, "asset_status": c.asset_status}
             computer_list.append(obj)
         printer_list = []
@@ -51,7 +51,7 @@ def office():
         printer = Equipment.query.filter(
             Equipment.category_id==9).limit(5).all()
         for p in printer:
-            obj = {"name": p.name, "model": p.model, 
+            obj = {"name": p.name, "model": p.model,  "department":p.department.name,"location":p.location.name,
                    "asset_number": p.asset_number, "asset_status": p.asset_status}
             printer_list.append(obj)
         camera_list = []
@@ -60,7 +60,7 @@ def office():
         camera = Equipment.query.filter(
             Equipment.category_id==5).limit(5).all()
         for c in camera:
-            obj = {"name": c.name, "model": c.model,
+            obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name,
                    "asset_number": c.asset_number, "asset_status": c.asset_status}
             camera_list.append(obj)
         # 录像机
@@ -70,7 +70,7 @@ def office():
             Equipment.category_id==4).limit(5).all()
         video_recorder_list = []
         for c in video_recorder:
-            obj = {"name": c.name, "model": c.model,
+            obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name,
                    "asset_number": c.asset_number, "asset_status": c.asset_status}
             video_recorder_list.append(obj)
         # 集团派驻
@@ -192,7 +192,7 @@ def second_line():
     handheld = Equipment.query.filter(Equipment.category_id==1).limit(5).all()
     handheld_list = []
     for c in handheld:
-        obj = {"name": c.name, "model": c.model,
+        obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name,
                "asset_number": c.asset_number, "asset_status": c.asset_status}
         handheld_list.append(obj)
 
@@ -201,7 +201,7 @@ def second_line():
     AP = Equipment.query.filter(Equipment.category_id==7).limit(5).all()
     AP_list = []
     for c in AP:
-        obj = {"name": c.name, "model": c.model, 
+        obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name,
                "asset_number": c.asset_number, "asset_status": c.asset_status}
         AP_list.append(obj)
     # 投影仪
@@ -211,7 +211,7 @@ def second_line():
         Equipment.category_id==11).limit(5).all()
     projector_list = []
     for c in projector:
-        obj = {"name": c.name, "model": c.model, 
+        obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name, 
                "asset_number": c.asset_number, "asset_status": c.asset_status}
         projector_list.append(obj)
     # 机柜
@@ -221,7 +221,7 @@ def second_line():
         Equipment.category_id==10).limit(5).all()
     cabinet_list = []
     for c in cabinet:
-        obj = {"name": c.name, "model": c.model, 
+        obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name, 
                "asset_number": c.asset_number, "asset_status": c.asset_status}
         cabinet_list.append(obj)
     RET = {
@@ -244,7 +244,7 @@ def third_line():
     UPS = Equipment.query.filter(Equipment.category_id==3).limit(5).all()
     UPS_list = []
     for c in UPS:
-        obj = {"name": c.name, "model": c.model, 
+        obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name,
                "asset_number": c.asset_number, "asset_status": c.asset_status}
         UPS_list.append(obj)
 
@@ -254,7 +254,7 @@ def third_line():
     switch = Equipment.query.filter(
         Equipment.category_id==2).limit(5).all()
     for s in switch:
-        obj = {"name": s.name, "model": s.model, 
+        obj = {"name": s.name, "model": s.model, "department":s.department.name,"location":s.location.name, 
                "asset_number": s.asset_number, "asset_status": s.asset_status}
         switch_list.append(obj)
 
@@ -264,7 +264,7 @@ def third_line():
     router = Equipment.query.filter(Equipment.category_id==6).limit(5).all()
     router_list = []
     for c in router:
-        obj = {"name": c.name, "model": c.model,
+        obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name,
                "asset_number": c.asset_number, "asset_status": c.asset_status}
         router_list.append(obj)
     # 其它
@@ -272,7 +272,7 @@ def third_line():
     other = Equipment.query.filter(Equipment.category_id==12).limit(5).all()
     other_list = []
     for c in other:
-        obj = {"name": c.name, "model": c.model, 
+        obj = {"name": c.name, "model": c.model, "department":c.department.name,"location":c.location.name, 
                "asset_number": c.asset_number, "asset_status": c.asset_status}
         other_list.append(obj)
     RET = {
@@ -594,11 +594,14 @@ def mod_info(asset_number):
             "msg":"修改成功"
         }
         return jsonify(RET)
-    res=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.user,Equipment.IPaddress,Equipment.asset_status,Equipment.category_id).join(Department,Equipment.department_id==Department.id).join(Location,Equipment.location_id==Location.id).filter(
-            Equipment.asset_number==asset_number).first()
-    category_name=db.session.query(Category.name).join(Equipment,Equipment.category_id==Category.id).filter(Equipment.asset_number==asset_number).first()[0]
-    category_id=db.session.query(Category.id).filter(Category.name==category_name).first()
-    return render_template("admin/mod_info_detail.html",res=res,asset_number=asset_number,category_name=category_name,category_id=category_id[0])
+    else:
+        res=db.session.query(Equipment.name,Equipment.model,Department.name, Location.name,Equipment.user,Equipment.IPaddress,Equipment.asset_status,Equipment.category_id).join(Department,Equipment.department_id==Department.id).join(Location,Equipment.location_id==Location.id).filter(
+                Equipment.asset_number==asset_number).first()
+        category_name=db.session.query(Category.name).join(Equipment,Equipment.category_id==Category.id).filter(Equipment.asset_number==asset_number).first()[0]
+        category_id=db.session.query(Category.id).filter(Category.name==category_name).first()
+        dep_list=db.session.query(Department.name).all()
+        loc_list=db.session.query(Location.name).all()
+        return render_template("admin/mod_info_detail.html",res=res,asset_number=asset_number,category_name=category_name,category_id=category_id[0],dep_list=dep_list,loc_list=loc_list)
 # 删除
 @admin.route("/delete/<asset_number>",methods=["GET"])
 def delete(asset_number):
@@ -649,8 +652,11 @@ def add(category_name):
             "asset_number":asset_number
         }
         return jsonify(RET)
-    category_id=db.session.query(Category.id).filter(Category.name==category_name).first()
-    return render_template("admin/add_detail.html",category_name=category_name,category_id=category_id[0])
+    else:
+        category_id=db.session.query(Category.id).filter(Category.name==category_name).first()
+        dep_list=db.session.query(Department.name).all()
+        loc_list=db.session.query(Location.name).all()
+        return render_template("admin/add_detail.html",category_name=category_name,category_id=category_id[0],dep_list=dep_list,loc_list=loc_list)
 # 按类别下载
 @admin.route("/down/<int:category_id>",methods=["GET"])
 def down(category_id):

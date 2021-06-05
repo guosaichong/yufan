@@ -42,7 +42,11 @@
                         var td3 = $("<td></td>").text(data.part_list[index].part_name);
                         var td4 = $("<td></td>").text(data.part_list[index].amount);
                         var td5 = $("<td></td>").text(data.part_list[index].quantifier);
-                        var td6 = $("<td></td>").text(data.part_list[index].suppliers);
+                        var suppliers_str="";
+                        for (var i=0;i<data.part_list[index].suppliers.length;i++){
+                            suppliers_str+=data.part_list[index].suppliers[i]+",";
+                        }
+                        var td6 = $("<td></td>").text(suppliers_str.slice(0,suppliers_str.length-1));
                         tr.append(td1);
                         tr.append(td2);
                         tr.append(td3);

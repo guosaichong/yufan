@@ -726,7 +726,7 @@
             if (status == "success") {
                 $("#computer_count").text("(" + data.computer_count + ")");
                 for (var index = 0; index < data.computer_list.length; index++) {
-                    var li = $("<li></li>").text(data.computer_list[index].name + "/" + data.computer_list[index].model + "/" + data.computer_list[index].asset_number);
+                    var li = $("<li></li>").text(data.computer_list[index].name + "/" + data.computer_list[index].model + "/" + data.computer_list[index].department);
                     $(".computer_list").append(li)
                 }
                 var li = $("<li></li>").text("......")
@@ -734,7 +734,7 @@
 
                 $("#printer_count").text("(" + data.printer_count + ")");
                 for (var index = 0; index < data.printer_list.length; index++) {
-                    var li = $("<li></li>").text(data.printer_list[index].name + "/" + data.printer_list[index].model + "/" + data.printer_list[index].asset_number);
+                    var li = $("<li></li>").text(data.printer_list[index].name + "/" + data.printer_list[index].model + "/" + data.printer_list[index].department);
                     $(".printer_list").append(li)
                 }
                 var li = $("<li></li>").text("......")
@@ -742,7 +742,7 @@
 
                 $("#camera_count").text("(" + data.camera_count + ")");
                 for (var index = 0; index < data.camera_list.length; index++) {
-                    var li = $("<li></li>").text(data.camera_list[index].name + "/" + data.camera_list[index].model + "/" + data.camera_list[index].asset_number);
+                    var li = $("<li></li>").text(data.camera_list[index].name + "/" + data.camera_list[index].model + "/" + data.camera_list[index].department);
                     $(".camera_list").append(li)
                 }
                 var li = $("<li></li>").text("......")
@@ -750,7 +750,7 @@
                 // video_recorder
                 $("#video_recorder_count").text("(" + data.video_recorder_count + ")");
                 for (var index = 0; index < data.video_recorder_list.length; index++) {
-                    var li = $("<li></li>").text(data.video_recorder_list[index].name + "/" + data.video_recorder_list[index].model + "/" + data.video_recorder_list[index].asset_number);
+                    var li = $("<li></li>").text(data.video_recorder_list[index].name + "/" + data.video_recorder_list[index].model + "/" + data.video_recorder_list[index].department);
                     $(".video_recorder_list").append(li)
                 }
                 var li = $("<li></li>").text("......")

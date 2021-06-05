@@ -1,8 +1,6 @@
 #!/usr/bin/env
 import math
 from flask import Blueprint, render_template, request, jsonify, url_for, redirect
-import os
-
 from flask.helpers import flash
 from .models import db, Supplier
 from sqlalchemy import and_, func, or_
@@ -35,7 +33,7 @@ def supplier_info():
             
             # print(obj)
             supplier_list.append(obj)
-        print(supplier_list)
+        # print(supplier_list)
         
         RET = {
             "supplier_amount": supplier_amount,
